@@ -1,0 +1,294 @@
+<html>
+<head>
+    <title>Assembly Graph Browser Manual</title>
+    <style type="text/css">
+        body {
+            margin-top: 30px;
+            margin-left: 50px;
+            max-width: 800px;
+            font-family: Tahoma,sans-serif;
+            font-size: 14px;
+        }
+        pre.code {
+            background-color: #EEE;
+            padding: 5px 0px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        table td {
+            vertical-align: top;
+        }
+        h2, h3 {
+            margin-bottom: -10px;            
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        h3 {
+            margin-top: 50px;
+        }
+        h4 {
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+        ul {
+            margin-top: -12px;
+        }
+        ul li, ol li {
+            margin-bottom: 5px;
+        }
+        .options {
+            margin-left: 34px;
+        }
+        .option {      
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .options .option:first-child {
+            margin-top: 4px;
+        }
+        .metric-name, .metric-ref {
+            font-family: Georgia,serif;            
+        }
+        .metric-name {
+            font-weight: bold;
+        }
+        .metrics_description p {
+            margin-bottom: 25px;
+        }
+        .hs { /* 10<span class="hs"></span>000 */
+            margin-left: .2em; 
+        }
+        .rhs { /* 1<span class="rhs">&nbsp;</span>kb */            
+            font-size: 50%;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>AGB Manual</h1>
+
+<p> <u>A</u>ssembly <u>G</u>enome <u>B</u>rowser (AGB) is a tool providing interactive visualization of assembly graphs, a wide range of tuning parameters, and various options for modifying/simplifying the graph.
+    <br>
+    AGB uses <a href="https://github.com/magjac/d3-graphviz">d3-graphviz</a>, <a href="https://github.com/ggonnella/gfapy">GfaPy</a>,
+    <a href="https://github.com/networkx/networkx-metis">NetworkX-METIS</a>, and <a href="https://github.com/ablab/quast">QUAST-LG</a>.
+    <br>
+</p>
+
+<h2>Contents</h2>
+<ol>
+  <li><a href="#sec1">Installation</a></li> 
+  <li><a href="#sec2">Running AGB</a></li>  
+    <ol>
+      <li><a href="#sec2.1">For impatient people</a></li>
+      <li><a href="#sec2.2">Input data</a></li>
+      <li><a href="#sec2.3">Command line options</a></li>
+    </ol>
+  <li><a href="#sec3">AGB output</a></li> 
+  <li><a href="#sec4">References</a></li> 
+</ol>
+<br>
+
+<a name="sec1"></a>
+<h2>1. Installation</h2>
+    
+<p>
+    AGB can be run on Linux or macOS (OS X).
+
+    Install conda if you don't have one:
+    <pre class="code">
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+        bash miniconda.sh -b -p ./miniconda
+        unset PYTHONPATH
+        export PATH=$(pwd)/miniconda/bin:$PATH
+    </pre>
+
+    Create a new conda environment and install AGB into it:
+    <pre class="code">
+        conda create -c almiheenko -c graphtools -c bioconda agb
+    </pre>
+    
+    Activate the environment:
+    <pre class="code">
+        source activate ngs_reporting
+    </pre>
+</p>
+<p>
+    To compile AGB by yourself you will need the following libraries to be pre-installed:
+<ul>
+    <li>python3</li>
+    <li>QUAST v5.0.1</li>
+    <li>gfapy</li>
+    <li>networkx-metis</li>
+</ul>
+If you meet these requirements, you can download the AGB source code:
+
+<pre class="code">
+<code>
+   git clone https://github.com/almiheenko/AGB.git
+   cd AGB
+</code>
+</pre>
+<pre class="code">
+    ./setup.py install
+</pre>
+
+<a name="sec2"></a>
+<h2>2. Running AGB</h2>
+<a name="sec2.1"></a>
+<h3>2.1. For impatient people</h3><br>
+Running AGB to visualize an assembly graph:
+<pre class="code">
+    agb.py --graph &lt;GFA(1,2)/FASTG/Graphviz file&gt;
+</pre>
+    
+or running AGB to visualize an output of some of supported assemblers (Canu, Flye, SPAdes):
+<pre class="code">
+    agb.py -i &lt;assembler_output_dir&gt;
+</pre>
+    
+The assembly graph viewer will be saved to <code>agb_output/viewer.html</code>
+
+<a name="seс2.2"></a>
+<h4>2.2. Input data</h4><br>
+AGB takes as input an output folder of supported assemblers, assembly graphs, contigs/scaffolds, and reference.
+<br><br>
+<b>Assembly output folder</b><br>
+Path to the assembly output folder. Up to the date, supported assemblers are Canu, Flye, and SPAdes.
+<b>Assembly graph</b><br>
+Assembly graph in GFA1/GFA2/FASTG/Graphviz format. 
+<br><br>
+<b>Contigs/scaffolds</b><br>
+Contigs/scaffolds in FASTA format. 
+<br><br>
+<b>Reference</b><br>
+If you provide the reference genome in FASTA format the genome browser visualization will be available.
+
+<a name="sec2.3"></a>
+<h4>2.3. Command line options </h4>
+<br>
+AGB runs from a command line as follows:
+<pre class='code'>
+    agb.py --graph &lt;file&gt; [--fasta &lt;file&gt;] [-r &lt;file&gt;] [-o &lt;output_dir&gt;]
+</pre>
+Also, if you have output generated by one of supported assemblers (Canu, Flye, SPAdes), you can run AGB as follows:
+<pre class='code'>
+    agb.py -i &lt;input_dir&gt; [-r &lt;file&gt;] [-o &lt;output_dir&gt;]
+</pre>
+
+<b>Options:</b>
+<div class='options'>
+<div class='option'>
+<code><b>-o</b> &lt;output_dir&gt;</code>
+</div>
+Output directory. The default output directory is  <code>agb_output</code>.
+
+<div class='option'>
+<code><b>-i</b> &lt;input_dir&gt;</code>
+</div>
+Assembler output directory. AGB will attempt to automatically parse output files of supported assemblers (Canu, Flye, SPAdes).
+
+<div class='option'>
+<code><b>--graph</b> &lt;path&gt;</code>
+</div>
+File with assembly graph in GFA/FASTG/Graphviz format.
+
+<div class='option'>
+<code><b>--fasta</b> &lt;path&gt;</code>
+</div>
+File with graph edge sequences in FASTA format.
+
+<div class='option'>
+<code><b>-r</b> &lt;path&gt;</code>
+</div>
+Reference genome file. Optional.
+</div>
+
+<a name="sec3"></a>
+<h2>3. AGB output</h2>
+
+<p>If an output path is not specified manually (with <code>-o</code>), AGB generates its output into <code>agb_output</code> directory.
+<br>
+<br>
+AGB output contains:
+<ul>
+    <li><code>&lt;output_dir&gt;/viewer.html</code> main file with graph visualization </li>
+    <li><code>&lt;output_dir&gt;/data/</code> auxilliary files</li>
+</ul>
+
+Open viewer.html to see visualisation.
+
+<a name="sec3.1"></a>
+<h3>3.1. Assembly Graph Browser </h3>
+    <br><br>
+    <img src="img/overview.png" width="600"/>
+    <p>AGB visualizes the assembly graph produced by an assembler, where edges represent various genome segments (each genome segment is represented by its forward and reverse-complement edge). The top panel contains control buttons for iterating over connected components and buttons for exporting the graph in SVG and DOT format. In addition, it contains a trigger for switching between <a href="#sec3.1.1">default</a>, <a href="#sec3.1.2">repeat-focused</a>, <a href="#sec3.1.3">reference-based</a> or <a href="#sec3.1.4">contig-based</a> modes. Each edge is labeled with its identifier, length, and read coverage. Unique edges are shown as thin black lines, while repetitive edges are shown as colored and thick lines (edge width depends on its coverage). All edges within each mosaic repeat are highlighted with the same color. Nodes with zero indegree or outdegree are shown as black circles. Unbalanced nodes with the difference in coverage of incoming and outgoing edges are highlighted in red.</p>
+<p>The graph representation can be further modified using <a href="#sec3.2.2">Additional options</a>.</p>
+    
+<a name="sec3.1.1"></a>
+<h4>3.1.1. Default mode </h4>
+<p>This mode could be useful to assess the contiguity/complexity of the graph and to find problematic parts of the assembly. 
+   
+<a name="sec3.1.2"></a>
+<h4>3.1.2. Repeat-focused mode </h4>
+    <img src="img/human_repeats.png" width="600"/>
+    <p>This mode is designed for analyzing complex repeat structures. AGB removes all unique edges from the assembly graph, so each remaining connected component forms a mosaic repeat. By default, each mosaic repeat is highlighted with the same color (all unique edges are colored as black).</p>
+    <p> Some assemblers (e.g., Flye and Canu) provide information on whether an edge is repetitive. If such information is not available, AGB attempts to classify unique and repetitive edges in the assembly graph using the following simple criteria. For each edge, we estimate its <i>multiplicity</i> by dividing the read coverage of this edge by the median coverage. Edge multiplicity value is set to 1 if this ratio is less than 1.75. An edge is classified as unique if it has multiplicity equal to 1 and as repetitive otherwise.</p>
+
+<a name="sec3.1.3"></a>
+<h4>3.1.3. Reference-based mode </h4>
+    <img src="img/reference.png" width="600"/>
+    <p>If a reference genome is available, AGB runs QUAST-LG to align graph edges and contigs (scaffolds) produced by assemblers to the reference genome and detect assembly errors. This mode provides two additional options for edge coloring: either according to their mappings to the reference (same colors represent same chromosomes), or based on the presence of assembly errors. A subset of edges mapped to each chromosome can be visualized on a separate page. When edges are colored according to the presence of assembly errors detected by QUAST-LG, green edges do not contain errors, red edges belong to the misassembled contigs (but correspond to correct genomic sequences), and dark red edges represented by parallel lines are erroneous themselves.</p>
+     <p>At the top, corresponding edge alignments to the selected chromosome are displayed. Red blocks contain detected assembly errors, while green blocks were aligned correctly. The alignment of the selected edge is highlighted with dark green color. It is also possible to display brief information about an alignment by hovering.</p>
+    
+<a name="sec3.1.4"></a>
+<h4>3.1.4. Contig-based mode </h4>
+    <img src="img/contig.png" width="600"/>
+    <p>If an assembler provides paths in the assembly graph corresponding to the assembled contigs/scaffolds, AGB displays each path separately. Given the reference genome, AGB also shows the number of assembly errors per contig.</p>
+    
+<a name="sec3.2"></a>
+<h3>3.2. Left panel </h3>
+<p>The left panel includes the menu with various options, the search bar, and the tables describing various graph elements.</p>
+<a name="sec3.2.1"></a>
+<h4>3.2.1. Additional options </h4>
+    <ul>
+        <li><b>Collapse repeat edges</b> - collapse repetitive edges to produce the contracted assembly graph.</li>
+        <li><b>Collapse edges</b> - collapse edges based on read coverage and/or length to simplify the assembly graph.</li>
+        <li><b>Remove edges</b> - remove low covered edges from the graph.</li>
+        <li><b>Use color to highlight:</b>
+            <ul style="margin-top: 0px"><li>repeat edges - all edges within each mosaic repeat are highlighted with the same color;</li>
+            <li>edges alignments to the reference - edges are colored according to their alignments to the reference (same colors represent same chromosomes);</li>
+            <li>erroneous edges - edges are colored according to the presence of assembly errors detected by QUAST-LG:  green edges do not contain errors, red edges belong to the misassembled contigs (but correspond to correct genomic sequences), and dark red edges represented by parallellines are erroneous themselves.</li></ul>
+        </li>
+        <li><b>Mark unbalanced nodes as red</b> - highlight unbalanced nodes, i.e. nodes that have the difference in coverage of incoming and outgoing edges.</li>
+    </ul>
+    
+<a name="sec3.2.2"></a>
+<h4>3.2.2. Tables </h4> 
+<p>AGB displays interactive sortable tables containing information about edges, vertices, contigs, reference chromosomes, and connected components</p>
+    <ul>
+        <li><b>Contigs:</b> the table shows a list of contigs/scaffolds, their total length, read coverage, the number of edges and (if reference is available) the number of assembly errors detected by QUAST-LG.</li>
+        <li><b>Graph components:</b> the table shows a list of graph components, the total length of each component, the number of unique and repeat edges. In the reference-based mode, each chromosome can contain edges belonging to multiple connected components of the graph, so there is additional column that shows the number of connected components formed by these edges.</li>
+        <li><b>Reference chromosomes:</b> the table shows a list of reference chromosomes, their total length and the number of edges. In the reference-based mode, each chromosome can contain edges belonging to multiple connected components of the graph, so there is additional column that shows the number of connected components formed by these edges.</li>
+        <li><b>Edges:</b> the table shows a list of edges, their length, read coverage, and inferred multiplicity (calculated as edge coverage divided by median coverage).</li>
+        <li><b>Nodes:</b> the table shows a list of nodes, and the number of edges incident to a node.</li>
+    </ul>
+
+<a name="sec4"></a>
+<h2>4. References</h2>
+    <ol>
+    <li><a href="https://github.com/magjac/d3-graphviz">https://github.com/magjac/d3-graphviz</a></li>
+    <li>Giorgio Gonnella and Stefan Kurtz "GfaPy: a flexible and extensible software library for handling sequence graphs in Python", Bioinformatics (2017) btx398 https://doi.org/10.1093/bioinformatics/btx398</li>
+    <li><a href="https://github.com/networkx/networkx-metis/">https://github.com/networkx/networkx-metis</a>
+    </li>
+    <li>Gansner, E. R. and North, S. C. (2000). An open graph visualization system and itsapplications to software engineering.Softw., Pract. Exper.,30(11), 1203–1233.
+    </li>
+    <li>Mikheenko, A.et al.(2018).  Versatile genome assembly evaluation with QUAST-LG.Bioinformatics,34(13), i142–i150.
+    </li>
+    <li>Karypis,  G.  and  Kumar,  V.  (1998).    Multilevel  algorithms  for  multi-constraintgraph  partitioning.InProceedings of the 1998 ACM/IEEE conference onSupercomputing, page 28. IEEE Computer Society.
+    </li>
+    </ol>
+</body>
+</html>
+
