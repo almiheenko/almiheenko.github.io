@@ -222,7 +222,7 @@ Open viewer.html to see visualisation.
 <a name="sec3.1"></a>
 <h3>3.1. Assembly Graph Browser </h3>
     <br><br>
-    <img src="img/overview.png" width="600"/>
+    <img src="https://almiheenko.github.io/AGB/img/overview.png" width="600"/>
     <p>AGB visualizes the assembly graph produced by an assembler, where edges represent various genome segments (each genome segment is represented by its forward and reverse-complement edge). The top panel contains control buttons for iterating over connected components and buttons for exporting the graph in SVG and DOT format. In addition, it contains a trigger for switching between <a href="#sec3.1.1">default</a>, <a href="#sec3.1.2">repeat-focused</a>, <a href="#sec3.1.3">reference-based</a> or <a href="#sec3.1.4">contig-based</a> modes. Each edge is labeled with its identifier, length, and read coverage. Unique edges are shown as thin black lines, while repetitive edges are shown as colored and thick lines (edge width depends on its coverage). All edges within each mosaic repeat are highlighted with the same color. Nodes with zero indegree or outdegree are shown as black circles. Unbalanced nodes with the difference in coverage of incoming and outgoing edges are highlighted in red.</p>
 <p>The graph representation can be further modified using <a href="#sec3.2.2">Additional options</a>.</p>
     
@@ -232,19 +232,19 @@ Open viewer.html to see visualisation.
    
 <a name="sec3.1.2"></a>
 <h4>3.1.2. Repeat-focused mode </h4>
-    <img src="img/human_repeats.png" width="600"/>
+    <img src="https://almiheenko.github.io/AGB/img/human_repeats.png" width="600"/>
     <p>This mode is designed for analyzing complex repeat structures. AGB removes all unique edges from the assembly graph, so each remaining connected component forms a mosaic repeat. By default, each mosaic repeat is highlighted with the same color (all unique edges are colored as black).</p>
     <p> Some assemblers (e.g., Flye and Canu) provide information on whether an edge is repetitive. If such information is not available, AGB attempts to classify unique and repetitive edges in the assembly graph using the following simple criteria. For each edge, we estimate its <i>multiplicity</i> by dividing the read coverage of this edge by the median coverage. Edge multiplicity value is set to 1 if this ratio is less than 1.75. An edge is classified as unique if it has multiplicity equal to 1 and as repetitive otherwise.</p>
 
 <a name="sec3.1.3"></a>
 <h4>3.1.3. Reference-based mode </h4>
-    <img src="img/reference.png" width="600"/>
+    <img src="https://almiheenko.github.io/AGB/img/reference.png" width="600"/>
     <p>If a reference genome is available, AGB runs QUAST-LG to align graph edges and contigs (scaffolds) produced by assemblers to the reference genome and detect assembly errors. This mode provides two additional options for edge coloring: either according to their mappings to the reference (same colors represent same chromosomes), or based on the presence of assembly errors. A subset of edges mapped to each chromosome can be visualized on a separate page. When edges are colored according to the presence of assembly errors detected by QUAST-LG, green edges do not contain errors, red edges belong to the misassembled contigs (but correspond to correct genomic sequences), and dark red edges represented by parallel lines are erroneous themselves.</p>
      <p>At the top, corresponding edge alignments to the selected chromosome are displayed. Red blocks contain detected assembly errors, while green blocks were aligned correctly. The alignment of the selected edge is highlighted with dark green color. It is also possible to display brief information about an alignment by hovering.</p>
     
 <a name="sec3.1.4"></a>
 <h4>3.1.4. Contig-based mode </h4>
-    <img src="img/contig.png" width="600"/>
+    <img src="https://almiheenko.github.io/AGB/img/contig.png" width="600"/>
     <p>If an assembler provides paths in the assembly graph corresponding to the assembled contigs/scaffolds, AGB displays each path separately. Given the reference genome, AGB also shows the number of assembly errors per contig.</p>
     
 <a name="sec3.2"></a>
