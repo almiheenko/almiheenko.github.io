@@ -3721,2165 +3721,9 @@
         
         }));
     </script>
-<script type="text/javascript" name="d3-graphviz.js">
-        (function (global, factory) {
-        	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-selection'), require('d3-dispatch'), require('d3-transition'), require('d3-timer'), require('d3-interpolate'), require('d3-zoom'), require('viz.js/viz'), require('d3-format'), require('d3-path')) :
-        	typeof define === 'function' && define.amd ? define(['exports', 'd3-selection', 'd3-dispatch', 'd3-transition', 'd3-timer', 'd3-interpolate', 'd3-zoom', 'viz.js/viz', 'd3-format', 'd3-path'], factory) :
-        	(factory((global['d3-graphviz'] = {}),global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.Viz,global.d3,global.d3));
-        }(this, (function (exports,d3,d3Dispatch,d3Transition,d3Timer,d3Interpolate,d3Zoom,Viz,d3Format,d3Path) { 'use strict';
+<script type="text/javascript" name="d3-graphviz.min.js">
+        !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("d3-selection"),require("d3-dispatch"),require("d3-transition"),require("d3-timer"),require("d3-interpolate"),require("d3-zoom"),require("viz.js/viz"),require("d3-format"),require("agb_src/html_files/js/d3-path")):"function"==typeof define&&define.amd?define(["exports","d3-selection","d3-dispatch","d3-transition","d3-timer","d3-interpolate","d3-zoom","viz.js/viz","d3-format","agb_src/html_files/js/d3-path"],e):e(t["d3-graphviz"]={},t.d3,t.d3,t.d3,t.d3,t.d3,t.d3,t.Viz,t.d3,t.d3)}(this,function(t, e, n, r, i, a, o, s, l, h){"use strict";function c(t){var e={},n=t.node().nodeName;e.tag=n,"#text"==n?e.text=t.text():"#comment"==n&&(e.comment=t.text()),e.attributes={};var r=t.node().attributes;if(r)for(var i=0; i<r.length; i++){var a=r[i],o=a.name,s=a.value;e.attributes[o]=s}var l=t.node().transform;if(l&&0!=l.baseVal.numberOfItems){var h=l.baseVal.consolidate().matrix;e.translation={x:h.e,y:h.f},e.scale=h.a}if("ellipse"==n&&(e.center={x:e.attributes.cx,y:e.attributes.cy}),"polygon"==n){var c=(g=t.attr("points").split(" ")).map(function(t){return t.split(",")[0]}),u=g.map(function(t){return t.split(",")[1]}),d=Math.min.apply(null,c),f=Math.max.apply(null,c),p={x:d,y:v=Math.min.apply(null,u),width:f-d,height:(y=Math.max.apply(null,u))-v};e.bbox=p,e.center={x:(d+f)/2,y:(v+y)/2}}if("path"==n){var g;(g=t.attr("d").split(/[A-Z ]/)).shift();var v,y;c=g.map(function(t){return+t.split(",")[0]}),u=g.map(function(t){return+t.split(",")[1]}),d=Math.min.apply(null,c),f=Math.max.apply(null,c),p={x:d,y:v=Math.min.apply(null,u),width:f-d,height:(y=Math.max.apply(null,u))-v};e.bbox=p,e.center={x:(d+f)/2,y:(v+y)/2},e.totalLength=t.node().getTotalLength()}return"#text"==n?e.text=t.text():"#comment"==n&&(e.comment=t.text()),e}function u(t){var n=c(t);return n.children=[],e.selectAll(t.node().childNodes).each(function(){var t=u(e.select(this));t.parent=n,n.children.push(t)}),n}function d(t){return"#text"==t.tag?document.createTextNode(""):"#comment"==t.tag?document.createComment(t.comment):document.createElementNS("http://www.w3.org/2000/svg",t.tag)}function f(t){var n=d(t),r=e.select(n),i=t.attributes,a=!0,o=!1,s=void 0;try{for(var l,h=Object.keys(i)[Symbol.iterator]();!(a=(l=h.next()).done);a=!0){var c=l.value,u=i[c];r.attr(c,u)}}catch(t){o=!0,s=t}finally{try{!a&&h.return&&h.return()}finally{if(o)throw s}}return n}function p(t,n){var r=e.select(t.node().parentNode),i=f(n),a=r.insert(function(){return i},function(){return t.node()});return t.remove(),a}function g(t,n){!function(t,e){t.datum(e),t.data([e],function(t){return t.key})}(t,n),e.selectAll(t.node().childNodes).each(function(t,r){g(e.select(this),n.children[r])})}function v(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,r=e.select(this),i=(t.tag,t.attributes),a=r.node().attributes;if(a)for(var o=0;o<a.length;o++){var s=a[o],l=s.name;if("xmlns"!=l.split(":")[0]&&s.namespaceURI){var h=s.namespaceURI.split("/");l=h[h.length-1]+":"+l}l in i||(i[l]=null)}var c=!0,u=!1,f=void 0;try{for(var p,g=Object.keys(i)[Symbol.iterator]();!(c=(p=g.next()).done);c=!0){var y=p.value;r.attr(y,i[y])}}catch(t){u=!0,f=t}finally{try{!c&&g.return&&g.return()}finally{if(u)throw f}}t.text&&r.text(t.text),function(t,e){var n=t.selectAll(function(){return t.node().childNodes}),r=(n=n.data(function(t){return t.children},function(t){return t.tag+"-"+e})).enter().append(function(t){return d(t)}),i=n.exit();i=i.remove();var a={};(n=r.merge(n)).each(function(t){var e=t.tag;null==a[e]&&(a[e]=0);var n=a[e]++;v.call(this,t,n)})}(r,n)}function y(t){return Object.assign({},t)}function m(t){return Math.round(1e4*t)/1e4}s=s&&s.hasOwnProperty("default")?s.default:s;function _(){var t=this._selection,n=e.select(t.node().querySelector("svg"));if(0==n.size())return this;this._zoomSelection=n;var r=o.zoom().scaleExtent(this._options.zoomScaleExtent).translateExtent(this._options.zoomTranslateExtent).interpolate(a.interpolate).on("zoom",function(){e.select(n.node().querySelector("g")).attr("transform",e.event.transform)});this._zoomBehavior=r;var i=e.select(n.node().querySelector("g"));return n.call(r),this._active||x.call(this,i),this._originalTransform=o.zoomTransform(n.node()),this}function w(t){var e=this._translation,n=this._scale,r=t.datum().translation,i=t.datum().scale,a=o.zoomTransform(this._zoomSelection.node());return e&&(a=(a=a.scale(1/n)).translate(-e.x,-e.y)),a=(a=a.translate(r.x,r.y)).scale(i)}function x(t){this._zoomBehavior.transform(this._zoomSelection,w.call(this,t)),this._translation=t.datum().translation,this._scale=t.datum().scale,this._originalTransform=o.zoomIdentity.translate(t.datum().translation.x,t.datum().translation.y).scale(t.datum().scale)}function b(t,e){return function(){var n=t.map(function(t){return a.interpolate([t[0][0],t[0][1]],[t[1][0],t[1][1]])});return function(t){return t<1?"M"+n.map(function(e){return e(t)}).join("L"):e}}}function E(t){return"edge"==t.attributes.class||"a"==t.tag&&"g"==t.parent.tag&&"edge"==t.parent.parent.attributes.class}function P(t){return t.parent&&E(t.parent)}function z(t){var n=this._transition,r=this._options.fade&&null!=n,i=this._options.tweenPaths,s=this._options.tweenShapes,l=this._options.convertEqualSidedPolygons,h=this._options.growEnteringEdges&&null!=n,u=this._attributer,f=this;function g(t){var v=e.select(this);if("svg"==t.tag){var y=f._options;if(null!=y.width||null!=y.height){var m=y.width,_=y.height;null==m?m=4*t.attributes.width.replace("pt","")/3:(v.attr("width",m),t.attributes.width=m),null==_?_=4*t.attributes.height.replace("pt","")/3:(v.attr("height",_),t.attributes.height=_),y.fit||(v.attr("viewBox","0 0 "+3*m/4/y.scale+" "+3*_/4/y.scale),t.attributes.viewBox="0 0 "+3*m/4/y.scale+" "+3*_/4/y.scale)}1!=y.scale&&(y.fit||null==y.width&&null==y.height)&&(m=t.attributes.viewBox.split(" ")[2],_=t.attributes.viewBox.split(" ")[3],v.attr("viewBox","0 0 "+m/y.scale+" "+_/y.scale),t.attributes.viewBox="0 0 "+m/y.scale+" "+_/y.scale)}u&&v.each(u);var z=t.tag,N=t.attributes,k=v.node().attributes;if(k)for(var S=0;S<k.length;S++){var D=k[S],M=D.name;if("xmlns"!=M.split(":")[0]&&D.namespaceURI){var W=D.namespaceURI.split("/");M=W[W.length-1]+":"+M}M in N||(N[M]=null)}var j=!1,O=!1;if(s&&n){if("polygon"!=this.nodeName&&"ellipse"!=this.nodeName||!t.alternativeOld||(O=!0),"polygon"!=z&&"ellipse"!=z||!t.alternativeNew||(j=!0),"polygon"==this.nodeName&&"polygon"==z){var L=c(v).attributes.points;if(!l){var q=L.split(" ").length;(et=t.attributes.points).split(" ").length==q&&(j=!1,O=!1)}}if(O){var A=t.alternativeOld,T=p(v,A);T.data([t],function(){return t.key}),v=T}if(j)z="path",N=t.alternativeNew.attributes}var B=v;if(n&&(B=B.transition(n),r&&B.filter(function(t){return"#"==t.tag[0]?null:this}).style("opacity",1),B.filter(function(t){return"#"==t.tag[0]?null:this}).on("end",function(){e.select(this).attr("style",null)})),h&&"path"==z&&t.offset){var I=t.totalLength;v.attr("stroke-dasharray",I+" "+I).attr("stroke-dashoffset",I).attr("transform","translate("+t.offset.x+","+t.offset.y+")"),N["stroke-dashoffset"]=0,N.transform="translate(0,0)",B.attr("stroke-dashoffset",N["stroke-dashoffset"]).attr("transform",N.transform).on("start",function(){e.select(this).style("opacity",null)}).on("end",function(){e.select(this).attr("stroke-dashoffset",null).attr("stroke-dasharray",null).attr("transform",null)})}if(h&&"polygon"==z&&P(t)&&t.offset){var R=e.select(v.node().parentNode.querySelector("path")),U=R.node().getPointAtLength(0),F=R.node().getPointAtLength(t.totalLength),V=R.node().getPointAtLength(t.totalLength-1),Z=180*Math.atan2(F.y-V.y,F.x-V.x)/Math.PI,C=U.x-F.x+t.offset.x,$=U.y-F.y+t.offset.y;v.attr("transform","translate("+C+","+$+")"),B.attrTween("transform",function(){return function(e){var n=R.node().getPointAtLength(t.totalLength*e),r=R.node().getPointAtLength(t.totalLength*e+1),i=180*Math.atan2(r.y-n.y,r.x-n.x)/Math.PI-Z;return C=n.x-F.x+t.offset.x*(1-e),$=n.y-F.y+t.offset.y*(1-e),"translate("+C+","+$+") rotate("+i+" "+F.x+" "+F.y+")"}}).on("start",function(){e.select(this).style("opacity",null)}).on("end",function(){e.select(this).attr("transform",null)})}var G=i&&n&&"path"==z&&null!=v.attr("d"),H=!0,J=!1,K=void 0;try{for(var Q,X=Object.keys(N)[Symbol.iterator]();!(H=(Q=X.next()).done);H=!0){var Y=Q.value,tt=N[Y];if(G&&"d"==Y){var et;(et=(t.alternativeOld||t).points)&&B.attrTween("d",b(et,tt))}else{if("transform"==Y&&t.translation)if(n){var nt=B.on("end");B.on("start",function(){f._zoomBehavior&&B.tween("attr.transform",function(){var t=this;return function(e){t.setAttribute("transform",a.interpolateTransformSvg(o.zoomTransform(f._zoomSelection.node()).toString(),w.call(f,v).toString())(e))}})}).on("end",function(){nt.call(this),f._zoomBehavior&&x.call(f,v)})}else f._zoomBehavior&&(tt=w.call(f,v).toString());B.attr(Y,tt)}}}catch(t){J=!0,K=t}finally{try{!H&&X.return&&X.return()}finally{if(J)throw K}}j&&B.on("end",function(t,n,r){p(T=e.select(this),t).data([t],function(){return t.key})}),t.text&&B.text(t.text),function(t){var i=t.selectAll(function(){return t.node().childNodes}),a=(i=i.data(function(t){return t.children},function(t){return t.key})).enter().append(function(t){var e=d(t);return"#text"==t.tag&&r&&(e.nodeValue=t.text),e});(r||h&&E(t.datum()))&&a.filter(function(t){return"#"==t.tag[0]?null:this}).each(function(t){var n=e.select(this),r=!0,i=!1,a=void 0;try{for(var o,s=Object.keys(t.attributes)[Symbol.iterator]();!(r=(o=s.next()).done);r=!0){var l=o.value,h=t.attributes[l];n.attr(l,h)}}catch(t){i=!0,a=t}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}}).filter(function(t){return"svg"==t.tag||"g"==t.tag?null:this}).style("opacity",0);var o=i.exit();u&&o.each(u),n&&(o=o.transition(n),r&&o.filter(function(t){return"#"==t.tag[0]?null:this}).style("opacity",0)),o=o.remove(),(i=a.merge(i)).each(g)}(v)}var v=this._selection;if(null!=n){var y=this._jobs;if(f._active)return y.push(null),this;v.transition(n).transition().duration(0).on("end",function(){f._active=!1,0!=y.length&&(y.shift(),f.render())}),this._active=!0}null!=n&&v.transition(n).on("start",function(){f._dispatch.call("transitionStart",f)}).on("end",function(){f._dispatch.call("transitionEnd",f)}).transition().duration(0).on("start",function(){f._dispatch.call("restoreEnd",f),f._dispatch.call("end",f),t&&t.call(f)});var m=this._data,z=v.selectAll("svg").data([m],function(t){return t.key});return z=z.enter().append("svg").merge(z),g.call(z.node(),m),this._options.zoom&&!this._zoomBehavior&&_.call(this),f._dispatch.call("renderEnd",f),null==n&&(this._dispatch.call("end",this),t&&t.call(this)),this}function N(t,e){if("polygon"==t.tag){(u=y(t)).tag="path";var n=y(d=t.attributes),r=d.points;if("polygon"==e.tag){(m=t.bbox).cx=m.x+m.width/2,m.cy=m.y+m.height/2;for(var i=d.points.split(" "),a=i.map(function(t){var e=t.split(",");return[e[0]-m.cx,e[1]-m.cy]}),o=a[a.length-1][0],s=a[a.length-1][1],l=0;l<a.length;l++,o=N,s=k){var h=(N=a[l][0])-o;if(0!=(b=(k=a[l][1])-s))if(0<=(S=o-s*h/b)&&S<1/0&&(o<=S&&S<=N||N<=S&&S<=o))break}var c=[[m.cx+S,m.cy+0].join(",")];r=(c=(c=c.concat(i.slice(l))).concat(i.slice(0,l))).join(" ")}n.d="M"+r+"z",delete n.points,u.attributes=n}else{var u;(u=y(t)).tag="path";n=y(d=t.attributes);var d,f=d.cx,p=d.cy,g=d.rx,v=d.ry;if("polygon"==e.tag){var m;(m=e.bbox).cx=m.x+m.width/2,m.cy=m.y+m.height/2;var _=e.attributes.points.split(" ")[0].split(","),w=_[0],x=_[1],b=(h=w-m.cx,x-m.cy),E=Math.sqrt(Math.pow(h,2)+Math.pow(b,2)),P=h/E,z=-b/E}else P=1,z=0;var N,k,S;h=(S=g*-P)-(N=g*P),b=-v*-z-(k=-v*z);n.d="M "+f+" "+p+" m "+N+","+k+" a "+g+","+v+" 0 1,0 "+h+","+b+" a "+g+","+v+" 0 1,0 "+-h+","+-b+"z",delete n.cx,delete n.cy,delete n.rx,delete n.ry,u.attributes=n}return u}var k,S=function(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t},D=function(t){if(Array.isArray(t)){for(var e=0,n=Array(t.length);e<t.length;e++)n[e]=t[e];return n}return Array.from(t)};function M(t,e,n,r){var i=[t*n-(e=-e)*(r=-r),t*r+e*n];return[t=i[0],e=-(e=i[1])]}function W(t,e,n,r,i,a,o){var s=u(q(a));t.data([s]),v.call(t.node(),s),j(t,e,n,r,i,a,o)}function j(t,e,n,r,i,a,o){var s=o.shortening||0,l=[[0,-3.5],[10,0],[0,3.5],[0,-3.5]],c=r-e,u=i-n,d=Math.sqrt(c*c+u*u);if(0==d)var f=1,p=0;else f=c/d,p=u/d;if(r=e+(d-s-10-.174)*f,i=n+(d-s-10-.174)*p,a.URL||a.tooltip)var g=t.selectWithoutDataPropagation("g").selectWithoutDataPropagation("a"),v=g.selectWithoutDataPropagation("path"),y=g.selectWithoutDataPropagation("polygon");else v=t.selectWithoutDataPropagation("path"),y=t.selectWithoutDataPropagation("polygon");var m=h.path();m.moveTo(e,n),m.lineTo(r,i),v.attr("d",m),r=e+(d-s-10)*f,i=n+(d-s-10)*p;for(var _=0;_<l.length;_++){var w=l[_];l[_]=M(w[0],w[1],f,p)}for(_=0;_<l.length;_++){w=l[_];l[_]=[r+w[0],i+w[1]]}var x=[];for(_=0;_<l.length;_++){w=l[_];x.push(w.join(","))}var b=x.join(" ");return y.attr("points",b),this}function O(){return this._drawnEdge?(this._drawnEdge.g.remove(),this._drawnEdge=null,this):this}function L(){return this._drawnEdge?this._drawnEdge.g:e.select(null)}function q(t){var n="",r=!0,i=!1,a=void 0;try{for(var o,l=Object.keys(t)[Symbol.iterator]();!(r=(o=l.next()).done);r=!0){var h=o.value;null!=t[h]&&(n+=' "'+h+'"="'+t[h]+'"')}}catch(t){i=!0,a=t}finally{try{!r&&l.return&&l.return()}finally{if(i)throw a}}var c=s("digraph {a -> b ["+n+"]}",{format:"svg"}),u=(new window.DOMParser).parseFromString(c,"image/svg+xml");return e.select(document.createDocumentFragment()).append(function(){return u.documentElement}).select(".edge")}function A(t,e,n,r,i,a){var o=u(R(r,i));return t.data([o]),v.call(t.node(),o),T(t,e,n,i,a),this}function T(t,n,r,i,a){if(i.URL||i.tooltip)var o=t.selectWithoutDataPropagation("g").selectWithoutDataPropagation("a");else o=t;var s=o.selectAll("ellipse,polygon,path,polyline"),l=t.selectWithoutDataPropagation("text");if(0!=s.size()){var h=s.node().getBBox();h.cx=h.x+h.width/2,h.cy=h.y+h.height/2}else 0!=l.size()&&(h={x:+l.attr("x"),y:+l.attr("y"),width:0,height:0,cx:+l.attr("x"),cy:+l.attr("y")});return s.each(function(t,i){var a=e.select(this);if(a.attr("cx"))a.attr("cx",m(n)).attr("cy",m(r));else if(a.attr("points")){var o=a.attr("points").trim();a.attr("points",function(t,e,n){var r;return(r=t.split(" ")).map(function(t){return t.split(",")}),t=(t=(r=r.map(function(t){return[m(+e+ +t.split(",")[0]),m(+n+ +t.split(",")[1])]}).map(function(t){return t.join(",")})).join(" ")).replace(/-0\./g,"-.").replace(/ 0\./g," .")}(o,n-h.cx,r-h.cy))}else{var s=a.attr("d");a.attr("d",function(t,e,n){(i=t.split(/[A-Z ]/)).shift();var r=t.split(/[^[A-Z ]+/),i=(i.map(function(t){return t.split(",")}),i.map(function(t){return[m(+e+ +t.split(",")[0]),m(+n+ +t.split(",")[1])]}).map(function(t){return t.join(",")}));return t=(t=r.reduce(function(t,e,n){return t.concat(e,i[n])},[]).join("")).replace(/-0\./g,"-.").replace(/ 0\./g," .")}(s,n-h.cx,r-h.cy))}}),0!=l.size()&&l.attr("x",m(+l.attr("x")+n-h.cx)).attr("y",m(+l.attr("y")+r-h.cy)),this}function B(){if(!this._drawnNode)return this;var t=this._drawnNode.g;return t.empty()||t.remove(),this._drawnNode=null,this}function I(){return this._drawnNode?this._drawnNode.g:e.select(null)}function R(t,n){var r="",i=!0,a=!1,o=void 0;try{for(var l,h=Object.keys(n)[Symbol.iterator]();!(i=(l=h.next()).done);i=!0){var c=l.value;null!=n[c]&&(r+=' "'+c+'"="'+n[c]+'"')}}catch(t){a=!0,o=t}finally{try{!i&&h.return&&h.return()}finally{if(a)throw o}}var u=s('graph {"'+t+'" ['+r+"]}",{format:"svg"}),d=(new window.DOMParser).parseFromString(u,"image/svg+xml");return e.select(document.createDocumentFragment()).append(function(){return d.documentElement}).select(".node")}function U(t,r){if(this._options={useWorker:!0,engine:"dot",totalMemory:void 0,keyMode:"title",fade:!0,tweenPaths:!0,tweenShapes:!0,convertEqualSidedPolygons:!0,tweenPrecision:1,growEnteringEdges:!0,zoom:!0,zoomScaleExtent:[.1,10],zoomTranslateExtent:[[-1/0,-1/0],[1/0,1/0]],width:null,height:null,scale:1,fit:!1},r instanceof Object){var i=!0,a=!1,o=void 0;try{for(var l,h=Object.keys(r)[Symbol.iterator]();!(i=(l=h.next()).done);i=!0){var c=l.value;this._options[c]=r[c]}}catch(t){a=!0,o=t}finally{try{!i&&h.return&&h.return()}finally{if(a)throw o}}}else"boolean"==typeof r&&(this._options.useWorker=r);var u=this._options.useWorker;if("undefined"==typeof Worker&&(u=!1),u){var d=e.selectAll("script").filter(function(){return"javascript/worker"==e.select(this).attr("type")||e.select(this).attr("src")&&e.select(this).attr("src").match(/.*\/viz.js$/)});0==d.size()?(console.warn('No script tag of type "javascript/worker" was found and "useWorker" is true. Not using web worker.'),u=!1):(this._vizURL=d.attr("src"),this._vizURL||(console.warn('No "src" attribute of was found on the "javascript/worker" script tag and "useWorker" is true. Not using web worker.'),u=!1))}if(u){var f=new Blob(['\n            onmessage = function(event) {\n                if (event.data.vizURL) {\n                    importScripts(event.data.vizURL);\n                }\n                try {\n                    var svg = Viz(event.data.dot, event.data.options);\n                }\n                catch(error) {\n                    postMessage({\n                        type: "error",\n                        error: error.message,\n                    });\n                    return;\n                }\n                if (svg) {\n                    postMessage({\n                        type: "done",\n                        svg: svg,\n                    });\n                } else {\n                    postMessage({\n                        type: "skip",\n                    });\n                }\n            }\n        ']),p=window.URL.createObjectURL(f);this._worker=new Worker(p)}this._selection=t,this._active=!1,this._busy=!1,this._jobs=[],this._queue=[],this._keyModes=new Set(["title","id","tag-index","index"]),this._images=[],this._translation=void 0,this._scale=void 0,this._eventTypes=["initEnd","start","layoutStart","layoutEnd","dataExtractEnd","dataProcessPass1End","dataProcessPass2End","dataProcessEnd","renderStart","renderEnd","transitionStart","transitionEnd","restoreEnd","end"],this._dispatch=n.dispatch.apply(void 0,D(this._eventTypes)),function(){if(null==this._worker)s(""),this._dispatch.call("initEnd",this);else{var t=this._vizURL,e=this;this._worker.onmessage=function(t){e._dispatch.call("initEnd",this)},t.match(/^https?:\/\/|^\/\//i)||(t=new window.URL(t,document.location.href).href),this._worker.postMessage({dot:"",vizURL:t})}}.call(this),t.node().__graphviz__=this}function F(t,n){return e.select(t).graphviz(n)}U.prototype=F.prototype=(S(k={constructor:U,engine:function(t){return this._options.engine=t,this},addImage:function(t,e,n){return this._images.push({path:t,width:e,height:n}),this},totalMemory:function(t){return this._options.totalMemory=t,this},keyMode:function(t){if(!this._keyModes.has(t))throw Error("Illegal keyMode: "+t);if(t!=this._options.keyMode&&null!=this._data)throw Error("Too late to change keyMode");return this._options.keyMode=t,this},fade:function(t){return this._options.fade=t,this},tweenPaths:function(t){return this._options.tweenPaths=t,this},tweenShapes:function(t){return this._options.tweenShapes=t,t&&(this._options.tweenPaths=!0),this},convertEqualSidedPolygons:function(t){return this._options.convertEqualSidedPolygons=t,this},tweenPrecision:function(t){return this._options.tweenPrecision=t,this},growEnteringEdges:function(t){return this._options.growEnteringEdges=t,this},zoom:function(t){return this._options.zoom=t,this._options.zoom&&!this._zoomBehavior&&_.call(this),this},resetZoom:function(t){var e=this._zoomSelection;return t&&(e=e.transition(t)),e.call(this._zoomBehavior.transform,this._originalTransform),this},zoomBehavior:function(){return this._zoomBehavior||null},zoomSelection:function(){return this._zoomSelection||null},zoomScaleExtent:function(t){return this._options.zoomScaleExtent=t,this},zoomTranslateExtent:function(t){return this._options.zoomTranslateExtent=t,this},render:function(t){return this._busy?(this._queue.push(this.render.bind(this,t)),this):(this._dispatch.call("renderStart",this),this._transitionFactory?i.timeout(function(){this._transition=r.transition(this._transitionFactory()),z.call(this,t)}.bind(this),0):z.call(this,t),this)},dot:function(t,n){var r=this,i=this._worker,a=this._options.engine,o=this._images,l=this._options.totalMemory,h=this._options.keyMode,c=this._options.tweenPaths,d=this._options.tweenShapes;if("string"==typeof this._options.tweenPrecision&&this._options.tweenPrecision.includes("%"))var p=+this._options.tweenPrecision.split("%")[0]/100,g=this._options.tweenPrecision.includes("%");else p=this._options.tweenPrecision,g=!1;var v=this._options.growEnteringEdges,y={},m=this._dictionary||{},_={},w=this._nodeDictionary||{};function x(t,e){if(c&&e&&("path"==e.tag||t.alternativeOld&&"path"==t.alternativeOld.tag)){var n=(t.alternativeNew||t).attributes.d;if(t.alternativeOld)var r=f(t.alternativeOld);else r=f(e);(t.alternativeOld||(t.alternativeOld={})).points=function(t,e,n,r){for(var i=t,a=i.cloneNode(),o=i.getTotalLength(),s=(a.setAttribute("d",e),a).getTotalLength(),l=[0],h=0,c=r?n:n/Math.max(o,s);(h+=c)<1;)l.push(h);return l.push(1),l.map(function(t){var e=i.getPointAtLength(t*o),n=a.getPointAtLength(t*s);return[[e.x,e.y],[n.x,n.y]]})}(r,n,p,g)}}function b(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,n=arguments[2];!function(t,e){var n=t.tag;if("index"==h)t.key=e;else if("#"!=n[0])if("id"==h)t.key=t.attributes.id;else if("title"==h){var r=t.children.find(function(t){return"title"==t.tag});r&&(r.children.length>0?t.key=r.children[0].text:t.key="")}null==t.key&&(d&&("ellipse"!=n&&"polygon"!=n||(n="path")),t.key=n+"-"+e)}(t,e),function(t,e){var n=(e?e.id+".":"")+t.key;t.id=n}(t,n);var r=t.id,i=m[r];!function(t){y[t.id]=t}(t),function(t,e){d&&t.id in m&&("polygon"!=e.tag&&"ellipse"!=e.tag&&"path"!=e.tag||e.tag==t.tag&&"polygon"!=t.tag||("path"!=e.tag&&(t.alternativeOld=N(e,t)),"path"!=t.tag&&(t.alternativeNew=N(t,e))))}(t,i),x(t,i);var a={};t.children.forEach(function(e){var n=e.tag;"ellipse"!=n&&"polygon"!=n||(n="path"),null==a[n]&&(a[n]=0),b(e,a[n]++,t)})}function E(t){!function(t){var e=t.tag;if(v&&t.parent&&"node"==t.parent.attributes.class&&"title"==e){if(t.children.length>0)var n=t.children[0].text;else n="";_[n]=t.parent}}(t),function(t){var e=t.id,n=t.tag,r=m[e];if(v&&!r&&t.parent&&P(t)&&("path"==n||"polygon"==n)){if("polygon"==n){var i=t.parent.children.find(function(t){return"path"==t.tag});t.totalLength=i.totalLength}var a=function(t){return function(t){return"edge"==t.parent.attributes.class?t.parent:t.parent.parent.parent}(t).children.find(function(t){return"title"==t.tag})}(t).children[0],o=a.text.split("->");2!=o.length&&(o=a.text.split("--"));var s=o[0],l=_[s],h=w[s];if(h){if((d=l.children.findIndex(function(t,e){return"g"==t.tag}))>=0){var c=l.children[d].children.findIndex(function(t,e){return"a"==t.tag});l=l.children[d].children[c]}(d=h.children.findIndex(function(t,e){return"g"==t.tag}))>=0&&(c=h.children[d].children.findIndex(function(t,e){return"a"==t.tag}),h=h.children[d].children[c]);for(var u=l.children,d=0;d<u.length;d++)if("polygon"==u[d].tag||"ellipse"==u[d].tag||"path"==u[d].tag){var f=u[d];break}var p=h.children;for(d=0;d<p.length;d++)if("polygon"==p[d].tag||"ellipse"==p[d].tag||"path"==p[d].tag){var g=p[d];break}t.offset={x:g.center.x-f.center.x,y:g.center.y-f.center.y}}}}(t),t.children.forEach(function(t){E(t)})}this._dispatch.call("start",this),this._busy=!0,this._dispatch.call("layoutStart",this);var z={format:"svg",engine:a,images:o,totalMemory:l};if(this._worker)i.postMessage({dot:t,options:z}),i.onmessage=function(t){switch(t.data.type){case"done":return S.call(r,t.data.svg);case"error":if(!r._onerror)throw t.data.error;r._onerror(t.data.error)}};else{try{var k=s(t,z)}catch(t){if(r._onerror)return r._onerror(t.message),this;throw t.message}S.call(this,k)}function S(t){this._dispatch.call("layoutEnd",this);var r=e.select(document.createDocumentFragment()).append("div"),i=(new window.DOMParser).parseFromString(t,"image/svg+xml");r.append(function(){return i.documentElement});var a=u(r.select("svg"));this._dispatch.call("dataExtractEnd",this),b(a),this._dispatch.call("dataProcessPass1End",this),E(a),this._dispatch.call("dataProcessPass2End",this),this._data=a,this._dictionary=y,this._nodeDictionary=_,this._extractData=function(t,e,n){var r=u(t);return b(r,e,n),E(r),r},this._busy=!1,this._dispatch.call("dataProcessEnd",this),n&&n.call(this),this._queue.length>0&&this._queue.shift().call(this)}return this},data:function(){return this._data||null},renderDot:function(t,e){var n=this;return this.dot(t,function(){n.render(e)}),this},transition:function(t){return t instanceof Function?this._transitionFactory=t:this._transition=r.transition(t),this},active:function(t){var e=this._selection.selectWithoutDataPropagation("svg");return 0!=e.size()?r.active(e.node(),t):null},options:function(t){if(void 0===t)return Object.assign({},this._options);var e=!0,n=!1,r=void 0;try{for(var i,a=Object.keys(t)[Symbol.iterator]();!(e=(i=a.next()).done);e=!0){var o=i.value;this._options[o]=t[o]}}catch(t){n=!0,r=t}finally{try{!e&&a.return&&a.return()}finally{if(n)throw r}}return this},width:function(t){return this._options.width=t,this},height:function(t){return this._options.height=t,this},scale:function(t){return this._options.scale=t,this},fit:function(t){return this._options.fit=t,this},attributer:function(t){return this._attributer=t,this},on:function(t,e){return this._dispatch.on(t,e),this},onerror:function(t){return this._onerror=t,this},logEvents:function(t){var e=this,n=Date.now(),r={},i=this._eventTypes,a=Math.max.apply(Math,D(i.map(function(t){return t.length}))),o=function(o){var s=i[o];r[s]=[],h=e,e.on(s+".log",t?function(){var t=Date.now(),e=r[s].length;r[s].push(t);var i="";if(i+="Event ",i+=l.format(" >2")(o)+" ",i+=s+" ".repeat(a-s.length),i+=l.format(" >5")(t-n)+" ","initEnd"!=s&&(i+=l.format(" >5")(t-r.start[e])),"dataProcessEnd"==s&&(i+=" prepare                 "+l.format(" >5")(t-r.layoutEnd[e])),"renderEnd"==s&&h._transition&&(i+=" transition start margin "+l.format(" >5")(h._transition.delay()-(t-r.renderStart[e])),c=h._transition.delay(),u=h._transition.duration()),"transitionStart"==s){var d=t-r.renderStart[e];i+=" transition delay        "+l.format(" >5")(t-r.renderStart[e]),i+=" expected "+l.format(" >5")(c),i+=" diff "+l.format(" >5")(d-c)}if("transitionEnd"==s){var f=t-r.transitionStart[e];i+=" transition duration     "+l.format(" >5")(f),i+=" expected "+l.format(" >5")(u),i+=" diff "+l.format(" >5")(f-u)}console.log(i),n=t}:null)};for(var s in i){var h,c,u;o(s)}return this},drawEdge:function(t,n,r,i,a){var o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:{};if((a=Object.assign({},a)).style&&a.style.includes("invis"))var s=e.select(null);else{var l=this._selection.selectWithoutDataPropagation("svg").selectWithoutDataPropagation("g"),h=u(q(a));s=l.append("g").data([h]),v.call(s.node(),h),W(s,t,n,r,i,a,o)}return this._drawnEdge={g:s,x1:t,y1:n,x2:r,y2:i,attributes:a},this},updateDrawnEdge:function(t,e,n,r){var i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{},a=arguments.length>5&&void 0!==arguments[5]?arguments[5]:{};if(!this._drawnEdge)throw Error("No edge has been drawn");var o=this._drawnEdge.g;i=Object.assign(this._drawnEdge.attributes,i),this._drawnEdge.x1=t,this._drawnEdge.y1=e,this._drawnEdge.x2=n,this._drawnEdge.y2=r,!o.empty()||i.style&&i.style.includes("invis")||(o=this._selection.selectWithoutDataPropagation("svg").selectWithoutDataPropagation("g").append("g"),this._drawnEdge.g=o);return o.empty()||W(o,t,e,n,r,i,a),this},moveDrawnEdgeEndPoint:function(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};if(!this._drawnEdge)throw Error("No edge has been drawn");var r=this._drawnEdge.g,i=this._drawnEdge.x1,a=this._drawnEdge.y1,o=this._drawnEdge.attributes;return this._drawnEdge.x2=t,this._drawnEdge.y2=e,j(r,i,a,t,e,o,n),this},insertDrawnEdge:function(t){if(!this._drawnEdge)throw Error("No edge has been drawn");var e=this._drawnEdge.g;if(e.empty())return this;this._drawnEdge.attributes,e.selectWithoutDataPropagation("title").text(t);var n=this._selection.selectWithoutDataPropagation("svg").selectWithoutDataPropagation("g"),r=n.datum(),i=this._extractData(e,r.children.length,n.datum());return r.children.push(i),g(e,i),this._drawnEdge=null,this},removeDrawnEdge:O},"removeDrawnEdge",O),S(k,"drawnEdgeSelection",L),S(k,"drawnEdgeSelection",L),S(k,"drawNode",function(t,n,r){var i=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{},a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};if((i=Object.assign({},i)).style&&i.style.includes("invis"))var o=e.select(null);else{var s=this._selection.selectWithoutDataPropagation("svg").selectWithoutDataPropagation("g"),l=u(R(r,i));o=s.append("g").data([l]),v.call(o.node(),l),A(o,t,n,r,i,a)}return this._drawnNode={g:o,nodeId:r,x:t,y:n,attributes:i},this}),S(k,"updateDrawnNode",function(t,e,n){var r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{},i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};if(!this._drawnNode)throw Error("No node has been drawn");var a=this._drawnNode.g;null==n&&(n=this._drawnNode.nodeId),r=Object.assign(this._drawnNode.attributes,r),this._drawnNode.nodeId=n,this._drawnNode.x=t,this._drawnNode.y=e,!a.empty()||r.style&&r.style.includes("invis")||(a=this._selection.selectWithoutDataPropagation("svg").selectWithoutDataPropagation("g").append("g"),this._drawnNode.g=a);return a.empty()||A(a,t,e,n,r,i),this}),S(k,"moveDrawnNode",function(t,e){if(arguments.length>2&&void 0!==arguments[2]&&arguments[2],!this._drawnNode)throw Error("No node has been drawn");var n=this._drawnNode.g,r=this._drawnNode.attributes;return this._drawnNode.x=t,this._drawnNode.y=e,n.empty()||T(n,t,e,r),this}),S(k,"insertDrawnNode",function(t){if(!this._drawnNode)throw Error("No node has been drawn");null==t&&(t=this._drawnNode.nodeId);var e=this._drawnNode.g;if(e.empty())return this;var n=this._drawnNode.attributes;if(e.selectWithoutDataPropagation("title").text(t),n.URL||n.tooltip)var r=e.selectWithoutDataPropagation("g").selectWithoutDataPropagation("a"),i=(r.selectWithoutDataPropagation("ellipse,polygon,path,polyline"),r.selectWithoutDataPropagation("text"));else e.selectWithoutDataPropagation("ellipse,polygon,path,polyline"),i=e.selectWithoutDataPropagation("text");i.text(n.label||t);var a=this._selection.selectWithoutDataPropagation("svg").selectWithoutDataPropagation("g"),o=a.datum(),s=this._extractData(e,o.children.length,a.datum());return o.children.push(s),g(e,s),this._drawnNode=null,this}),S(k,"removeDrawnNode",B),S(k,"removeDrawnNode",B),S(k,"drawnNodeSelection",I),S(k,"drawnNodeSelection",I),k);e.selection.prototype.graphviz=function(t){var e=this.node().__graphviz__;return e?(e.options(t),e._dispatch.call("initEnd",this)):e=new U(this,t),e},e.selection.prototype.selectWithoutDataPropagation=function(t){return e.select(this.size()>0?this.node().querySelector(t):null)},t.graphviz=F,Object.defineProperty(t,"__esModule",{value:!0})});
         
-        Viz = Viz && Viz.hasOwnProperty('default') ? Viz['default'] : Viz;
-        
-        function extractElementData(element) {
-        
-            var datum = {};
-            var tag = element.node().nodeName;
-            datum.tag = tag;
-            if (tag == '#text') {
-                datum.text = element.text();
-            } else if (tag == '#comment') {
-                datum.comment = element.text();
-            }
-            datum.attributes = {};
-            var attributes = element.node().attributes;
-            if (attributes) {
-                for (var i = 0; i < attributes.length; i++) {
-                    var attribute = attributes[i];
-                    var name = attribute.name;
-                    var value = attribute.value;
-                    datum.attributes[name] = value;
-                }
-            }
-            var transform = element.node().transform;
-            if (transform && transform.baseVal.numberOfItems != 0) {
-                var matrix = transform.baseVal.consolidate().matrix;
-                datum.translation = { x: matrix.e, y: matrix.f };
-                datum.scale = matrix.a;
-            }
-            if (tag == 'ellipse') {
-                datum.center = {
-                    x: datum.attributes.cx,
-                    y: datum.attributes.cy
-                };
-            }
-            if (tag == 'polygon') {
-                var points = element.attr('points').split(' ');
-                var x = points.map(function (p) {
-                    return p.split(',')[0];
-                });
-                var y = points.map(function (p) {
-                    return p.split(',')[1];
-                });
-                var xmin = Math.min.apply(null, x);
-                var xmax = Math.max.apply(null, x);
-                var ymin = Math.min.apply(null, y);
-                var ymax = Math.max.apply(null, y);
-                var bbox = {
-                    x: xmin,
-                    y: ymin,
-                    width: xmax - xmin,
-                    height: ymax - ymin
-                };
-                datum.bbox = bbox;
-                datum.center = {
-                    x: (xmin + xmax) / 2,
-                    y: (ymin + ymax) / 2
-                };
-            }
-            if (tag == 'path') {
-                var d = element.attr('d');
-                var points = d.split(/[A-Z ]/);
-                points.shift();
-                var x = points.map(function (p) {
-                    return +p.split(',')[0];
-                });
-                var y = points.map(function (p) {
-                    return +p.split(',')[1];
-                });
-                var xmin = Math.min.apply(null, x);
-                var xmax = Math.max.apply(null, x);
-                var ymin = Math.min.apply(null, y);
-                var ymax = Math.max.apply(null, y);
-                var bbox = {
-                    x: xmin,
-                    y: ymin,
-                    width: xmax - xmin,
-                    height: ymax - ymin
-                };
-                datum.bbox = bbox;
-                datum.center = {
-                    x: (xmin + xmax) / 2,
-                    y: (ymin + ymax) / 2
-                };
-                datum.totalLength = element.node().getTotalLength();
-            }
-            if (tag == '#text') {
-                datum.text = element.text();
-            } else if (tag == '#comment') {
-                datum.comment = element.text();
-            }
-            return datum;
-        }
-        
-        function extractAllElementsData(element) {
-        
-            var datum = extractElementData(element);
-            datum.children = [];
-            var children = d3.selectAll(element.node().childNodes);
-            children.each(function () {
-                var childData = extractAllElementsData(d3.select(this));
-                childData.parent = datum;
-                datum.children.push(childData);
-            });
-            return datum;
-        }
-        
-        function createElement(data) {
-        
-            if (data.tag == '#text') {
-                return document.createTextNode("");
-            } else if (data.tag == '#comment') {
-                return document.createComment(data.comment);
-            } else {
-                return document.createElementNS('http://www.w3.org/2000/svg', data.tag);
-            }
-        }
-        
-        function createElementWithAttributes(data) {
-        
-            var elementNode = createElement(data);
-            var element = d3.select(elementNode);
-            var attributes = data.attributes;
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-        
-            try {
-                for (var _iterator = Object.keys(attributes)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var attributeName = _step.value;
-        
-                    var attributeValue = attributes[attributeName];
-                    element.attr(attributeName, attributeValue);
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        
-            return elementNode;
-        }
-        
-        function replaceElement(element, data) {
-            var parent = d3.select(element.node().parentNode);
-            var newElementNode = createElementWithAttributes(data);
-            var newElement = parent.insert(function () {
-                return newElementNode;
-            }, function () {
-                return element.node();
-            });
-            element.remove();
-            return newElement;
-        }
-        
-        function insertElementData(element, datum) {
-            element.datum(datum);
-            element.data([datum], function (d) {
-                return d.key;
-            });
-        }
-        
-        function insertAllElementsData(element, datum) {
-            insertElementData(element, datum);
-            var children = d3.selectAll(element.node().childNodes);
-            children.each(function (d, i) {
-                insertAllElementsData(d3.select(this), datum.children[i]);
-            });
-        }
-        
-        function shallowCopyObject(obj) {
-            return Object.assign({}, obj);
-        }
-        
-        function roundTo4Decimals(x) {
-            return Math.round(x * 10000.0) / 10000.0;
-        }
-        
-        var zoom$1 = function (enable) {
-        
-            this._options.zoom = enable;
-        
-            if (this._options.zoom && !this._zoomBehavior) {
-                createZoomBehavior.call(this);
-            }
-        
-            return this;
-        };
-        
-        function createZoomBehavior() {
-        
-            function zoomed() {
-                var g = d3.select(svg.node().querySelector("g"));
-                g.attr('transform', d3.event.transform);
-                console.log(d3.event.transform)
-            }
-        
-            var root = this._selection;
-            var svg = d3.select(root.node().querySelector("svg"));
-            if (svg.size() == 0) {
-                return this;
-            }
-            this._zoomSelection = svg;
-            var zoomBehavior = d3Zoom.zoom().scaleExtent(this._options.zoomScaleExtent).translateExtent(this._options.zoomTranslateExtent).interpolate(d3Interpolate.interpolate).on("zoom", zoomed);
-            this._zoomBehavior = zoomBehavior;
-            var g = d3.select(svg.node().querySelector("g"));
-            svg.call(zoomBehavior);
-            if (!this._active) {
-                translateZoomBehaviorTransform.call(this, g);
-                console.log(1)
-            }
-            this._originalTransform = d3Zoom.zoomTransform(svg.node());
-        console.log(this._originalTransform)
-            return this;
-        }
-        
-        function getTranslatedZoomTransform(selection$$1) {
-        
-            // Get the current zoom transform for the top level svg and
-            // translate it uniformly with the given selection, using the
-            // difference between the translation specified in the selection's
-            // data and it's saved previous translation. The selection is
-            // normally the top level g element of the graph.
-            var oldTranslation = this._translation;
-            var oldScale = this._scale;
-            var newTranslation = selection$$1.datum().translation;
-            var newScale = selection$$1.datum().scale;
-            var t = d3Zoom.zoomTransform(this._zoomSelection.node());
-            if (oldTranslation) {
-                t = t.scale(1 / oldScale);
-                t = t.translate(-oldTranslation.x, -oldTranslation.y);
-            }
-            t = t.translate(newTranslation.x, newTranslation.y);
-            t = t.scale(newScale);
-            return t;
-        }
-        
-        function translateZoomBehaviorTransform(selection$$1) {
-        
-            // Translate the current zoom transform for the top level svg
-            // uniformly with the given selection, using the difference
-            // between the translation specified in the selection's data and
-            // it's saved previous translation. The selection is normally the
-            // top level g element of the graph.
-            this._zoomBehavior.transform(this._zoomSelection, getTranslatedZoomTransform.call(this, selection$$1));
-        
-            // Save the selections's new translation and scale.
-            this._translation = selection$$1.datum().translation;
-            this._scale = selection$$1.datum().scale;
-        
-            // Set the original zoom transform to the translation and scale specified in
-            // the selection's data.
-            this._originalTransform = d3Zoom.zoomIdentity.translate(selection$$1.datum().translation.x, selection$$1.datum().translation.y).scale(selection$$1.datum().scale);
-        }
-        
-        function resetZoom(transition$$1) {
-        
-            // Reset the zoom transform to the original zoom transform.
-            var selection$$1 = this._zoomSelection;
-            if (transition$$1) {
-                selection$$1 = selection$$1.transition(transition$$1);
-            }
-            selection$$1.call(this._zoomBehavior.transform, this._originalTransform);
-        
-            return this;
-        }
-        
-        function zoomScaleExtent(extent) {
-        
-            this._options.zoomScaleExtent = extent;
-        
-            return this;
-        }
-        
-        function zoomTranslateExtent(extent) {
-        
-            this._options.zoomTranslateExtent = extent;
-        
-            return this;
-        }
-        
-        function pathTween(points, d1) {
-            return function () {
-                var pointInterpolators = points.map(function (p) {
-                    return d3Interpolate.interpolate([p[0][0], p[0][1]], [p[1][0], p[1][1]]);
-                });
-                return function (t) {
-                    return t < 1 ? "M" + pointInterpolators.map(function (p) {
-                        return p(t);
-                    }).join("L") : d1;
-                };
-            };
-        }
-        
-        function pathTweenPoints(node, d1, precision) {
-            var path0 = node;
-            var path1 = path0.cloneNode();
-            var n0 = path0.getTotalLength();
-            var n1 = (path1.setAttribute("d", d1), path1).getTotalLength();
-        
-            // Uniform sampling of distance based on specified precision.
-            var distances = [0],
-                i = 0,
-                dt = precision / Math.max(n0, n1);
-            while ((i += dt) < 1) {
-                distances.push(i);
-            }distances.push(1);
-        
-            // Compute point-interpolators at each distance.
-            var points = distances.map(function (t) {
-                var p0 = path0.getPointAtLength(t * n0);
-                var p1 = path1.getPointAtLength(t * n1);
-                return [[p0.x, p0.y], [p1.x, p1.y]];
-            });
-            return points;
-        }
-        
-        function isEdgeElementParent(datum) {
-            return datum.attributes.class == 'edge' || datum.tag == 'a' && datum.parent.tag == 'g' && datum.parent.parent.attributes.class == 'edge';
-        }
-        
-        function isEdgeElement(datum) {
-            return datum.parent && isEdgeElementParent(datum.parent);
-        }
-        
-        function getEdgeGroup(datum) {
-            if (datum.parent.attributes.class == 'edge') {
-                return datum.parent;
-            } else {
-                // datum.parent.tag == 'g' && datum.parent.parent.tag == 'g' && datum.parent.parent.parent.attributes.class == 'edge'
-                return datum.parent.parent.parent;
-            }
-        }
-        
-        function getEdgeTitle(datum) {
-            return getEdgeGroup(datum).children.find(function (e) {
-                return e.tag == 'title';
-            });
-        }
-        
-        var render = function (callback) {
-        
-            if (this._busy) {
-                this._queue.push(this.render.bind(this, callback));
-                return this;
-            }
-            this._dispatch.call('renderStart', this);
-        
-            if (this._transitionFactory) {
-                d3Timer.timeout(function () {
-                    // Decouple from time spent. See https://github.com/d3/d3-timer/issues/27
-                    this._transition = d3Transition.transition(this._transitionFactory());
-                    _render.call(this, callback);
-                }.bind(this), 0);
-            } else {
-                _render.call(this, callback);
-            }
-            return this;
-        };
-        
-        function _render(callback) {
-        
-            var transitionInstance = this._transition;
-            var fade = this._options.fade && transitionInstance != null;
-            var tweenPaths = this._options.tweenPaths;
-            var tweenShapes = this._options.tweenShapes;
-            var convertEqualSidedPolygons = this._options.convertEqualSidedPolygons;
-            var tweenPrecision = this._options.tweenPrecision;
-            var growEnteringEdges = this._options.growEnteringEdges && transitionInstance != null;
-            var attributer = this._attributer;
-            var graphvizInstance = this;
-        
-            function insertChildren(element) {
-                var children = element.selectAll(function () {
-                    return element.node().childNodes;
-                });
-        
-                children = children.data(function (d) {
-                    return d.children;
-                }, function (d) {
-                    return d.key;
-                });
-                var childrenEnter = children.enter().append(function (d) {
-                    var element = createElement(d);
-                    if (d.tag == '#text' && fade) {
-                        element.nodeValue = d.text;
-                    }
-                    return element;
-                });
-        
-                if (fade || growEnteringEdges && isEdgeElementParent(element.datum())) {
-                    var childElementsEnter = childrenEnter.filter(function (d) {
-                        return d.tag[0] == '#' ? null : this;
-                    }).each(function (d) {
-                        var childEnter = d3.select(this);
-                        var _iteratorNormalCompletion = true;
-                        var _didIteratorError = false;
-                        var _iteratorError = undefined;
-        
-                        try {
-                            for (var _iterator = Object.keys(d.attributes)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                                var attributeName = _step.value;
-        
-                                var attributeValue = d.attributes[attributeName];
-                                childEnter.attr(attributeName, attributeValue);
-                            }
-                        } catch (err) {
-                            _didIteratorError = true;
-                            _iteratorError = err;
-                        } finally {
-                            try {
-                                if (!_iteratorNormalCompletion && _iterator.return) {
-                                    _iterator.return();
-                                }
-                            } finally {
-                                if (_didIteratorError) {
-                                    throw _iteratorError;
-                                }
-                            }
-                        }
-                    });
-                    childElementsEnter.filter(function (d) {
-                        return d.tag == 'svg' || d.tag == 'g' ? null : this;
-                    }).style("opacity", 0.0);
-                }
-                var childrenExit = children.exit();
-                if (attributer) {
-                    childrenExit.each(attributer);
-                }
-                if (transitionInstance) {
-                    childrenExit = childrenExit.transition(transitionInstance);
-                    if (fade) {
-                        childrenExit.filter(function (d) {
-                            return d.tag[0] == '#' ? null : this;
-                        }).style("opacity", 0.0);
-                    }
-                }
-                childrenExit = childrenExit.remove();
-                children = childrenEnter.merge(children);
-                children.each(attributeElement);
-            }
-        
-            function attributeElement(data) {
-                var element = d3.select(this);
-                if (data.tag == "svg") {
-                    var options = graphvizInstance._options;
-                    if (options.width != null || options.height != null) {
-                        var width = options.width;
-                        var height = options.height;
-                        if (width == null) {
-                            width = data.attributes.width.replace('pt', '') * 4 / 3;
-                        } else {
-                            element.attr("width", width);
-                            data.attributes.width = width;
-                        }
-                        if (height == null) {
-                            height = data.attributes.height.replace('pt', '') * 4 / 3;
-                        } else {
-                            element.attr("height", height);
-                            data.attributes.height = height;
-                        }
-                        if (!options.fit) {
-                            element.attr("viewBox", "0 0 " + width * 3 / 4 / options.scale + " " + height * 3 / 4 / options.scale);
-                            data.attributes.viewBox = "0 0 " + width * 3 / 4 / options.scale + " " + height * 3 / 4 / options.scale;
-                        }
-                    }
-                    if (options.scale != 1 && (options.fit || options.width == null && options.height == null)) {
-                        width = data.attributes.viewBox.split(' ')[2];
-                        height = data.attributes.viewBox.split(' ')[3];
-                        element.attr("viewBox", "0 0 " + width / options.scale + " " + height / options.scale);
-                        data.attributes.viewBox = "0 0 " + width / options.scale + " " + height / options.scale;
-                    }
-                }
-                if (attributer) {
-                    element.each(attributer);
-                }
-                var tag = data.tag;
-                var attributes = data.attributes;
-                var currentAttributes = element.node().attributes;
-                if (currentAttributes) {
-                    for (var i = 0; i < currentAttributes.length; i++) {
-                        var currentAttribute = currentAttributes[i];
-                        var name = currentAttribute.name;
-                        if (name.split(':')[0] != 'xmlns' && currentAttribute.namespaceURI) {
-                            var namespaceURIParts = currentAttribute.namespaceURI.split('/');
-                            var namespace = namespaceURIParts[namespaceURIParts.length - 1];
-                            name = namespace + ':' + name;
-                        }
-                        if (!(name in attributes)) {
-                            attributes[name] = null;
-                        }
-                    }
-                }
-                var convertShape = false;
-                var convertPrevShape = false;
-                if (tweenShapes && transitionInstance) {
-                    if ((this.nodeName == 'polygon' || this.nodeName == 'ellipse') && data.alternativeOld) {
-                        convertPrevShape = true;
-                    }
-                    if ((tag == 'polygon' || tag == 'ellipse') && data.alternativeNew) {
-                        convertShape = true;
-                    }
-                    if (this.nodeName == 'polygon' && tag == 'polygon') {
-                        var prevData = extractElementData(element);
-                        var prevPoints = prevData.attributes.points;
-                        if (!convertEqualSidedPolygons) {
-                            var nPrevPoints = prevPoints.split(' ').length;
-                            var points = data.attributes.points;
-                            var nPoints = points.split(' ').length;
-                            if (nPoints == nPrevPoints) {
-                                convertShape = false;
-                                convertPrevShape = false;
-                            }
-                        }
-                    }
-                    if (convertPrevShape) {
-                        var prevPathData = data.alternativeOld;
-                        var pathElement = replaceElement(element, prevPathData);
-                        pathElement.data([data], function () {
-                            return data.key;
-                        });
-                        element = pathElement;
-                    }
-                    if (convertShape) {
-                        var newPathData = data.alternativeNew;
-                        tag = 'path';
-                        attributes = newPathData.attributes;
-                    }
-                }
-                var elementTransition = element;
-                if (transitionInstance) {
-                    elementTransition = elementTransition.transition(transitionInstance);
-                    if (fade) {
-                        elementTransition.filter(function (d) {
-                            return d.tag[0] == '#' ? null : this;
-                        }).style("opacity", 1.0);
-                    }
-                    elementTransition.filter(function (d) {
-                        return d.tag[0] == '#' ? null : this;
-                    }).on("end", function () {
-                        d3.select(this).attr('style', null);
-                    });
-                }
-                var growThisPath = growEnteringEdges && tag == 'path' && data.offset;
-                if (growThisPath) {
-                    var totalLength = data.totalLength;
-                    element.attr("stroke-dasharray", totalLength + " " + totalLength).attr("stroke-dashoffset", totalLength).attr('transform', 'translate(' + data.offset.x + ',' + data.offset.y + ')');
-                    attributes["stroke-dashoffset"] = 0;
-                    attributes['transform'] = 'translate(0,0)';
-                    elementTransition.attr("stroke-dashoffset", attributes["stroke-dashoffset"]).attr('transform', attributes['transform']).on("start", function () {
-                        d3.select(this).style('opacity', null);
-                    }).on("end", function () {
-                        d3.select(this).attr('stroke-dashoffset', null).attr('stroke-dasharray', null).attr('transform', null);
-                    });
-                }
-                var moveThisPolygon = growEnteringEdges && tag == 'polygon' && isEdgeElement(data) && data.offset;
-                if (moveThisPolygon) {
-                    var edgePath = d3.select(element.node().parentNode.querySelector("path"));
-                    var p0 = edgePath.node().getPointAtLength(0);
-                    var p1 = edgePath.node().getPointAtLength(data.totalLength);
-                    var p2 = edgePath.node().getPointAtLength(data.totalLength - 1);
-                    var angle1 = Math.atan2(p1.y - p2.y, p1.x - p2.x) * 180 / Math.PI;
-                    var x = p0.x - p1.x + data.offset.x;
-                    var y = p0.y - p1.y + data.offset.y;
-                    element.attr('transform', 'translate(' + x + ',' + y + ')');
-                    elementTransition.attrTween("transform", function () {
-                        return function (t) {
-                            var p = edgePath.node().getPointAtLength(data.totalLength * t);
-                            var p2 = edgePath.node().getPointAtLength(data.totalLength * t + 1);
-                            var angle = Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI - angle1;
-                            x = p.x - p1.x + data.offset.x * (1 - t);
-                            y = p.y - p1.y + data.offset.y * (1 - t);
-                            return 'translate(' + x + ',' + y + ') rotate(' + angle + ' ' + p1.x + ' ' + p1.y + ')';
-                        };
-                    }).on("start", function () {
-                        d3.select(this).style('opacity', null);
-                    }).on("end", function () {
-                        d3.select(this).attr('transform', null);
-                    });
-                }
-                var tweenThisPath = tweenPaths && transitionInstance && tag == 'path' && element.attr('d') != null;
-                var _iteratorNormalCompletion2 = true;
-                var _didIteratorError2 = false;
-                var _iteratorError2 = undefined;
-        
-                try {
-                    for (var _iterator2 = Object.keys(attributes)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                        var attributeName = _step2.value;
-        
-                        var attributeValue = attributes[attributeName];
-                        if (tweenThisPath && attributeName == 'd') {
-                            var points = (data.alternativeOld || data).points;
-                            if (points) {
-                                elementTransition.attrTween("d", pathTween(points, attributeValue));
-                            }
-                        } else {
-                            if (attributeName == 'transform' && data.translation) {
-                                if (transitionInstance) {
-                                    var onEnd = elementTransition.on("end");
-                                    elementTransition.on("start", function () {
-                                        if (graphvizInstance._zoomBehavior) {
-                                            // Update the transform to transition to, just before the transition starts
-                                            // in order to catch changes between the transition scheduling to its start.
-                                            elementTransition.tween("attr.transform", function () {
-                                                var node = this;
-                                                return function (t) {
-                                                    node.setAttribute("transform", d3Interpolate.interpolateTransformSvg(d3Zoom.zoomTransform(graphvizInstance._zoomSelection.node()).toString(), getTranslatedZoomTransform.call(graphvizInstance, element).toString())(t));
-                                                };
-                                            });
-                                        }
-                                    }).on("end", function () {
-                                        onEnd.call(this);
-                                        // Update the zoom transform to the new translated transform
-                                        if (graphvizInstance._zoomBehavior) {
-                                            translateZoomBehaviorTransform.call(graphvizInstance, element);
-                                        }
-                                    });
-                                } else {
-                                    if (graphvizInstance._zoomBehavior) {
-                                        // Update the transform attribute to set with the current pan translation
-                                        attributeValue = getTranslatedZoomTransform.call(graphvizInstance, element).toString();
-                                    }
-                                }
-                            }
-                            elementTransition.attr(attributeName, attributeValue);
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError2 = true;
-                    _iteratorError2 = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                            _iterator2.return();
-                        }
-                    } finally {
-                        if (_didIteratorError2) {
-                            throw _iteratorError2;
-                        }
-                    }
-                }
-        
-                if (convertShape) {
-                    elementTransition.on("end", function (d, i, nodes) {
-                        pathElement = d3.select(this);
-                        var newElement = replaceElement(pathElement, d);
-                        newElement.data([d], function () {
-                            return d.key;
-                        });
-                    });
-                }
-                if (data.text) {
-                    elementTransition.text(data.text);
-                }
-                insertChildren(element);
-            }
-        
-            var root = this._selection;
-        
-            if (transitionInstance != null) {
-                // Ensure original SVG shape elements are restored after transition before rendering new graph
-                var jobs = this._jobs;
-                if (graphvizInstance._active) {
-                    jobs.push(null);
-                    return this;
-                } else {
-                    root.transition(transitionInstance).transition().duration(0).on("end", function () {
-                        graphvizInstance._active = false;
-                        if (jobs.length != 0) {
-                            jobs.shift();
-                            graphvizInstance.render();
-                        }
-                    });
-                    this._active = true;
-                }
-            }
-        
-            if (transitionInstance != null) {
-                root.transition(transitionInstance).on("start", function () {
-                    graphvizInstance._dispatch.call('transitionStart', graphvizInstance);
-                }).on("end", function () {
-                    graphvizInstance._dispatch.call('transitionEnd', graphvizInstance);
-                }).transition().duration(0).on("start", function () {
-                    graphvizInstance._dispatch.call('restoreEnd', graphvizInstance);
-                    graphvizInstance._dispatch.call('end', graphvizInstance);
-                    if (callback) {
-                        callback.call(graphvizInstance);
-                    }
-                });
-            }
-        
-            var data = this._data;
-        
-            var svg = root.selectAll("svg").data([data], function (d) {
-                return d.key;
-            });
-            svg = svg.enter().append("svg").merge(svg);
-        
-            attributeElement.call(svg.node(), data);
-        
-            if (this._options.zoom && !this._zoomBehavior) {
-                createZoomBehavior.call(this);
-            }
-        
-            graphvizInstance._dispatch.call('renderEnd', graphvizInstance);
-        
-            if (transitionInstance == null) {
-                this._dispatch.call('end', this);
-                if (callback) {
-                    callback.call(this);
-                }
-            }
-        
-            return this;
-        }
-        
-        function convertToPathData(originalData, guideData) {
-            if (originalData.tag == 'polygon') {
-                var newData = shallowCopyObject(originalData);
-                newData.tag = 'path';
-                var originalAttributes = originalData.attributes;
-                var newAttributes = shallowCopyObject(originalAttributes);
-                var newPointsString = originalAttributes.points;
-                if (guideData.tag == 'polygon') {
-                    var bbox = originalData.bbox;
-                    bbox.cx = bbox.x + bbox.width / 2;
-                    bbox.cy = bbox.y + bbox.height / 2;
-                    var pointsString = originalAttributes.points;
-                    var pointStrings = pointsString.split(' ');
-                    var normPoints = pointStrings.map(function (p) {
-                        var xy = p.split(',');return [xy[0] - bbox.cx, xy[1] - bbox.cy];
-                    });
-                    var x0 = normPoints[normPoints.length - 1][0];
-                    var y0 = normPoints[normPoints.length - 1][1];
-                    for (var i = 0; i < normPoints.length; i++, x0 = x1, y0 = y1) {
-                        var x1 = normPoints[i][0];
-                        var y1 = normPoints[i][1];
-                        var dx = x1 - x0;
-                        var dy = y1 - y0;
-                        if (dy == 0) {
-                            continue;
-                        } else {
-                            var x2 = x0 - y0 * dx / dy;
-                        }
-                        if (0 <= x2 && x2 < Infinity && (x0 <= x2 && x2 <= x1 || x1 <= x2 && x2 <= x0)) {
-                            break;
-                        }
-                    }
-                    var newPointStrings = [[bbox.cx + x2, bbox.cy + 0].join(',')];
-                    newPointStrings = newPointStrings.concat(pointStrings.slice(i));
-                    newPointStrings = newPointStrings.concat(pointStrings.slice(0, i));
-                    newPointsString = newPointStrings.join(' ');
-                }
-                newAttributes['d'] = 'M' + newPointsString + 'z';
-                delete newAttributes.points;
-                newData.attributes = newAttributes;
-            } else /* if (originalData.tag == 'ellipse') */{
-                    var newData = shallowCopyObject(originalData);
-                    newData.tag = 'path';
-                    var originalAttributes = originalData.attributes;
-                    var newAttributes = shallowCopyObject(originalAttributes);
-                    var cx = originalAttributes.cx;
-                    var cy = originalAttributes.cy;
-                    var rx = originalAttributes.rx;
-                    var ry = originalAttributes.ry;
-                    if (guideData.tag == 'polygon') {
-                        var bbox = guideData.bbox;
-                        bbox.cx = bbox.x + bbox.width / 2;
-                        bbox.cy = bbox.y + bbox.height / 2;
-                        var p = guideData.attributes.points.split(' ')[0].split(',');
-                        var sx = p[0];
-                        var sy = p[1];
-                        var dx = sx - bbox.cx;
-                        var dy = sy - bbox.cy;
-                        var l = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-                        var cosA = dx / l;
-                        var sinA = -dy / l;
-                    } else {
-                        // if (guideData.tag == 'path') {
-                        // FIXME: add support for getting start position from path
-                        var cosA = 1;
-                        var sinA = 0;
-                    }
-                    var x1 = rx * cosA;
-                    var y1 = -ry * sinA;
-                    var x2 = rx * -cosA;
-                    var y2 = -ry * -sinA;
-                    var dx = x2 - x1;
-                    var dy = y2 - y1;
-                    newAttributes['d'] = 'M ' + cx + ' ' + cy + ' m ' + x1 + ',' + y1 + ' a ' + rx + ',' + ry + ' 0 1,0 ' + dx + ',' + dy + ' a ' + rx + ',' + ry + ' 0 1,0 ' + -dx + ',' + -dy + 'z';
-                    delete newAttributes.cx;
-                    delete newAttributes.cy;
-                    delete newAttributes.rx;
-                    delete newAttributes.ry;
-                    newData.attributes = newAttributes;
-                }
-            return newData;
-        }
-        
-        function translatePointsAttribute(pointsString, x, y) {
-            var pointStrings = pointsString.split(' ');
-            var points = pointStrings.map(function (p) {
-                return p.split(',');
-            });
-            var points = pointStrings.map(function (p) {
-                return [roundTo4Decimals(+x + +p.split(',')[0]), roundTo4Decimals(+y + +p.split(',')[1])];
-            });
-            var pointStrings = points.map(function (p) {
-                return p.join(',');
-            });
-            var pointsString = pointStrings.join(' ');
-            pointsString = pointsString.replace(/-0\./g, '-.').replace(/ 0\./g, ' .');
-            return pointsString;
-        }
-        
-        function translateDAttribute(d, x, y) {
-            var pointStrings = d.split(/[A-Z ]/);
-            pointStrings.shift();
-            var commands = d.split(/[^[A-Z ]+/);
-            var points = pointStrings.map(function (p) {
-                return p.split(',');
-            });
-            var points = pointStrings.map(function (p) {
-                return [roundTo4Decimals(+x + +p.split(',')[0]), roundTo4Decimals(+y + +p.split(',')[1])];
-            });
-            var pointStrings = points.map(function (p) {
-                return p.join(',');
-            });
-            d = commands.reduce(function (arr, v, i) {
-                return arr.concat(v, pointStrings[i]);
-            }, []).join('');
-            d = d.replace(/-0\./g, '-.').replace(/ 0\./g, ' .');
-            return d;
-        }
-        
-        function initViz() {
-            // force JIT compilation of Viz.js
-            if (this._worker == null) {
-                Viz("");
-                this._dispatch.call("initEnd", this);
-            } else {
-                var vizURL = this._vizURL;
-                var graphvizInstance = this;
-                this._worker.onmessage = function (event$$1) {
-                    graphvizInstance._dispatch.call("initEnd", this);
-                };
-                if (!vizURL.match(/^https?:\/\/|^\/\//i)) {
-                    // Local URL. Prepend with local domain to be usable in web worker
-                    vizURL = new window.URL(vizURL, document.location.href).href;
-                }
-                this._worker.postMessage({ dot: "", vizURL: vizURL });
-            }
-        }
-        
-        var dot = function (src, callback) {
-        
-            var graphvizInstance = this;
-            var worker = this._worker;
-            var engine = this._options.engine;
-            var images = this._images;
-            var totalMemory = this._options.totalMemory;
-            var keyMode = this._options.keyMode;
-            var tweenPaths = this._options.tweenPaths;
-            var tweenShapes = this._options.tweenShapes;
-            var tweenPrecision = this._options.tweenPrecision;
-            var growEnteringEdges = this._options.growEnteringEdges;
-            var dictionary = {};
-            var prevDictionary = this._dictionary || {};
-            var nodeDictionary = {};
-            var prevNodeDictionary = this._nodeDictionary || {};
-        
-            function setKey(datum, index) {
-                var tag = datum.tag;
-                if (keyMode == 'index') {
-                    datum.key = index;
-                } else if (tag[0] != '#') {
-                    if (keyMode == 'id') {
-                        datum.key = datum.attributes.id;
-                    } else if (keyMode == 'title') {
-                        var title = datum.children.find(function (childData) {
-                            return childData.tag == 'title';
-                        });
-                        if (title) {
-                            datum.key = title.children[0].text;
-                        }
-                    }
-                }
-                if (datum.key == null) {
-                    if (tweenShapes) {
-                        if (tag == 'ellipse' || tag == 'polygon') {
-                            tag = 'path';
-                        }
-                    }
-                    datum.key = tag + '-' + index;
-                }
-            }
-        
-            function setId(datum, parentData) {
-                var id = (parentData ? parentData.id + '.' : '') + datum.key;
-                datum.id = id;
-            }
-        
-            function addToDictionary(datum) {
-                dictionary[datum.id] = datum;
-            }
-        
-            function calculateAlternativeShapeData(datum, prevDatum) {
-                if (tweenShapes && datum.id in prevDictionary) {
-                    if ((prevDatum.tag == 'polygon' || prevDatum.tag == 'ellipse' || prevDatum.tag == 'path') && (prevDatum.tag != datum.tag || datum.tag == 'polygon')) {
-                        if (prevDatum.tag != 'path') {
-                            datum.alternativeOld = convertToPathData(prevDatum, datum);
-                        }
-                        if (datum.tag != 'path') {
-                            datum.alternativeNew = convertToPathData(datum, prevDatum);
-                        }
-                    }
-                }
-            }
-        
-            function calculatePathTweenPoints(datum, prevDatum) {
-                if (tweenPaths && prevDatum && (prevDatum.tag == 'path' || datum.alternativeOld && datum.alternativeOld.tag == 'path')) {
-                    var attribute_d = (datum.alternativeNew || datum).attributes.d;
-                    if (datum.alternativeOld) {
-                        var oldNode = createElementWithAttributes(datum.alternativeOld);
-                    } else {
-                        var oldNode = createElementWithAttributes(prevDatum);
-                    }
-                    (datum.alternativeOld || (datum.alternativeOld = {})).points = pathTweenPoints(oldNode, attribute_d, tweenPrecision);
-                }
-            }
-        
-            function postProcessDataPass1Local(datum) {
-                var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-                var parentData = arguments[2];
-        
-                setKey(datum, index);
-                setId(datum, parentData);
-                var id = datum.id;
-                var prevDatum = prevDictionary[id];
-                addToDictionary(datum);
-                calculateAlternativeShapeData(datum, prevDatum);
-                calculatePathTweenPoints(datum, prevDatum);
-                var childTagIndexes = {};
-                datum.children.forEach(function (childData) {
-                    var childTag = childData.tag;
-                    if (childTag == 'ellipse' || childTag == 'polygon') {
-                        childTag = 'path';
-                    }
-                    if (childTagIndexes[childTag] == null) {
-                        childTagIndexes[childTag] = 0;
-                    }
-                    var childIndex = childTagIndexes[childTag]++;
-                    postProcessDataPass1Local(childData, childIndex, datum);
-                });
-            }
-        
-            function addToNodeDictionary(datum) {
-                var tag = datum.tag;
-                if (growEnteringEdges && datum.parent) {
-                    if (datum.parent.attributes.class == 'node') {
-                        if (tag == 'title') {
-                            var child = datum.children[0];
-                            var nodeId = child.text;
-                            nodeDictionary[nodeId] = datum.parent;
-                        }
-                    }
-                }
-            }
-        
-            function extractGrowingEdgesData(datum) {
-                var id = datum.id;
-                var tag = datum.tag;
-                var prevDatum = prevDictionary[id];
-                if (growEnteringEdges && !prevDatum && datum.parent) {
-                    if (isEdgeElement(datum)) {
-                        if (tag == 'path' || tag == 'polygon') {
-                            if (tag == 'polygon') {
-                                var path$$1 = datum.parent.children.find(function (e) {
-                                    return e.tag == 'path';
-                                });
-                                datum.totalLength = path$$1.totalLength;
-                            }
-                            var title = getEdgeTitle(datum);
-                            var child = title.children[0];
-                            var nodeIds = child.text.split('->');
-                            if (nodeIds.length != 2) {
-                                nodeIds = child.text.split('--');
-                            }
-                            var startNodeId = nodeIds[0];
-                            var startNode = nodeDictionary[startNodeId];
-                            var prevStartNode = prevNodeDictionary[startNodeId];
-                            if (prevStartNode) {
-                                var i = startNode.children.findIndex(function (element, index) {
-                                    return element.tag == 'g';
-                                });
-                                if (i >= 0) {
-                                    var j = startNode.children[i].children.findIndex(function (element, index) {
-                                        return element.tag == 'a';
-                                    });
-                                    startNode = startNode.children[i].children[j];
-                                }
-                                var i = prevStartNode.children.findIndex(function (element, index) {
-                                    return element.tag == 'g';
-                                });
-                                if (i >= 0) {
-                                    var j = prevStartNode.children[i].children.findIndex(function (element, index) {
-                                        return element.tag == 'a';
-                                    });
-                                    prevStartNode = prevStartNode.children[i].children[j];
-                                }
-                                var startShapes = startNode.children;
-                                for (var i = 0; i < startShapes.length; i++) {
-                                    if (startShapes[i].tag == 'polygon' || startShapes[i].tag == 'ellipse' || startShapes[i].tag == 'path') {
-                                        var startShape = startShapes[i];
-                                        break;
-                                    }
-                                }
-                                var prevStartShapes = prevStartNode.children;
-                                for (var i = 0; i < prevStartShapes.length; i++) {
-                                    if (prevStartShapes[i].tag == 'polygon' || prevStartShapes[i].tag == 'ellipse' || prevStartShapes[i].tag == 'path') {
-                                        var prevStartShape = prevStartShapes[i];
-                                        break;
-                                    }
-                                }
-                                datum.offset = {
-                                    x: prevStartShape.center.x - startShape.center.x,
-                                    y: prevStartShape.center.y - startShape.center.y
-                                };
-                            }
-                        }
-                    }
-                }
-            }
-        
-            function postProcessDataPass2Global(datum) {
-                addToNodeDictionary(datum);
-                extractGrowingEdgesData(datum);
-                datum.children.forEach(function (childData) {
-                    postProcessDataPass2Global(childData);
-                });
-            }
-        
-            this._dispatch.call("start", this);
-            this._busy = true;
-            this._dispatch.call("layoutStart", this);
-            var vizOptions = {
-                format: "svg",
-                engine: engine,
-                images: images,
-                totalMemory: totalMemory
-            };
-            if (this._worker) {
-                worker.postMessage({
-                    dot: src,
-                    options: vizOptions
-                });
-        
-                worker.onmessage = function (event$$1) {
-                    switch (event$$1.data.type) {
-                        case "done":
-                            return layoutDone.call(graphvizInstance, event$$1.data.svg);
-                        case "error":
-                            if (graphvizInstance._onerror) {
-                                graphvizInstance._onerror(event$$1.data.error);
-                            } else {
-                                throw event$$1.data.error;
-                            }
-                            break;
-                    }
-                };
-            } else {
-                try {
-                    var svgDoc = Viz(src, vizOptions);
-                } catch (error) {
-                    if (graphvizInstance._onerror) {
-                        graphvizInstance._onerror(error.message);
-                        return this;
-                    } else {
-                        throw error.message;
-                    }
-                }
-                layoutDone.call(this, svgDoc);
-            }
-        
-            function layoutDone(svgDoc) {
-                this._dispatch.call("layoutEnd", this);
-        
-                var newDoc = d3.select(document.createDocumentFragment()).append('div');
-        
-                var parser = new window.DOMParser();
-                var doc = parser.parseFromString(svgDoc, "image/svg+xml");
-        
-                newDoc.append(function () {
-                    return doc.documentElement;
-                });
-        
-                var newSvg = newDoc.select('svg');
-        
-                var data = extractAllElementsData(newSvg);
-                this._dispatch.call('dataExtractEnd', this);
-                postProcessDataPass1Local(data);
-                this._dispatch.call('dataProcessPass1End', this);
-                postProcessDataPass2Global(data);
-                this._dispatch.call('dataProcessPass2End', this);
-                this._data = data;
-                this._dictionary = dictionary;
-                this._nodeDictionary = nodeDictionary;
-        
-                this._extractData = function (element, childIndex, parentData) {
-                    var data = extractAllElementsData(element);
-                    postProcessDataPass1Local(data, childIndex, parentData);
-                    postProcessDataPass2Global(data);
-                    return data;
-                };
-                this._busy = false;
-                this._dispatch.call('dataProcessEnd', this);
-                if (callback) {
-                    callback.call(this);
-                }
-                if (this._queue.length > 0) {
-                    var job = this._queue.shift();
-                    job.call(this);
-                }
-            }
-        
-            return this;
-        };
-        
-        var renderDot = function (src, callback) {
-        
-            var graphvizInstance = this;
-        
-            this.dot(src, render);
-        
-            function render() {
-                graphvizInstance.render(callback);
-            }
-        
-            return this;
-        };
-        
-        var transition$1 = function (name) {
-        
-            if (name instanceof Function) {
-                this._transitionFactory = name;
-            } else {
-                this._transition = d3Transition.transition(name);
-            }
-        
-            return this;
-        };
-        
-        function active$1(name) {
-        
-            var root = this._selection;
-            var svg = root.selectWithoutDataPropagation("svg");
-            if (svg.size() != 0) {
-                return d3Transition.active(svg.node(), name);
-            } else {
-                return null;
-            }
-        }
-        
-        var options = function (options) {
-        
-            if (typeof options == 'undefined') {
-                return Object.assign({}, this._options);
-            } else {
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-        
-                try {
-                    for (var _iterator = Object.keys(options)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var option = _step.value;
-        
-                        this._options[option] = options[option];
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-        
-                return this;
-            }
-        };
-        
-        var width = function (width) {
-        
-            this._options.width = width;
-        
-            return this;
-        };
-        
-        var height = function (height) {
-        
-            this._options.height = height;
-        
-            return this;
-        };
-        
-        var scale = function (scale) {
-        
-            this._options.scale = scale;
-        
-            return this;
-        };
-        
-        var fit = function (fit) {
-        
-            this._options.fit = fit;
-        
-            return this;
-        };
-        
-        var attributer = function (callback) {
-        
-            this._attributer = callback;
-        
-            return this;
-        };
-        
-        var engine = function (engine) {
-        
-            if (engine != this._options.engine && this._data != null) {
-                throw Error('Too late to change engine');
-            }
-            this._options.engine = engine;
-        
-            return this;
-        };
-        
-        var images = function (path$$1, width, height) {
-        
-            this._images.push({ path: path$$1, width: width, height: height });
-        
-            return this;
-        };
-        
-        var totalMemory = function (size) {
-        
-            this._options.totalMemory = size;
-        
-            return this;
-        };
-        
-        var keyMode = function (keyMode) {
-        
-            if (!this._keyModes.has(keyMode)) {
-                throw Error('Illegal keyMode: ' + keyMode);
-            }
-            if (keyMode != this._options.keyMode && this._data != null) {
-                throw Error('Too late to change keyMode');
-            }
-            this._options.keyMode = keyMode;
-        
-            return this;
-        };
-        
-        var fade = function (enable) {
-        
-            this._options.fade = enable;
-        
-            return this;
-        };
-        
-        var tweenPaths = function (enable) {
-        
-            this._options.tweenPaths = enable;
-        
-            return this;
-        };
-        
-        var tweenShapes = function (enable) {
-        
-            this._options.tweenShapes = enable;
-            if (enable) {
-                this._options.tweenPaths = true;
-            }
-        
-            return this;
-        };
-        
-        var convertEqualSidedPolygons = function (enable) {
-        
-            this._options.convertEqualSidedPolygons = enable;
-        
-            return this;
-        };
-        
-        var tweenPrecision = function (precision) {
-        
-            this._options.tweenPrecision = precision;
-        
-            return this;
-        };
-        
-        var growEnteringEdges = function (enable) {
-        
-            this._options.growEnteringEdges = enable;
-        
-            return this;
-        };
-        
-        var on = function (typenames, callback) {
-        
-            this._dispatch.on(typenames, callback);
-        
-            return this;
-        };
-        
-        var onerror = function (callback) {
-        
-            this._onerror = callback;
-        
-            return this;
-        };
-        
-        var defineProperty = function (obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
-          }
-        
-          return obj;
-        };
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        var toConsumableArray = function (arr) {
-          if (Array.isArray(arr)) {
-            for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-        
-            return arr2;
-          } else {
-            return Array.from(arr);
-          }
-        };
-        
-        var logEvents = function (enable) {
-            var _this = this;
-        
-            var t0 = Date.now();
-            var times = {};
-            var eventTypes = this._eventTypes;
-            var maxEventTypeLength = Math.max.apply(Math, toConsumableArray(eventTypes.map(function (eventType) {
-                return eventType.length;
-            })));
-        
-            var _loop = function _loop(i) {
-                var eventType = eventTypes[i];
-                times[eventType] = [];
-                graphvizInstance = _this;
-        
-                _this.on(eventType + '.log', enable ? function () {
-                    var t = Date.now();
-                    var seqNo = times[eventType].length;
-                    times[eventType].push(t);
-                    var string = '';
-                    string += 'Event ';
-                    string += d3Format.format(' >2')(i) + ' ';
-                    string += eventType + ' '.repeat(maxEventTypeLength - eventType.length);
-                    string += d3Format.format(' >5')(t - t0) + ' ';
-                    if (eventType != 'initEnd') {
-                        string += d3Format.format(' >5')(t - times['start'][seqNo]);
-                    }
-                    if (eventType == 'dataProcessEnd') {
-                        string += ' prepare                 ' + d3Format.format(' >5')(t - times['layoutEnd'][seqNo]);
-                    }
-                    if (eventType == 'renderEnd' && graphvizInstance._transition) {
-                        string += ' transition start margin ' + d3Format.format(' >5')(graphvizInstance._transition.delay() - (t - times['renderStart'][seqNo]));
-                        expectedDelay = graphvizInstance._transition.delay();
-                        expectedDuration = graphvizInstance._transition.duration();
-                    }
-                    if (eventType == 'transitionStart') {
-                        var actualDelay = t - times['renderStart'][seqNo];
-                        string += ' transition delay        ' + d3Format.format(' >5')(t - times['renderStart'][seqNo]);
-                        string += ' expected ' + d3Format.format(' >5')(expectedDelay);
-                        string += ' diff ' + d3Format.format(' >5')(actualDelay - expectedDelay);
-                    }
-                    if (eventType == 'transitionEnd') {
-                        var actualDuration = t - times['transitionStart'][seqNo];
-                        string += ' transition duration     ' + d3Format.format(' >5')(actualDuration);
-                        string += ' expected ' + d3Format.format(' >5')(expectedDuration);
-                        string += ' diff ' + d3Format.format(' >5')(actualDuration - expectedDuration);
-                    }
-                    console.log(string);
-                    t0 = t;
-                } : null);
-            };
-        
-            for (var i in eventTypes) {
-                var graphvizInstance;
-                var expectedDelay;
-                var expectedDuration;
-        
-                _loop(i);
-            }
-            return this;
-        };
-        
-        function rotate(x, y, cosA, sinA) {
-            // (x + j * y) * (cosA + j * sinA) = x * cosA - y * sinA + j * (x * sinA + y * cosA)
-            y = -y;
-            sinA = -sinA;
-            var _ref = [x * cosA - y * sinA, x * sinA + y * cosA];
-            x = _ref[0];
-            y = _ref[1];
-        
-            y = -y;
-            return [x, y];
-        }
-        
-        var defaultEdgeAttributes = {
-            id: null,
-            fillcolor: "black",
-            color: "black",
-            penwidth: 1,
-            URL: null,
-            tooltip: null
-        };
-        
-        function completeAttributes(attributes) {
-            var defaultAttributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultEdgeAttributes;
-        
-            for (var attribute in defaultAttributes) {
-                if (attributes[attribute] === undefined) {
-                    attributes[attribute] = defaultAttributes[attribute];
-                }
-            }
-        }
-        
-        function drawEdge(x1, y1, x2, y2, attributes) {
-            var options = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
-        
-            attributes = attributes || {};
-            completeAttributes(attributes);
-            var root = this._selection;
-            var svg = root.selectWithoutDataPropagation("svg");
-            var graph0 = svg.selectWithoutDataPropagation("g");
-            var newEdge = graph0.append("g").datum(null).attr("class", "edge");
-            var title = newEdge.insert('title', ':first-child').text("");
-            if (attributes.URL || attributes.tooltip) {
-                var a = newEdge.append("g").append("a");
-                if (attributes.URL) {
-                    a.attr("href", attributes.URL);
-                }
-                if (attributes.tooltip) {
-                    a.attr('title', attributes.tooltip);
-                }
-                var line = a.append("path");
-                var arrowHead = a.append("polygon");
-            } else {
-                var line = newEdge.append("path");
-                var arrowHead = newEdge.append("polygon");
-            }
-            this._drawnEdge = {
-                g: newEdge,
-                x1: x1,
-                y1: y1,
-                x2: x2,
-                y2: y2,
-                attributes: attributes
-            };
-            _updateEdge(newEdge, x1, y1, x2, y2, attributes, options);
-        
-            return this;
-        }
-        
-        function updateDrawnEdge(x1, y1, x2, y2, attributes) {
-            var options = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
-        
-            if (!this._drawnEdge) {
-                throw Error('No edge has been drawn');
-            }
-            var edge = this._drawnEdge.g;
-            attributes = attributes || {};
-            completeAttributes(attributes, this._drawnEdge.attributes);
-            this._drawnEdge.x1 = x1;
-            this._drawnEdge.y1 = y1;
-            this._drawnEdge.x2 = x2;
-            this._drawnEdge.y2 = y2;
-            this._drawnEdge.attributes = attributes;
-            _updateEdge(edge, x1, y1, x2, y2, attributes, options);
-        
-            return this;
-        }
-        
-        function _updateEdge(edge, x1, y1, x2, y2, attributes, options) {
-        
-            var id = attributes.id;
-            var fill = attributes.fillcolor;
-            var stroke = attributes.color;
-            var strokeWidth = attributes.penwidth;
-            var shortening = options.shortening || 0;
-            var arrowHeadLength = 10;
-            var arrowHeadWidth = 7;
-            var margin = 0.174;
-        
-            var arrowHeadPoints = [[0, -arrowHeadWidth / 2], [arrowHeadLength, 0], [0, arrowHeadWidth / 2], [0, -arrowHeadWidth / 2]];
-        
-            var dx = x2 - x1;
-            var dy = y2 - y1;
-            var length = Math.sqrt(dx * dx + dy * dy);
-            var cosA = dx / length;
-            var sinA = dy / length;
-            x2 = x1 + (length - shortening - arrowHeadLength - margin) * cosA;
-            y2 = y1 + (length - shortening - arrowHeadLength - margin) * sinA;
-        
-            if (attributes.URL || attributes.tooltip) {
-                var a = edge.selectWithoutDataPropagation("g").selectWithoutDataPropagation("a");
-                var line = a.selectWithoutDataPropagation("path");
-                var arrowHead = a.selectWithoutDataPropagation("polygon");
-            } else {
-                var line = edge.selectWithoutDataPropagation("path");
-                var arrowHead = edge.selectWithoutDataPropagation("polygon");
-            }
-        
-            edge.attr("id", id);
-        
-            var path1 = d3Path.path();
-            path1.moveTo(x1, y1);
-            path1.lineTo(x2, y2);
-        
-            line.attr("d", path1).attr("fill", fill).attr("stroke", stroke).attr("strokeWidth", strokeWidth);
-        
-            x2 = x1 + (length - shortening - arrowHeadLength) * cosA;
-            y2 = y1 + (length - shortening - arrowHeadLength) * sinA;
-            for (var i = 0; i < arrowHeadPoints.length; i++) {
-                var point = arrowHeadPoints[i];
-                arrowHeadPoints[i] = rotate(point[0], point[1], cosA, sinA);
-            }
-            for (var i = 0; i < arrowHeadPoints.length; i++) {
-                var point = arrowHeadPoints[i];
-                arrowHeadPoints[i] = [x2 + point[0], y2 + point[1]];
-            }
-            var allPoints = [];
-            for (var i = 0; i < arrowHeadPoints.length; i++) {
-                var point = arrowHeadPoints[i];
-                allPoints.push(point.join(','));
-            }
-            var pointsAttr = allPoints.join(' ');
-        
-            arrowHead.attr("points", pointsAttr).attr("fill", fill).attr("stroke", stroke).attr("strokeWidth", strokeWidth);
-        
-            return this;
-        }
-        
-        function moveDrawnEdgeEndPoint(x2, y2) {
-            var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        
-        
-            if (!this._drawnEdge) {
-                throw Error('No edge has been drawn');
-            }
-            var edge = this._drawnEdge.g;
-            var x1 = this._drawnEdge.x1;
-            var y1 = this._drawnEdge.y1;
-            var attributes = this._drawnEdge.attributes;
-        
-            this._drawnEdge.x2 = x2;
-            this._drawnEdge.y2 = y2;
-            _updateEdge(edge, x1, y1, x2, y2, attributes, options);
-        
-            return this;
-        }
-        
-        function removeDrawnEdge() {
-        
-            if (!this._drawnEdge) {
-                return this;
-            }
-        
-            var edge = this._drawnEdge.g;
-        
-            edge.remove();
-        
-            this._drawnEdge = null;
-        
-            return this;
-        }
-        
-        function insertDrawnEdge(name) {
-        
-            if (!this._drawnEdge) {
-                throw Error('No edge has been drawn');
-            }
-        
-            var edge = this._drawnEdge.g;
-            var attributes = this._drawnEdge.attributes;
-        
-            var title = edge.selectWithoutDataPropagation("title");
-            title.text(name);
-            var text = title.selectAll(function () {
-                return title.node().childNodes;
-            });
-            if (attributes.URL || attributes.tooltip) {
-                var ga = edge.selectWithoutDataPropagation("g");
-                var a = ga.selectWithoutDataPropagation("a");
-                var line = a.selectWithoutDataPropagation("path");
-                var arrowHead = a.selectWithoutDataPropagation("polygon");
-            } else {
-                var line = edge.selectWithoutDataPropagation("path");
-                var arrowHead = edge.selectWithoutDataPropagation("polygon");
-            }
-            var root = this._selection;
-            var svg = root.selectWithoutDataPropagation("svg");
-            var graph0 = svg.selectWithoutDataPropagation("g");
-            var graph0Datum = graph0.datum();
-            var edgeData = this._extractData(edge, graph0Datum.children.length, graph0.datum());
-            var gDatum = edgeData;
-            var titleDatum = gDatum.children[0];
-            var textDatum = titleDatum.children[0];
-            if (attributes.URL || attributes.tooltip) {
-                var gaDatum = gDatum.children[1];
-                var aDatum = gaDatum.children[0];
-                var pathDatum = aDatum.children[0];
-                var polygonDatum = aDatum.children[1];
-            } else {
-                var pathDatum = gDatum.children[1];
-                var polygonDatum = gDatum.children[2];
-            }
-            graph0Datum.children.push(gDatum);
-        
-            edge.datum(gDatum);
-            edge.data([gDatum], function (d) {
-                return d.key;
-            });
-        
-            title.datum(titleDatum);
-            title.data([titleDatum], function (d) {
-                return [d.key];
-            });
-        
-            text.datum(textDatum);
-            text.data([textDatum], function (d) {
-                return [d.key];
-            });
-        
-            if (attributes.URL || attributes.tooltip) {
-                ga.datum(gaDatum);
-                ga.data([gaDatum], function (d) {
-                    return [d.key];
-                });
-        
-                a.datum(aDatum);
-                a.data([aDatum], function (d) {
-                    return [d.key];
-                });
-            }
-        
-            line.datum(pathDatum);
-            line.data([pathDatum], function (d) {
-                return [d.key];
-            });
-        
-            arrowHead.datum(polygonDatum);
-            arrowHead.data([polygonDatum], function (d) {
-                return [d.key];
-            });
-        
-            this._drawnEdge = null;
-        
-            return this;
-        }
-        
-        var defaultNodeAttributes = {
-            id: null,
-            fillcolor: "none",
-            color: "#000000",
-            penwidth: null,
-            URL: null,
-            tooltip: null,
-            labeljust: null,
-            fontname: null,
-            fontsize: null,
-            fontcolor: null
-        };
-        
-        var multiFillShapes = ['fivepoverhang', 'threepoverhang', 'noverhang', 'assembly'];
-        
-        var plainShapes = ['none', 'plain', 'plaintext'];
-        
-        function completeAttributes$1(attributes) {
-            var defaultAttributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultNodeAttributes;
-        
-            if (attributes.style == 'filled' && !attributes.fillcolor) {
-                if (attributes.color) {
-                    attributes.fillcolor = attributes.color;
-                } else {
-                    attributes.fillcolor = '#d3d3d3';
-                }
-            }
-            if (attributes.style == 'filled') {
-                if (plainShapes.includes(attributes.shape)) {
-                    attributes.color = 'transparent';
-                } else if (!attributes.color) {
-                    attributes.color = '#000000';
-                }
-            }
-            if (attributes.shape == 'point' && !attributes.fillcolor) {
-                attributes.fillcolor = '#000000';
-            }
-            for (var attribute in defaultAttributes) {
-                if (attributes[attribute] === undefined) {
-                    attributes[attribute] = defaultAttributes[attribute];
-                }
-            }
-        }
-        
-        function drawNode(x, y, nodeId) {
-            var attributes = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-            var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
-        
-            completeAttributes$1(attributes);
-            var root = this._selection;
-            var svg = root.selectWithoutDataPropagation("svg");
-            var graph0 = svg.selectWithoutDataPropagation("g");
-            var newNode = graph0.append(function () {
-                return createNode(nodeId, attributes).node();
-            });
-            newNode.datum(null);
-        
-            this._drawnNode = {
-                g: newNode,
-                nodeId: nodeId,
-                x: x,
-                y: y,
-                attributes: attributes
-            };
-            _updateNode(newNode, x, y, nodeId, attributes, options);
-        
-            return this;
-        }
-        
-        function updateDrawnNode(x, y, nodeId) {
-            var attributes = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-            var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
-        
-            if (!this._drawnNode) {
-                throw Error('No node has been drawn');
-            }
-        
-            var node = this._drawnNode.g;
-            if (nodeId == null) {
-                nodeId = this._drawnNode.nodeId;
-            }
-            completeAttributes$1(attributes, this._drawnNode.attributes);
-            this._drawnNode.nodeId = nodeId;
-            this._drawnNode.x = x;
-            this._drawnNode.y = y;
-            this._drawnNode.attributes = attributes;
-            _updateNode(node, x, y, nodeId, attributes, options);
-        
-            return this;
-        }
-        
-        function _updateNode(node, x, y, nodeId, attributes, options) {
-        
-            var id = attributes.id;
-            var fill = attributes.fillcolor;
-            var stroke = attributes.color;
-            var strokeWidth = attributes.penwidth;
-            if (attributes.labeljust == 'l') {
-                var textAnchor = 'start';
-            } else if (attributes.labeljust == 'r') {
-                var textAnchor = 'end';
-            } else if (attributes.labeljust == 'c') {
-                var textAnchor = 'middle';
-            } else {
-                var textAnchor = null;
-            }
-            var fontFamily = attributes.fontname;
-            var fontSize = attributes.fontsize;
-            var fontColor = attributes.fontcolor;
-            if ('label' in attributes) {
-                var label = attributes['label'];
-            } else {
-                var label = nodeId;
-            }
-        
-            var title = node.selectWithoutDataPropagation('title');
-            if (attributes.URL || attributes.tooltip) {
-                var subParent = node.selectWithoutDataPropagation("g").selectWithoutDataPropagation("a");
-            } else {
-                var subParent = node;
-            }
-            var svgElements = subParent.selectAll('ellipse,polygon,path,polyline');
-            var text = node.selectWithoutDataPropagation("text");
-        
-            node.attr("id", id);
-        
-            title.text(nodeId);
-            if (svgElements.size() != 0) {
-                var bbox = svgElements.node().getBBox();
-                bbox.cx = bbox.x + bbox.width / 2;
-                bbox.cy = bbox.y + bbox.height / 2;
-            } else if (text.size() != 0) {
-                bbox = {
-                    x: +text.attr('x'),
-                    y: +text.attr('y'),
-                    width: 0,
-                    height: 0,
-                    cx: +text.attr('x'),
-                    cy: +text.attr('y')
-                };
-            }
-            svgElements.each(function (data, index) {
-                var svgElement = d3.select(this);
-                if (svgElement.attr("cx")) {
-                    svgElement.attr("cx", roundTo4Decimals(x)).attr("cy", roundTo4Decimals(y));
-                } else if (svgElement.attr("points")) {
-                    var pointsString = svgElement.attr('points');
-                    svgElement.attr("points", translatePointsAttribute(pointsString, x - bbox.cx, y - bbox.cy));
-                } else {
-                    var d = svgElement.attr('d');
-                    svgElement.attr("d", translateDAttribute(d, x - bbox.cx, y - bbox.cy));
-                }
-                if (index == 0 || multiFillShapes.includes(attributes.shape)) {
-                    svgElement.attr("fill", fill).attr("stroke", stroke);
-                    if (strokeWidth) {
-                        svgElement.attr("strokeWidth", strokeWidth);
-                    }
-                }
-            });
-        
-            if (text.size() != 0) {
-        
-                if (textAnchor) {
-                    text.attr("text-anchor", textAnchor);
-                }
-                text.attr("x", roundTo4Decimals(+text.attr("x") + x - bbox.cx)).attr("y", roundTo4Decimals(+text.attr("y") + y - bbox.cy));
-                if (fontFamily) {
-                    text.attr("font-family", fontFamily);
-                }
-                if (fontSize) {
-                    text.attr("font-size", fontSize);
-                }
-                if (fontColor) {
-                    text.attr("fill", fontColor);
-                }
-                text.text(label);
-            }
-            return this;
-        }
-        
-        function removeDrawnNode() {
-        
-            if (!this._drawnNode) {
-                return this;
-            }
-        
-            var node = this._drawnNode.g;
-        
-            node.remove();
-        
-            this._drawnNode = null;
-        
-            return this;
-        }
-        
-        function insertDrawnNode(nodeId) {
-        
-            if (!this._drawnNode) {
-                throw Error('No node has been drawn');
-            }
-        
-            if (nodeId == null) {
-                nodeId = this._drawnNode.nodeId;
-            }
-            var node = this._drawnNode.g;
-            var attributes = this._drawnNode.attributes;
-        
-            var title = node.selectWithoutDataPropagation("title");
-            title.text(nodeId);
-            if (attributes.URL || attributes.tooltip) {
-                var ga = node.selectWithoutDataPropagation("g");
-                var a = ga.selectWithoutDataPropagation("a");
-                var svgElement = a.selectWithoutDataPropagation('ellipse,polygon,path,polyline');
-                var text = a.selectWithoutDataPropagation('text');
-            } else {
-                var svgElement = node.selectWithoutDataPropagation('ellipse,polygon,path,polyline');
-                var text = node.selectWithoutDataPropagation('text');
-            }
-            text.text(attributes.label || nodeId);
-        
-            var root = this._selection;
-            var svg = root.selectWithoutDataPropagation("svg");
-            var graph0 = svg.selectWithoutDataPropagation("g");
-            var graph0Datum = graph0.datum();
-            var nodeData = this._extractData(node, graph0Datum.children.length, graph0.datum());
-            graph0Datum.children.push(nodeData);
-        
-            insertAllElementsData(node, nodeData);
-        
-            return this;
-        }
-        
-        function createNode(nodeId, attributes) {
-            var attributesString = '';
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-        
-            try {
-                for (var _iterator = Object.keys(attributes)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var name = _step.value;
-        
-                    if (attributes[name] != null) {
-                        attributesString += ' "' + name + '"="' + attributes[name] + '"';
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        
-            var dotSrc = 'graph {"' + nodeId + '" [' + attributesString + ']}';
-            var svgDoc = Viz(dotSrc, { format: 'svg' });
-            var parser = new window.DOMParser();
-            var doc = parser.parseFromString(svgDoc, "image/svg+xml");
-            var newDoc = d3.select(document.createDocumentFragment()).append(function () {
-                return doc.documentElement;
-            });
-            var node = newDoc.select('.node');
-        
-            return node;
-        }
-        
-        var _graphviz$prototype;
-        
-        function Graphviz(selection$$1, options$$1) {
-            this._options = {
-                useWorker: true,
-                engine: 'dot',
-                totalMemory: undefined,
-                keyMode: 'title',
-                fade: true,
-                tweenPaths: true,
-                tweenShapes: true,
-                convertEqualSidedPolygons: true,
-                tweenPrecision: 1,
-                growEnteringEdges: true,
-                zoom: true,
-                zoomScaleExtent: [0.1, 10],
-                zoomTranslateExtent: [[-Infinity, -Infinity], [+Infinity, +Infinity]],
-                width: null,
-                height: null,
-                scale: 1,
-                fit: false
-            };
-            if (options$$1 instanceof Object) {
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-        
-                try {
-                    for (var _iterator = Object.keys(options$$1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var option = _step.value;
-        
-                        this._options[option] = options$$1[option];
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-            } else if (typeof options$$1 == 'boolean') {
-                this._options.useWorker = options$$1;
-            }
-            var useWorker = this._options.useWorker;
-            if (typeof Worker == 'undefined') {
-                useWorker = false;
-            }
-            if (useWorker) {
-                var scripts = d3.selectAll('script');
-                var vizScript = scripts.filter(function () {
-                    return d3.select(this).attr('type') == 'javascript/worker' || d3.select(this).attr('src') && d3.select(this).attr('src').match(/.*\/viz.js$/);
-                });
-                if (vizScript.size() == 0) {
-                    console.warn('No script tag of type "javascript/worker" was found and "useWorker" is true. Not using web worker.');
-                    useWorker = false;
-                } else {
-                    this._vizURL = vizScript.attr('src');
-                    if (!this._vizURL) {
-                        console.warn('No "src" attribute of was found on the "javascript/worker" script tag and "useWorker" is true. Not using web worker.');
-                        useWorker = false;
-                    }
-                }
-            }
-            if (useWorker) {
-                var js = "\n            onmessage = function(event) {\n                if (event.data.vizURL) {\n                    importScripts(event.data.vizURL);\n                }\n                try {\n                    var svg = Viz(event.data.dot, event.data.options);\n                }\n                catch(error) {\n                    postMessage({\n                        type: \"error\",\n                        error: error.message,\n                    });\n                    return;\n                }\n                if (svg) {\n                    postMessage({\n                        type: \"done\",\n                        svg: svg,\n                    });\n                } else {\n                    postMessage({\n                        type: \"skip\",\n                    });\n                }\n            }\n        ";
-                var blob = new Blob([js]);
-                var blobURL = window.URL.createObjectURL(blob);
-                this._worker = new Worker(blobURL);
-            }
-            this._selection = selection$$1;
-            this._active = false;
-            this._busy = false;
-            this._jobs = [];
-            this._queue = [];
-            this._keyModes = new Set(['title', 'id', 'tag-index', 'index']);
-            this._images = [];
-            this._translation = undefined;
-            this._scale = undefined;
-            this._eventTypes = ['initEnd', 'start', 'layoutStart', 'layoutEnd', 'dataExtractEnd', 'dataProcessPass1End', 'dataProcessPass2End', 'dataProcessEnd', 'renderStart', 'renderEnd', 'transitionStart', 'transitionEnd', 'restoreEnd', 'end'];
-            this._dispatch = d3Dispatch.dispatch.apply(undefined, toConsumableArray(this._eventTypes));
-            initViz.call(this);
-            selection$$1.node().__graphviz__ = this;
-        }
-        
-        function graphviz(selector, options$$1) {
-            var g = d3.select(selector).graphviz(options$$1);
-            return g;
-        }
-        
-        Graphviz.prototype = graphviz.prototype = (_graphviz$prototype = {
-            constructor: Graphviz,
-            engine: engine,
-            addImage: images,
-            totalMemory: totalMemory,
-            keyMode: keyMode,
-            fade: fade,
-            tweenPaths: tweenPaths,
-            tweenShapes: tweenShapes,
-            convertEqualSidedPolygons: convertEqualSidedPolygons,
-            tweenPrecision: tweenPrecision,
-            growEnteringEdges: growEnteringEdges,
-            zoom: zoom$1,
-            resetZoom: resetZoom,
-            zoomScaleExtent: zoomScaleExtent,
-            zoomTranslateExtent: zoomTranslateExtent,
-            render: render,
-            dot: dot,
-            renderDot: renderDot,
-            transition: transition$1,
-            active: active$1,
-            options: options,
-            width: width,
-            height: height,
-            scale: scale,
-            fit: fit,
-            attributer: attributer,
-            on: on,
-            onerror: onerror,
-            logEvents: logEvents,
-            drawEdge: drawEdge,
-            updateDrawnEdge: updateDrawnEdge,
-            moveDrawnEdgeEndPoint: moveDrawnEdgeEndPoint,
-            insertDrawnEdge: insertDrawnEdge,
-            removeDrawnEdge: removeDrawnEdge }, defineProperty(_graphviz$prototype, "removeDrawnEdge", removeDrawnEdge), defineProperty(_graphviz$prototype, "drawNode", drawNode), defineProperty(_graphviz$prototype, "updateDrawnNode", updateDrawnNode), defineProperty(_graphviz$prototype, "insertDrawnNode", insertDrawnNode), defineProperty(_graphviz$prototype, "removeDrawnNode", removeDrawnNode), defineProperty(_graphviz$prototype, "removeDrawnNode", removeDrawnNode), _graphviz$prototype);
-        
-        var selection_graphviz = function (options) {
-        
-            var g = this.node().__graphviz__;
-            if (g) {
-                g.options(options);
-                g._dispatch.call("initEnd", this);
-            } else {
-                g = new Graphviz(this, options);
-            }
-            return g;
-        };
-        
-        var selection_selectWithoutDataPropagation = function (name) {
-        
-            return d3.select(this.size() > 0 ? this.node().querySelector(name) : null);
-        };
-        
-        d3.selection.prototype.graphviz = selection_graphviz;
-        d3.selection.prototype.selectWithoutDataPropagation = selection_selectWithoutDataPropagation;
-        
-        exports.graphviz = graphviz;
-        
-        Object.defineProperty(exports, '__esModule', { value: true });
-        
-        })));
     </script>
 <script type="text/javascript" name="bootstrap.min.js">
         /*!
@@ -6651,14 +4495,15 @@
                     d3.selectAll('.edge').selectAll('text').style('display','');
                 d3.select("#graph > svg").attr("display", "");
                 d3.selectAll(".node")
-                    .attr("id", function(d) { return "node" + d.key; })
+                    .attr("id", function(d) { return "node" + d.key; });
                 buildVertexTable();
-                buildContigsTable();
                 buildEdgesTable();
-                if (doRefreshTables) {
+                if (selectedMethod !== "ref")
                     buildRefTable();
+                if (selectedMethod !== "contig")
+                    buildContigsTable();
+                if (doRefreshTables)
                     buildComponentsTable();
-                }
                 setupAutocompleteSearch();
                 $('#saveBtns').show();
                 highlightChromEdges();
@@ -6712,7 +4557,7 @@
                             }
                         }
                         d3.event.stopPropagation();
-                        hideEdgesByThresholds(false, true, false);
+                        updateDot(false, true, false);
                 });
                 edges = d3.selectAll('.edge');
                 edges
@@ -6908,7 +4753,7 @@
             return firstEdge;
         }
         
-        function hideEdgesByThresholds(doRefresh, doAnimate, doRefreshTables) {
+        function updateDot(doRefresh, doAnimate, doRefreshTables) {
             $(".tooltip").tooltip("hide");
             deselectAll();
             dotSrc = srcGraphs[componentN].dot;
@@ -7018,15 +4863,13 @@
                             edgesToCollapse = edgesToCollapse + 1;
                         }
                         else if (edgeData[edgeId]) {
-                            edge = edgeData[edgeId];
-                            if (!checkEdgeWithThresholds(edge)) {
+                            if (!checkEdgeWithThresholds(edgeId)) {
                                 edgesToCollapse = edgesToCollapse + 1;
                             }
                         }
                         else if (baseLoopEdgeDict[edgeId]) {
                             for (var k = 0; k < baseLoopEdgeDict[edgeId].length; k++) {
-                                edge = edgeData[baseLoopEdgeDict[edgeId][k]];
-                                if (!checkEdgeWithThresholds(edge)) {
+                                if (!checkEdgeWithThresholds(baseLoopEdgeDict[edgeId][k])) {
                                     edgesToCollapse = edgesToCollapse + 1;
                                 }
                             }
@@ -7141,7 +4984,7 @@
                             end = newData[edgeId] ? newData[edgeId][1] : edge.e;
                             if (expandedNodes.has(source) && expandedNodes.has(end))
                                 isWrong = false;
-                            else if (repeatEdges.has(edge.id) || hiddenEdges.has(edge.id) || !checkEdgeWithThresholds(edge))
+                            else if (repeatEdges.has(edge.id) || hiddenEdges.has(edge.id) || !checkEdgeWithThresholds(edge.id))
                                 isWrong = true;
                             else isWrong = false;
                             if (!isWrong) {
@@ -7158,7 +5001,7 @@
                                 source = newData[edgeId] ? newData[edgeId][0] : edge.s;
                                 if (expandedNodes.has(source))
                                     isWrong = false;
-                                else if (repeatEdges.has(edge.id) || hiddenEdges.has(edge.id) || !checkEdgeWithThresholds(edge))
+                                else if (repeatEdges.has(edge.id) || hiddenEdges.has(edge.id) || !checkEdgeWithThresholds(edge.id))
                                     isWrong = true;
                                 else isWrong = false;
                                 if (!isWrong) {
@@ -7180,7 +5023,7 @@
                 if (edge) {
                     source = newData[edgeId] ? newData[edgeId][0] : edge.s;
                     end = newData[edgeId] ? newData[edgeId][1] : edge.e;
-                    if (repeatEdges.has(edge.id) || !checkEdgeWithThresholds(edge) || hiddenEdges.has(edge.id)) {
+                    if (repeatEdges.has(edge.id) || !checkEdgeWithThresholds(edge.id) || hiddenEdges.has(edge.id)) {
                         if (!expandedNodes.has(source) && !expandedNodes.has(end)) {
                             clusterNodeSizeDict[source] = clusterNodeSizeDict[source] || 0;
                             clusterNodeSizeDict[source]++;
@@ -7257,33 +5100,39 @@
             }
         
             nodes = new Set(repeatConnectNodes[componentN]);
-            for (i = 0; i < uniqueEdges.length; i++) {
-                var edgeMatches = uniqueEdges[i].match(edgePattern);
-                var node1 = edgeMatches[1], node2 = edgeMatches[2];
-                node1 = replacementDict[node1] ? replacementDict[node1] : node1;
-                node2 = replacementDict[node2] ? replacementDict[node2] : node2;
-                if (filteredNodes.has(node1) || filteredNodes.has(node2)) {
-                    var matches = uniqueEdges[i].match(idPattern);
-                    if (matches && matches.length > 1) {
-                        edgeId = matches[1];
-                        edge = edgeData[edgeId];
-                        if (edge && checkEdgeWithThresholds(edge)) {
-                            if (newEdges[edgeId]) {
-                                node1 = newEdges[edgeId][0];
-                                node2 = newEdges[edgeId][1];
+            if (uniqueEdges.length > 300) {
+                $('#unique_warning').show();
+            }
+            else {
+                $('#unique_warning').hide();
+                for (i = 0; i < uniqueEdges.length; i++) {
+                    var edgeMatches = uniqueEdges[i].match(edgePattern);
+                    var node1 = edgeMatches[1], node2 = edgeMatches[2];
+                    node1 = replacementDict[node1] ? replacementDict[node1] : node1;
+                    node2 = replacementDict[node2] ? replacementDict[node2] : node2;
+                    if (filteredNodes.has(node1) || filteredNodes.has(node2)) {
+                        var matches = uniqueEdges[i].match(idPattern);
+                        if (matches && matches.length > 1) {
+                            edgeId = matches[1];
+                            edge = edgeData[edgeId];
+                            if (edge && checkEdgeWithThresholds(edgeId)) {
+                                if (newEdges[edgeId]) {
+                                    node1 = newEdges[edgeId][0];
+                                    node2 = newEdges[edgeId][1];
+                                }
+                                newData[edgeId] = [node1, node2]
+                                label = (edge.len && edge.name.indexOf('part') == -1) ? 'id ' + edge.name + '\\l' + edge.len + 'k ' + edge.cov +'x' : "";
+                                var s = '"' + node1 + '" -> "' + node2 + '" [label="' + label + '",id = "' + edgeId + '", color="' + edge.color + '"];';
+                                //console.log(s)
+                                //dotSrcLines.push(s);
+                                flankingEdges.push(s);
+                                graph[node1] = graph[node1] || {};
+                                graph[node1][node2] = graph[node1][node2] || new Set();
+                                graph[node2] = graph[node2] || {};
+                                graph[node2][node1] = graph[node2][node1] || new Set();
+                                graph[node1][node2].add(edgeId)
+                                graph[node2][node1].add(edgeId)
                             }
-                            newData[edgeId] = [node1, node2]
-                            label = (edge.len && edge.name.indexOf('part') == -1) ? 'id ' + edge.name + '\\l' + edge.len + 'k ' + edge.cov +'x' : "";
-                            var s = '"' + node1 + '" -> "' + node2 + '" [label="' + label + '",id = "' + edgeId + '", color="' + edge.color + '"];';
-                            //console.log(s)
-                            //dotSrcLines.push(s);
-                            flankingEdges.push(s);
-                            graph[node1] = graph[node1] || {};
-                            graph[node1][node2] = graph[node1][node2] || new Set();
-                            graph[node2] = graph[node2] || {};
-                            graph[node2][node1] = graph[node2][node1] || new Set();
-                            graph[node1][node2].add(edgeId)
-                            graph[node2][node1].add(edgeId)
                         }
                     }
                 }
@@ -7449,7 +5298,8 @@
             return true;
         }
         
-        function checkEdgeWithThresholds(edge) {
+        function checkEdgeWithThresholds(edgeId) {
+            edge = edgeData[edgeId];
             if ((minCoverage && edge.cov < minCoverage) || (maxCoverage && edge.cov > maxCoverage) || edge.len < minLen || (maxLen && edge.len > maxLen))
                 return false;
             return true;
@@ -7466,17 +5316,18 @@
             return true;
         }
         
-        function checkEdge(edgeId, targetChrom) {
-            edge = edgeData[edgeId];
-            targetComponent = NaN;
-            if (selectedMethod == "ref" && !isNaN(parseInt(targetChrom))) targetComponent = chromosomes[targetChrom];
-            else if (selectedMethod == "contig" && !isNaN(parseInt(targetChrom))) targetComponent = contigs[targetChrom];
+        function checkEdge(edgeId, targetN) {
+            var edge = edgeData[edgeId];
+            var targetComponent = NaN;
+            if (selectedMethod == "default") targetComponent = !isNaN(parseInt(targetN)) ? targetN : componentN;
+            else if (selectedMethod == "ref" && !isNaN(parseInt(targetN))) targetComponent = chromosomes[targetN];
+            else if (selectedMethod == "contig" && !isNaN(parseInt(targetN))) targetComponent = contigs[targetN];
             //if(edge) console.log(edgeMappingInfo[edge.id], targetComponent, chromosomes, edge)
             if (!edge)
                 return false;
-            if (!checkEdgeWithThresholds(edge))
+            if (!checkEdgeWithThresholds(edgeId))
                 return false;
-            if (selectedMethod == "default" && getEdgeComponent(edgeId) !== componentN)
+            if (selectedMethod == "default" && getEdgeComponent(edgeId) !== targetComponent)
                 return false;
             if (!checkRepeatEdgeId(edgeId))
                 return false;
@@ -7705,7 +5556,7 @@
         
             $('#collapse_repeats_checkbox').on('change', function() {
                 expandedNodes = new Set();
-                hideEdgesByThresholds(false, false, true);
+                updateDot(false, false, true);
                 if ($('#collapse_repeats_checkbox')[0].checked) {
                     $('#unbalanced_checkbox').prop('checked', false);
                     $('#unbalanced_checkbox').prop('disabled', true);
@@ -7751,7 +5602,7 @@
                 $('#contig_mode').removeAttr('disabled');
             });
             $('#adj_edges_checkbox').on('change', function() {
-                hideEdgesByThresholds(false, true, false);
+                updateDot(false, true, false);
             });
             $('#show_labels').on('change', function() {
                 if (!this.checked)
@@ -7766,7 +5617,7 @@
                 document.getElementById('errors_info').style.display = 'none';
                 if (document.getElementById('color_select').selectedIndex == 2) document.getElementById('errors_info').style.display = '';
                 if (document.getElementById('color_select').selectedIndex == 3) document.getElementById('repeat_info').style.display = '';
-                hideEdgesByThresholds(false, false, false);
+                updateDot(false, false, false);
             };
         
             function submitOnEnter(event){
@@ -7951,7 +5802,7 @@
             else if (key == 13) {
                 if (parseInt(textBox.value)) minCoverage = parseInt(textBox.value);
                 else minCoverage = 0;
-                hideEdgesByThresholds(false, true, true);
+                updateDot(false, true, true);
             }
         }
         
@@ -7963,7 +5814,7 @@
             else if (key == 13) {
                 if (parseInt(textBox.value)) maxCoverage = parseInt(textBox.value);
                 else maxCoverage = 0;
-                hideEdgesByThresholds(false, true, true);
+                updateDot(false, true, true);
             }
         }
         
@@ -7978,7 +5829,7 @@
                 else minLen = 0;
                 if (parseInt(maxValue)) maxLen = parseFloat(maxValue);
                 else maxLen = '';
-                hideEdgesByThresholds(false, true, true);
+                updateDot(false, true, true);
             }
         }
         
@@ -7988,26 +5839,38 @@
                 return;
             }
             var showAssemblyErrors = chromosomes.length > 0;
-            table = '';
+            var table = '';
             table += "<table border='1' id='contig_table' class='sortable scroll_table' style='width:" + (leftPanelWidth) + "px'>";
             table += "<thead><tr class='header'><th>Contig</th><th>Len (Kb)</th><th>Cov</th><th># edges</th>" +
                 (showAssemblyErrors ? "<th># errors</th>" : "") + "</tr></thead><tbody>";
             enableContigs = [];
             for (x in contigInfo) {
-                contigLen = contigInfo[x].length;
+                var contigLen = contigInfo[x].length;
                 contigLen = contigLen < 10000 ? Math.round(contigLen / 100) / 10 : Math.round(contigLen / 1000);
-                edgesN = 0;
-                errorsN = 0;
-                if (misassembledContigs && misassembledContigs[x]) errorsN = misassembledContigs[x].length;
+                var edgesN = 0;
+                var errorsN = 0;
+                // if (misassembledContigs && misassembledContigs[x]) errorsN = misassembledContigs[x].length;
                 for (i = 0; i < contigInfo[x].edges.length; i++) {
-                    edge = contigInfo[x].edges[i];
+                    var edge = contigInfo[x].edges[i];
                     if (edge != "*" && edge != "??") {
-                        edgeElId = edge[0] == '-' ? 'rc' + edge.substr(1) : 'e' + edge;
+                        var edgeId = edge[0] == '-' ? 'rc' + edge.substr(1) : 'e' + edge;
                         //edgeId = getEdgeElement(edgeData[edgeElId]);
-                        if ((selectedMethod == "contig" && checkEdgeWithThresholds(edge)) || checkEdge(edgeElId)) {
-                             edgesN++;
-                             errorsN = errorsN + edgeData[edgeElId].errors.length;
-                        }
+                         var edgeErrorsN = 0;
+                         if (edgeData[edgeId] && ((selectedMethod == "contig" && checkEdgeWithThresholds(edgeId)) || checkEdge(edgeId))) {
+                            edgesN++;
+                            edgeErrorsN = edgeData[edgeId].errors.length;
+                         }
+                         else if (loopEdgeDict[edgeId]) {
+                             var edgeChecked = false;
+                            for (var k = 0; k < loopEdgeDict[edgeId].length; k++) {
+                                if ((selectedMethod == "contig" && checkEdgeWithThresholds(loopEdgeDict[edgeId][k])) || checkEdge(loopEdgeDict[edgeId][k])) {
+                                    edgeErrorsN += edgeData[loopEdgeDict[edgeId][k]].errors.length;
+                                    edgeChecked = true;
+                                }
+                            }
+                            if (edgeChecked) edgesN++;
+                         }
+                         errorsN = errorsN + edgeErrorsN;
                     }
                 }
                 // if (edgesN) {
@@ -8053,40 +5916,61 @@
                 document.getElementById("ref_tab").style.display="none";
                 return;
             }
-            table = '';
+            var table = '';
             table += "<table border='1' id='ref_table' class='sortable scroll_table' style='width:" + (leftPanelWidth) + "px'>";
             chromosomesData = {};
             chromosomesContigs = {};
             var contigsFound = false;
             var chromLengths = [];
             enableChroms = [];
-            for (x in edgeMappingInfo) {
-                for (i = 0; i < edgeMappingInfo[x].length; i++) {
-                    chrom = edgeMappingInfo[x][i];
-                    chromosomesData[chrom] = chromosomesData[chrom] || [];
-                    if (checkEdge(x, chromosomes.indexOf(chrom))) {
+            for (var edgeId in edgeMappingInfo) {
+                for (i = 0; i < edgeMappingInfo[edgeId].length; i++) {
+                     chrom = edgeMappingInfo[edgeId][i];
+                     chromosomesData[chrom] = chromosomesData[chrom] || [];
+                     if (edgeData[edgeId] && ((selectedMethod == "ref" && checkEdgeWithThresholds(edgeId)) || checkEdge(edgeId))) {
+                        chromosomesData[chrom].push(edgeData[edgeId].len * 1000);
+                     }
+                     else if (loopEdgeDict[edgeId]) {
+                         var edgeLen = 0;
+                         for (var k = 0; k < loopEdgeDict[edgeId].length; k++) {
+                            if ((selectedMethod == "ref" && checkEdgeWithThresholds(loopEdgeDict[edgeId][k])) || checkEdge(loopEdgeDict[edgeId][k])) {
+                                edgeLen += edgeData[loopEdgeDict[edgeId][k]].len * 1000;
+                            }
+                         }
+                         if (edgeLen > 0) chromosomesData[chrom].push(edgeLen);
+                     }
+                    /*if (checkEdge(x, chromosomes.indexOf(chrom))) {
                         if (x[0] == "e") chromosomesData[chrom].push(x);
-                        /*if (edgeInfo[x]) {
+                        if (edgeInfo[x]) {
                             chromosomesContigs[chrom] = chromosomesContigs[chrom] || new Set();
                             for (var j = 0; j < edgeInfo[x].length; j++) {
                                 chromosomesContigs[chrom].add(edgeInfo[x][j])
                             }
                             contigsFound = true;
-                        }*/
-                    }
+                        }
+                    }*/
                 }
             }
-            for (chrom in chrom_lengths) {
-                chromLengths.push(chrom_lengths[chrom]);
+            for (chrom in chromosomesData) {
+                var chromLen = 0;
+                for (i = 0; i < chromosomesData[chrom].length; i++) {
+                    chromLen += chromosomesData[chrom][i];
+                }
+                chromLengths.push(chromLen)
             }
             var factor = Math.max.apply(Math, chromLengths) > 100000000 ? 1000000 : 1000;
             var factorText = factor == 1000 ? "Kb" : "Mb";
             table += "<thead><tr class='header'><th>Chromosome</th><th>Len (" + factorText + ")</th><th># edges</th>" +
                 (contigsFound ? "<th># contigs</th>" : "") + "</tr></thead><tbody>";
-            for (chrom in chrom_lengths) {
-                len = Math.round(chrom_lengths[chrom] * 10 / factor) ? Math.round(chrom_lengths[chrom] * 10 / factor) / 10 : Math.round(chrom_lengths[chrom] * 100 / factor) / 100;
-                table += "<tr id='chromrow" + chrom + "'><td>" + chrom + "</td><td>" + len + "</td><td>" + (chromosomesData[chrom] ? chromosomesData[chrom].length : '-') +
-                    (contigsFound ? ("</td><td>" + (chromosomesContigs[chrom] ? chromosomesContigs[chrom].size : '-')) : "") + "</td></tr>";
+            for (chrom in chromosomesData) {
+                var chromLen = 0;
+                for (i = 0; i < chromosomesData[chrom].length; i++) {
+                    chromLen += chromosomesData[chrom][i];
+                }
+                chromLen = Math.round(chromLen * 10 / factor) ? Math.round(chromLen * 10 / factor) / 10 : Math.round(chromLen * 100 / factor) / 100;
+                chromLen = chromLen / 2;
+                table += "<tr id='chromrow" + chrom + "'><td>" + chrom + "</td><td>" + (chromLen > 0 ? chromLen : '-') + "</td><td>" +
+                    (chromosomesData[chrom].length ?  Math.round(chromosomesData[chrom].length / 2) : '-') + "</td></tr>";
                 enableChroms.push(chrom);
             }
             table += "</tbody></table>";
@@ -8096,6 +5980,26 @@
                 selectedChromName = $(this).find('td:first').html();
                 selectChrom(selectedChromName);
             });
+            sorttable.sort_alpha = function(a,b) {
+                var as = a[0], bs = b[0];
+                var a, b, a1, b1, i= 0, n, L,
+                rx=/(\.\d+)|(\d+(\.\d+)?)|([^\d.]+)|(\.\D+)|(\.$)/g;
+                if(as === bs) return 0;
+                a= as.toUpperCase().match(rx);
+                b= bs.toUpperCase().match(rx);
+                L= a.length;
+                while(i<L){
+                    if(!b[i]) return 1;
+                    a1= a[i],
+                    b1= b[i++];
+                    if(a1!== b1){
+                        n= a1-b1;
+                        if(!isNaN(n)) return n;
+                        return a1>b1? 1:-1;
+                    }
+                }
+                return b[i]? -1:0;
+            }
             sorttable.makeSortable(document.getElementById("ref_table"));
             if (srcGraphs[componentN].chrom) {
                 $('#chromrow' + srcGraphs[componentN].chrom).addClass('selected').siblings().removeClass('selected');
@@ -8284,7 +6188,7 @@
                 }
                 componentInfo['unique'] = componentInfo['unique'] + loopEdges.size;
                 componentInfo['repeat'] = componentInfo['repeat'] + loopRepeatEdges.size;
-                if (selectedMethod == "ref" || selectedMethod == "contig")
+                if (selectedMethod == "ref")
                     componentInfo['n'] = calculateComponents(toGraph(filteredDotLines));
                 componentInfo['enter'] = srcGraphs[i].enters;
                 componentInfo['exit'] = srcGraphs[i].exits;
@@ -8527,7 +6431,7 @@
             else {
                 $("#prev_btn").prop('disabled', false);
             }
-            hideEdgesByThresholds(true, false, doRefreshTables);
+            updateDot(true, false, doRefreshTables);
             if (selectedMethod == "ref")
                 updateRefView();
         }
@@ -9091,6 +6995,30 @@
         </div>
 
         <input type="text" id="searchElementBox" class="search_box" placeholder="Search by edge ID, contig, chromosome...">
+        <div id="components_tab">
+          <div class="panel panel-default collapse_panel">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse_components_table" class="collapse_header">Graph components</a>
+              </h4>
+            </div>
+            <div id="collapse_components_table" class="panel-collapse collapse">
+              <div>
+                <div id='components_table_div' class="scroll_table_div">
+                </div>
+                <span id='adjEdgesWarning' style="font-size: 14px; color: #5f5c5c; display: none">
+                    Note: Adjacent edges are not taken into account.
+                </span>
+                <p id='numberRowsWarning' style="font-size: 14px; color: #6d120d; display: none">
+                    Warning: too much connected components! Only components with more than 1 edge are listed.
+                </p>
+                <p id='numberEdgesWarning' style="font-size: 14px; color: #5f5c5c">
+                    Note: Forward ("+") and reverse ("-") edges are counted as one edge.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="contig_tab">
           <div class="panel panel-default collapse_panel">
             <div class="panel-heading">
@@ -9133,30 +7061,6 @@
           <div class="panel panel-default collapse_panel">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse_components_table" class="collapse_header">Graph components</a>
-              </h4>
-            </div>
-            <div id="collapse_components_table" class="panel-collapse collapse">
-              <div>
-                <div id='components_table_div' class="scroll_table_div">
-                </div>
-                <span id='adjEdgesWarning' style="font-size: 14px; color: #5f5c5c; display: none">
-                    Note: Adjacent edges are not taken into account.
-                </span>
-                <p id='numberRowsWarning' style="font-size: 14px; color: #6d120d; display: none">
-                    Warning: too much connected components! Only components with more than 1 edge are listed.
-                </p>
-                <p id='numberEdgesWarning' style="font-size: 14px; color: #5f5c5c">
-                    Note: Forward ("+") and reverse ("-") edges are counted as one edge.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="panel panel-default collapse_panel">
-            <div class="panel-heading">
-              <h4 class="panel-title">
                 <a data-toggle="collapse" href="#collapse_edge_table" class="collapse_header">Edges</a>
               </h4>
             </div>
@@ -9192,6 +7096,7 @@
         <button id="prev_btn" class="selector round" disabled>&#8249;</button>
         <button id="next_btn" class="selector round" disabled>&#8250;</button>
         <span>Component <span id="component_n"></span>/<span id="component_total"></span> <span id="component_chromosome"></span></span>
+        <p id="unique_warning" style="color:red; display: none; text-align: center; font-size: 8px;">Too many unique edges!</br>Only repeat edges are shown</p>
         <p id="partition_warning" style="color:red; display: none; text-align: center; font-size: 8px;">This is a part of the large connected component.</br>Large blue nodes represent other parts of the component.</p>
     </div>
     <div id="div_switch" style="float:left; width:250px; margin-left: 10px">
@@ -9330,7 +7235,7 @@ var copyBtn = $("#unbalanced_tooltip").tooltip({ trigger: 'manual' });
 });
 
 setupInterfaceBtns();
-hideEdgesByThresholds(false, false, true);
+updateDot(false, false, true);
 timeTransition = 500;
 
 var enableEdges = [];
