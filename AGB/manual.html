@@ -233,7 +233,7 @@ Open viewer.html to see visualisation.
 <a name="sec3.1.2"></a>
 <h4>3.1.2. Repeat-focused mode </h4>
     <img src="https://almiheenko.github.io/AGB/img/human_repeats.png" width="600"/>
-    <p>This mode is designed for analyzing complex repeat structures. AGB removes all unique edges from the assembly graph, so each remaining connected component forms a mosaic repeat. By default, each mosaic repeat is highlighted with the same color (all unique edges are colored as black).</p>
+    <p>This mode is designed for analyzing complex repeat structures. AGB removes all unique edges from the assembly graph, so each remaining connected component forms a mosaic repeat. By default, each mosaic repeat is highlighted with the same color (all unique edges are colored as black). Light green nodes present the hidden parts of the graph.</p>
     <p> Some assemblers (e.g., Flye and Canu) provide information on whether an edge is repetitive. If such information is not available, AGB attempts to classify unique and repetitive edges in the assembly graph using the following simple criteria. For each edge, we estimate its <i>multiplicity</i> by dividing the read coverage of this edge by the median coverage. Edge multiplicity value is set to 1 if this ratio is less than 1.75. An edge is classified as unique if it has multiplicity equal to 1 and as repetitive otherwise.</p>
 
 <a name="sec3.1.3"></a>
