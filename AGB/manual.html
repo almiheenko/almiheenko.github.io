@@ -265,14 +265,18 @@ Open viewer.html to see visualisation.
     </ul>
     
 <a name="sec3.2.2"></a>
-<h4>3.2.2. Tables </h4> 
-<p>AGB displays interactive sortable tables containing information about edges, vertices, contigs, reference chromosomes, and connected components</p>
+<h4>3.2.2. Search bar </h4>
+<p>The search bar allows to search all graph edges, contigs, and reference chromosomes by name and display them.</p>
+    
+<a name="sec3.2.3"></a>
+<h4>3.2.3. Tables </h4>
+<p>AGB displays interactive sortable tables containing information about edges, vertices, contigs, reference chromosomes, and connected components.  All tables are affected by additional options (only edges satisfying the filtering criteria (read length, coverage, or uniqueness) are taken into account).</p>
     <ul>
-        <li><b>Contigs:</b> the table shows a list of contigs/scaffolds, their total length, read coverage, the number of edges and (if reference is available) the number of assembly errors detected by QUAST-LG.</li>
-        <li><b>Graph components:</b> the table shows a list of graph components, the total length of each component, the number of unique and repeat edges. In the reference-based mode, each chromosome can contain edges belonging to multiple connected components of the graph, so there is additional column that shows the number of connected components formed by these edges.</li>
-        <li><b>Reference chromosomes:</b> the table shows a list of reference chromosomes, their total length and the number of edges. In the reference-based mode, each chromosome can contain edges belonging to multiple connected components of the graph, so there is additional column that shows the number of connected components formed by these edges.</li>
-        <li><b>Edges:</b> the table shows a list of edges, their length, read coverage, and inferred multiplicity (calculated as edge coverage divided by median coverage).</li>
-        <li><b>Nodes:</b> the table shows a list of nodes, and the number of edges incident to a node.</li>
+        <li><b>Graph components:</b> the table shows a list of graph components, the total length of edges of each component, the number of unique and repeat edges.</li>
+        <li><b>Contigs:</b> the table shows a list of contigs/scaffolds, their total length, read coverage, the number of edges and (if reference is available) the number of assembly errors detected by QUAST-LG. In all modes except of the contig-based mode, only edges belonging to the displayed component are taken into account.</li>
+        <li><b>Reference chromosomes:</b> the table shows a list of reference chromosomes, their total length and the number of edges. In the reference-based mode, each chromosome can contain edges belonging to multiple connected components of the graph, so there is additional column that shows the number of connected components formed by these edges. In all modes except of the reference-based mode, only edges belonging to the displayed component are taken into account.</li>
+        <li><b>Edges:</b> the table shows a list of displayed edges, their length, read coverage, and inferred multiplicity (calculated as edge coverage divided by median coverage).</li>
+        <li><b>Nodes:</b> the table shows a list of displayed nodes, and the number of edges incident to a node.</li>
     </ul>
 
 <a name="sec4"></a>
