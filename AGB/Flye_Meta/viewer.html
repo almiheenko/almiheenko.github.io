@@ -35,7 +35,7 @@
         .info-popup .info-popup-content{
             margin:40px auto 0px auto;
             width: 800px;
-            height: 600px;
+            height: 630px;
             padding:10px;
             background-color: #e2e2e2;
             border-radius:5px;
@@ -179,7 +179,14 @@
             fill: #8d48a7;
         }
         
+        .hidden_edge_text {
+            color: #818181;
+        }
+        
         .gray_text {
+            font-size: 9px;
+            line-height: 12px;
+            display: block;
             color: #818181; 
         }
         
@@ -3858,7 +3865,6 @@
                     sortfwdind.id = "sorttable_sortfwdind";
                     sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25B4;';
                     this.appendChild(sortfwdind);
-                    e.stopPropagation();
                     return;
                   }
         
@@ -4395,107 +4401,20 @@
         // https://d3js.org/d3-zoom/ Version 1.7.1. Copyright 2017 Mike Bostock.
         !function(t,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("d3-dispatch"),require("d3-drag"),require("d3-interpolate"),require("d3-selection"),require("d3-transition")):"function"==typeof define&&define.amd?define(["exports","d3-dispatch","d3-drag","d3-interpolate","d3-selection","d3-transition"],n):n(t.d3=t.d3||{},t.d3,t.d3,t.d3,t.d3,t.d3)}(this,function(t,n,e,o,i,r){"use strict";function u(t,n,e){this.target=t,this.type=n,this.transform=e}function h(t,n,e){this.k=t,this.x=n,this.y=e}function s(t){return t.__zoom||y}function c(){i.event.stopImmediatePropagation()}function a(){return!i.event.button}function f(){var t,n,e=this;return e instanceof SVGElement?(t=(e=e.ownerSVGElement||e).width.baseVal.value,n=e.height.baseVal.value):(t=e.clientWidth,n=e.clientHeight),[[0,0],[t,n]]}function l(){return this.__zoom||y}function m(){return-i.event.deltaY*(i.event.deltaMode?120:1)/500}function p(){return"ontouchstart"in this}function d(t,n,e){var o=t.invertX(n[0][0])-e[0][0],i=t.invertX(n[1][0])-e[1][0],r=t.invertY(n[0][1])-e[0][1],u=t.invertY(n[1][1])-e[1][1];return t.translate(i>o?(o+i)/2:Math.min(0,o)||Math.max(0,i),u>r?(r+u)/2:Math.min(0,r)||Math.max(0,u))}var v=function(t){return function(){return t}};h.prototype={constructor:h,scale:function(t){return 1===t?this:new h(this.k*t,this.x,this.y)},translate:function(t,n){return 0===t&0===n?this:new h(this.k,this.x+this.k*t,this.y+this.k*n)},apply:function(t){return[t[0]*this.k+this.x,t[1]*this.k+this.y]},applyX:function(t){return t*this.k+this.x},applyY:function(t){return t*this.k+this.y},invert:function(t){return[(t[0]-this.x)/this.k,(t[1]-this.y)/this.k]},invertX:function(t){return(t-this.x)/this.k},invertY:function(t){return(t-this.y)/this.k},rescaleX:function(t){return t.copy().domain(t.range().map(this.invertX,this).map(t.invert,t))},rescaleY:function(t){return t.copy().domain(t.range().map(this.invertY,this).map(t.invert,t))},toString:function(){return"translate("+this.x+","+this.y+") scale("+this.k+")"}};var y=new h(1,0,0);s.prototype=h.prototype;var z=function(){i.event.preventDefault(),i.event.stopImmediatePropagation()};t.zoom=function(){function t(t){t.property("__zoom",l).on("wheel.zoom",M).on("mousedown.zoom",T).on("dblclick.zoom",b).filter(j).on("touchstart.zoom",Y).on("touchmove.zoom",X).on("touchend.zoom touchcancel.zoom",q).style("touch-action","none").style("-webkit-tap-highlight-color","rgba(0,0,0,0)")}function s(t,n){return(n=Math.max(B[0],Math.min(B[1],n)))===t.k?t:new h(n,t.x,t.y)}function _(t,n,e){var o=n[0]-e[0]*t.k,i=n[1]-e[1]*t.k;return o===t.x&&i===t.y?t:new h(t.k,o,i)}function g(t){return[(+t[0][0]+ +t[1][0])/2,(+t[0][1]+ +t[1][1])/2]}function k(t,n,e){t.on("start.zoom",function(){x(this,arguments).start()}).on("interrupt.zoom end.zoom",function(){x(this,arguments).end()}).tween("zoom",function(){var t=this,o=arguments,i=x(t,o),r=I.apply(t,o),u=e||g(r),s=Math.max(r[1][0]-r[0][0],r[1][1]-r[0][1]),c=t.__zoom,a="function"==typeof n?n.apply(t,o):n,f=K(c.invert(u).concat(s/c.k),a.invert(u).concat(s/a.k));return function(t){if(1===t)t=a;else{var n=f(t),e=s/n[2];t=new h(e,u[0]-n[0]*e,u[1]-n[1]*e)}i.zoom(null,t)}})}function x(t,n){for(var e,o=0,i=O.length;o<i;++o)if((e=O[o]).that===t)return e;return new w(t,n)}function w(t,n){this.that=t,this.args=n,this.index=-1,this.active=0,this.extent=I.apply(t,n)}function M(){if(V.apply(this,arguments)){var t=x(this,arguments),n=this.__zoom,e=Math.max(B[0],Math.min(B[1],n.k*Math.pow(2,S.apply(this,arguments)))),o=i.mouse(this);if(t.wheel)t.mouse[0][0]===o[0]&&t.mouse[0][1]===o[1]||(t.mouse[1]=n.invert(t.mouse[0]=o)),clearTimeout(t.wheel);else{if(n.k===e)return;t.mouse=[o,n.invert(o)],r.interrupt(this),t.start()}z(),t.wheel=setTimeout(function(){t.wheel=null,t.end()},A),t.zoom("mouse",P(_(s(n,e),t.mouse[0],t.mouse[1]),t.extent,G))}}function T(){if(!D&&V.apply(this,arguments)){var t=x(this,arguments),n=i.select(i.event.view).on("mousemove.zoom",function(){if(z(),!t.moved){var n=i.event.clientX-u,e=i.event.clientY-h;t.moved=n*n+e*e>C}t.zoom("mouse",P(_(t.that.__zoom,t.mouse[0]=i.mouse(t.that),t.mouse[1]),t.extent,G))},!0).on("mouseup.zoom",function(){n.on("mousemove.zoom mouseup.zoom",null),e.dragEnable(i.event.view,t.moved),z(),t.end()},!0),o=i.mouse(this),u=i.event.clientX,h=i.event.clientY;e.dragDisable(i.event.view),c(),t.mouse=[o,this.__zoom.invert(o)],r.interrupt(this),t.start()}}function b(){if(V.apply(this,arguments)){var n=this.__zoom,e=i.mouse(this),o=n.invert(e),r=n.k*(i.event.shiftKey?.5:2),u=P(_(s(n,r),e,o),I.apply(this,arguments),G);z(),H>0?i.select(this).transition().duration(H).call(k,u,e):i.select(this).call(t.transform,u)}}function Y(){if(V.apply(this,arguments)){var t,n,e,o,u=x(this,arguments),h=i.event.changedTouches,s=h.length;for(c(),n=0;n<s;++n)e=h[n],o=[o=i.touch(this,h,e.identifier),this.__zoom.invert(o),e.identifier],u.touch0?u.touch1||(u.touch1=o):(u.touch0=o,t=!0);if(E&&(E=clearTimeout(E),!u.touch1))return u.end(),void((o=i.select(this).on("dblclick.zoom"))&&o.apply(this,arguments));t&&(E=setTimeout(function(){E=null},Z),r.interrupt(this),u.start())}}function X(){var t,n,e,o,r=x(this,arguments),u=i.event.changedTouches,h=u.length;for(z(),E&&(E=clearTimeout(E)),t=0;t<h;++t)n=u[t],e=i.touch(this,u,n.identifier),r.touch0&&r.touch0[2]===n.identifier?r.touch0[0]=e:r.touch1&&r.touch1[2]===n.identifier&&(r.touch1[0]=e);if(n=r.that.__zoom,r.touch1){var c=r.touch0[0],a=r.touch0[1],f=r.touch1[0],l=r.touch1[1],m=(m=f[0]-c[0])*m+(m=f[1]-c[1])*m,p=(p=l[0]-a[0])*p+(p=l[1]-a[1])*p;n=s(n,Math.sqrt(m/p)),e=[(c[0]+f[0])/2,(c[1]+f[1])/2],o=[(a[0]+l[0])/2,(a[1]+l[1])/2]}else{if(!r.touch0)return;e=r.touch0[0],o=r.touch0[1]}r.zoom("touch",P(_(n,e,o),r.extent,G))}function q(){var t,n,e=x(this,arguments),o=i.event.changedTouches,r=o.length;for(c(),D&&clearTimeout(D),D=setTimeout(function(){D=null},Z),t=0;t<r;++t)n=o[t],e.touch0&&e.touch0[2]===n.identifier?delete e.touch0:e.touch1&&e.touch1[2]===n.identifier&&delete e.touch1;e.touch1&&!e.touch0&&(e.touch0=e.touch1,delete e.touch1),e.touch0?e.touch0[1]=this.__zoom.invert(e.touch0[0]):e.end()}var E,D,V=a,I=f,P=d,S=m,j=p,B=[0,1/0],G=[[-1/0,-1/0],[1/0,1/0]],H=250,K=o.interpolateZoom,O=[],W=n.dispatch("start","zoom","end"),Z=500,A=150,C=0;return t.transform=function(t,n){var e=t.selection?t.selection():t;e.property("__zoom",l),t!==e?k(t,n):e.interrupt().each(function(){x(this,arguments).start().zoom(null,"function"==typeof n?n.apply(this,arguments):n).end()})},t.scaleBy=function(n,e){t.scaleTo(n,function(){return this.__zoom.k*("function"==typeof e?e.apply(this,arguments):e)})},t.scaleTo=function(n,e){t.transform(n,function(){var t=I.apply(this,arguments),n=this.__zoom,o=g(t),i=n.invert(o),r="function"==typeof e?e.apply(this,arguments):e;return P(_(s(n,r),o,i),t,G)})},t.translateBy=function(n,e,o){t.transform(n,function(){return P(this.__zoom.translate("function"==typeof e?e.apply(this,arguments):e,"function"==typeof o?o.apply(this,arguments):o),I.apply(this,arguments),G)})},t.translateTo=function(n,e,o){t.transform(n,function(){var t=I.apply(this,arguments),n=this.__zoom,i=g(t);return P(y.translate(i[0],i[1]).scale(n.k).translate("function"==typeof e?-e.apply(this,arguments):-e,"function"==typeof o?-o.apply(this,arguments):-o),t,G)})},w.prototype={start:function(){return 1==++this.active&&(this.index=O.push(this)-1,this.emit("start")),this},zoom:function(t,n){return this.mouse&&"mouse"!==t&&(this.mouse[1]=n.invert(this.mouse[0])),this.touch0&&"touch"!==t&&(this.touch0[1]=n.invert(this.touch0[0])),this.touch1&&"touch"!==t&&(this.touch1[1]=n.invert(this.touch1[0])),this.that.__zoom=n,this.emit("zoom"),this},end:function(){return 0==--this.active&&(O.splice(this.index,1),this.index=-1,this.emit("end")),this},emit:function(n){i.customEvent(new u(t,n,this.that.__zoom),W.apply,W,[n,this.that,this.args])}},t.wheelDelta=function(n){return arguments.length?(S="function"==typeof n?n:v(+n),t):S},t.filter=function(n){return arguments.length?(V="function"==typeof n?n:v(!!n),t):V},t.touchable=function(n){return arguments.length?(j="function"==typeof n?n:v(!!n),t):j},t.extent=function(n){return arguments.length?(I="function"==typeof n?n:v([[+n[0][0],+n[0][1]],[+n[1][0],+n[1][1]]]),t):I},t.scaleExtent=function(n){return arguments.length?(B[0]=+n[0],B[1]=+n[1],t):[B[0],B[1]]},t.translateExtent=function(n){return arguments.length?(G[0][0]=+n[0][0],G[1][0]=+n[1][0],G[0][1]=+n[0][1],G[1][1]=+n[1][1],t):[[G[0][0],G[0][1]],[G[1][0],G[1][1]]]},t.constrain=function(n){return arguments.length?(P=n,t):P},t.duration=function(n){return arguments.length?(H=+n,t):H},t.interpolate=function(n){return arguments.length?(K=n,t):K},t.on=function(){var n=W.on.apply(W,arguments);return n===W?t:n},t.clickDistance=function(n){return arguments.length?(C=(n=+n)*n,t):Math.sqrt(C)},t},t.zoomTransform=s,t.zoomIdentity=y,Object.defineProperty(t,"__esModule",{value:!0})});
     </script>
-<script type="text/javascript" name="graph.js">
-        
-        function parseGraph(srcLines) {
-            var g = {};
-            for (var i = 0; i < srcLines.length; i++) {
-                var matches = srcLines[i].match(edgePattern);
-                if (matches && matches.length >= 3) {
-                    var node1 = matches[1], node2 = matches[2];
-                    var edgeId = srcLines[i].match(idPattern)[1];
-                    g[node1] = g[node1] || {};
-                    g[node2] = g[node2] || {};
-                    g[node1][node2] = g[node1][node2] || new Set();
-                    g[node2][node1] = g[node2][node1] || new Set();
-                    g[node1][node2].add(edgeId);
-                    g[node2][node1].add(edgeId);
-                }
-            }
-            return g;
-        }
-        
-        function parseDirectedGraph(srcLines) {
-            var g = {};
-            for (var i = 0; i < srcLines.length; i++) {
-                var matches = srcLines[i].match(edgePattern);
-                if (matches && matches.length >= 3) {
-                    var node1 = matches[1], node2 = matches[2];
-                    var edgeId = srcLines[i].match(idPattern)[1];
-                    g[node1] = g[node1] || {};
-                    g[node1][node2] = g[node1][node2] || new Set();
-                    g[node1][node2].add(edgeId);
-                }
-            }
-            return g;
-        }
-        
-        function toGraph(srcLines) {
-            var g = {};
-            for (var i = 0; i < srcLines.length; i++) {
-                var matches = srcLines[i].match(edgePattern);
-                if (matches && matches.length >= 3) {
-                    var node1 = matches[1], node2 = matches[2];
-                    g[node1] = g[node1] || {};
-                    g[node2] = g[node2] || {};
-                    g[node1][node2] = g[node1][node2] || new Set();
-                    g[node2][node1] = g[node2][node1] || new Set();
-                    //edgeId = srcLines[i].match(idPattern)[1];
-                    //g[node1][node2].add(edgeId);
-                    //g[node2][node1].add(edgeId);
-                }
-            }
-            return g;
-        }
-        
-        function calculateComponents(g) {
-            var components = 0;
-            var visited = {};
-            for (var i in g) {
-                var subGraph = dfs(g, i, visited);
-                if (subGraph != null) {
-                    components++;
-                    //for (var edge in subGraph) {
-                        //console.log(subGraph[edge], subGraph)
-                        //components[subGraph[edge]] = subGraph.length;
-                        
-                    //}
-                }
-            }
-            return components;
-        }
-        
-        function dfs(g, node, visited) {
-            if (visited[node]) return null;
-            var subGraph = [];
-            visited[node] = true;
-            for (var i in g[node]) {
-                if (i == node) {
-                    subGraph = subGraph.concat(Array.from(g[node][i]));
-                    continue
-                }
-                var result = dfs(g, i, visited);
-                if (result == null) continue;
-                subGraph = subGraph.concat(Array.from(g[node][i]));
-                subGraph = subGraph.concat(result);
-            }
-            return subGraph;
-        }
+<script type="text/javascript" name="draw_graph.js">
+        var MAX_PARALLEL_EDGES_LARGE_GRAPH = 4;
+        var MAX_PARALLEL_EDGES = 10;
         
         function render(doRefresh, doAnimate, doRefreshTables) {
-            transition1 = d3.transition()
-                .ease(d3.easeLinear)
-                .delay(0)
-                .duration(timeTransition);
-        
             d3.select("#graph > svg").attr("display", "none");
             if (doRefresh) {
-                //    .remove()
                 graphviz.resetZoom();
                 graphviz.attributer(attributer);
-                //.width(1000).fit(true).zoom(true);
             }
+            console.log('finish reset', Date.now())
             graphviz.on('end', function() {
+        
+            console.log('finish render1', Date.now())
                 d3.select('#graph0').select("title").text("");
                 if (!$('#show_labels')[0].checked)
                     d3.selectAll('.edge').selectAll('text').style('display','none');
@@ -4504,6 +4423,8 @@
                 d3.select("#graph > svg").attr("display", "");
                 d3.selectAll(".node")
                     .attr("id", function(d) { return "node" + d.key; });
+        
+                // refresh tables in the left pane
                 buildVertexTable();
                 buildEdgesTable();
                 if (selectedMethod !== "ref")
@@ -4512,12 +4433,15 @@
                     buildContigsTable();
                 if (doRefreshTables)
                     buildComponentsTable();
+        
                 setupAutocompleteSearch();
                 $('#saveBtns').show();
+        
                 highlightChromEdges();
                 contigEdges = highlightContigEdges();
                 highlightNodes();
                 if (selectedEdge) {
+                    // preserve edge selection
                     d3.selectAll('#' + selectedEdge).classed('selected', true);
                     d3.selectAll('#edgerow' + selectedEdge.replace('e', '').replace('rc', '')).classed('selected', true);
                     document.getElementById('node_info').innerHTML = edgeDescription;
@@ -4527,6 +4451,7 @@
                 else if (contigEdges.length > 0) zoomToElement(contigEdges[0]);
                 if (selectedMatchEdge) d3.selectAll('#' + selectedMatchEdge).classed('selected', false);
                 if (nodeToSelect) {
+                    // preserve node selection
                     selectedNode = nodeToSelect;
                     selectNode(selectedNode);
                     nodeToSelect = "";
@@ -4534,7 +4459,7 @@
                 }
                 nodes = d3.selectAll('.node');
                 nodes.attr('pointer-events', 'all')
-                
+        
                 nodes
                     .on("click", function (e) {
                         deselectAll();
@@ -4544,6 +4469,7 @@
                 });
                 nodes
                     .on("dblclick", function (e) {
+                        // edges collapsed into a node can be expanded by a double-click on the node
                         selectedNode = d3.select(this).select('title').text();
                         clusterNode = clusterCenters[selectedNode] || selectedNode;
                         if (expandedNodes.has(clusterNode)) {
@@ -4570,10 +4496,11 @@
                 edges = d3.selectAll('.edge');
                 edges
                     .on("mouseenter", function (e) {
-                        d3.select(this).classed("focused", true);
+                        var edgeWidth = d3.select(this).select('path').attr('stroke-width');
+                        d3.select(this).select('path').attr("stroke-width", parseInt(edgeWidth) + 4);
                         var edgeId = d3.select(this).attr('id');
-                        var curEdge = edgeDataFull[edgeId] || edgeDataFull[edgeId];
-                        if (curEdge) {
+                        var curEdge = defEdgeData[edgeId] || defEdgeData[edgeId];
+                        if (curEdge) { // add edge tooltip
                             tooltipDiv.transition()
                                 .delay(500)
                                 .duration(200)
@@ -4594,7 +4521,8 @@
                         }
                     })
                     .on("mouseleave", function (e) {
-                        d3.select(this).classed("focused", false);
+                        var edgeWidth = d3.select(this).select('path').attr('stroke-width');
+                        d3.select(this).select('path').attr("stroke-width", parseInt(edgeWidth) - 4);
                         tooltipDiv.transition()
                          .duration(300)
                          .style("opacity", 0);
@@ -4604,20 +4532,26 @@
                     if (!d3.select(this).select('text').empty()) {
                         var edgeId = d3.select(this).attr('id');
                         if (edgeData[edgeId]) {
-                            curEdge = edgeDataFull[d3.select(this).attr('id')];
+                            curEdge = defEdgeData[d3.select(this).attr('id')];
                             selectEdge(d3.select(this).attr('id'), curEdge.id, curEdge.len, curEdge.cov, curEdge.mult);
                         }
-                        else selectEdge(d3.select(this).attr('id')); 
+                        else selectEdge(d3.select(this).attr('id'));
                     }
                     else {
                         selectEdge(d3.select(this).attr('id'));
                     }
                 });
+                console.log('finish render2', Date.now())
             });
-            graphTransition = doAnimate ? transition1 : d3.transition().duration(0);
+            graphTransition = doAnimate ? d3.transition()
+                                                .ease(d3.easeLinear)
+                                                .delay(0)
+                                                .duration(timeTransition)
+                                        : d3.transition().duration(0);
             graphviz
-                .tweenShapes(false)
-                .transition(transition1)
+                .tweenShapes(true)
+                .transition(graphTransition)
+                .totalMemory(104857600)  // set memory limit to 100Mb instead of 16Mb by default
                 .dot(dot)
                 .render();
         
@@ -4633,14 +4567,14 @@
                     nodeId = d3.select(this).select('title').text();
                     return unbalancedNodes.has(nodeId);
                 })
-                .classed('unbalanced_node', true);
+                .classed('unbalanced_node', true); // highlight nodes with differences in indegree/outdegree with red
             }
-            nodes = hangNodes[componentN] ? new Set(hangNodes[componentN]) : new Set();
+            var leaves = leafNodes[componentN] ? new Set(leafNodes[componentN]) : new Set();
             d3.selectAll('.node').filter(function (e) {
                 nodeId = d3.select(this).select('title').text();
-                return nodes.has(nodeId);
+                return leaves.has(nodeId);
             })
-            .classed('hanging_node', true);
+            .classed('hanging_node', true); // highlight nodes with zero indegree or outdegree with black
             if (selectedMethod == "repeat") {
                 nodes = new Set(repeatConnectNodes[componentN]);
                 d3.selectAll('.node').filter(function (e) {
@@ -4656,7 +4590,7 @@
             .classed('part_node', true)
             .select('ellipse')
             .attr('rx', 13)
-            .attr('ry', 13);
+            .attr('ry', 13); // in large graph, highlight nodes representing the hidden parts of the graph
             d3.selectAll('.node').filter(function (e) {
                 nodeId = d3.select(this).select('title').text();
                 return newNodes.has(nodeId);
@@ -4666,7 +4600,7 @@
             .attr('style', function() {
                 nodeId = d3.select(this.parentNode).select('title').text();
                 if (nodeColors[nodeId]) return 'fill: ' + nodeColors[nodeId].replace(/\d+$/, "");
-            });
+            }); // highlight nodes with collapsed edges
         }
         
         function highlightContigEdges() {
@@ -4679,6 +4613,10 @@
             $('#uniqueEdgesWarning').hide();
             var realEdges = [];
             if (selectedContig) {
+                // display graph path for selected contig
+                // mark hidden edges with gray color
+                // add multiplicity to repetitive edges
+        
                 graphPath = "";
                 selectedEdges = new Set();
                 var graphEdges = [];
@@ -4689,22 +4627,22 @@
                         var edgeElId = edge[0] == '-' ? 'rc' + edge.substr(1) : 'e' + edge;
                         var edgeId = getEdgeElement(edgeData[edgeElId]);
                         //console.log(edgeId, edgeElId)
-                        visEdgeId = d3.select('#' + edgeId).empty() ? edgeElId : edgeId; 
+                        visEdgeId = d3.select('#' + edgeId).empty() ? edgeElId : edgeId;
                         if (!d3.select('#' + visEdgeId).empty()) {
                              realEdges.push(edgeId);
-                             if (edgeDataFull[edgeElId].unique)
+                             if (defEdgeData[edgeElId].unique)
                                 graphEdges.push('<b>' + edge + '</b>');
                              else
-                                graphEdges.push(edge + ' (' + edgeDataFull[edgeElId].mult + ')');
+                                graphEdges.push(edge + ' (' + defEdgeData[edgeElId].mult + ')');
                              d3.select('#' + visEdgeId).selectAll('path')
                                .filter(function(d) {return d3.select(this).attr('stroke') !== '#ffffff'; }).classed('contig_selected',true);
                              d3.select('#' + visEdgeId).selectAll('polygon').classed('contig_selected',true);
                         }
                         else {
-                             if (edgeDataFull[edgeElId].unique)
-                                graphEdges.push('<span class="gray_text"><b>' + edge + '</b></span>');
+                             if (defEdgeData[edgeElId].unique)
+                                graphEdges.push('<span class="hidden_edge_text"><b>' + edge + '</b></span>');
                              else
-                                graphEdges.push('<span class="gray_text">' + edge + '</span> (' + edgeDataFull[edgeElId].mult + ')');
+                                graphEdges.push('<span class="hidden_edge_text">' + edge + '</span> (' + defEdgeData[edgeElId].mult + ')');
                             isHiddenEdges = true;
                         }
                         selectedEdges.add(edge);
@@ -4712,15 +4650,17 @@
                     else graphEdges.push(edge)
                 }
                 if (graphEdges.length > 0) {
+                    // format a graph path
                     prevEdge = null;
                     edgeCount = 1;
                     for (i = graphEdges.length - 1; i > -1; i--) {
                         edge = graphEdges[i];
                         if (prevEdge == edge) edgeCount++;
                         if (prevEdge && (prevEdge != edge || i == 0)) {
+                            // if an edge repeats more than 2 times, print only one occurence
                             if (edgeCount <= 2 && prevEdge) {
                                 graphPath = prevEdge + graphPath;
-                            } 
+                            }
                             else graphPath = prevEdge + ' (' + edgeCount + ' times)' + graphPath;
                             if (i > 0 && graphEdges.length > 1) graphPath = ' &#8209;> ' + graphPath;
                             edgeCount = 1;
@@ -4749,10 +4689,11 @@
             var firstEdge;
             if (!isNaN(parseInt(selectedChrom))) {
                 selectedEdges = new Set();
+                // highlight edges mapped to the selected chromosome
                 for (i = 0; i < chromEdges.length; i++) {
                     var edgeId = chromEdges[i];
                     var edgeElId = getEdgeElement(edgeData[edgeId]);
-                    visEdgeId = d3.select('#' + edgeId).empty() ? edgeElId : edgeId; 
+                    visEdgeId = d3.select('#' + edgeId).empty() ? edgeElId : edgeId;
                     if (!d3.select('#' + visEdgeId).empty()) selectedEdges.add(edge);
                 }
             }
@@ -4775,6 +4716,7 @@
             for (i = 0; i < dotSrcLines.length;) {
                 var matches = dotSrcLines[i].match(idPattern);
                 if (matches && matches.length > 1 && (selectedMethod == "ref" || selectedMethod == "contig") && !$('#adj_edges_checkbox')[0].checked) {
+                    // hide adjacent edges in repeat-focused and reference-based modes (if corresponding checkbox is not checked)
                     edgeId = matches[1];
                     edgeRealId = edgeInfo[edgeId] ? edgeId : (edgeData[edgeId] ? edgeData[edgeId].el_id : edgeId);
                     if (selectedMethod == "ref") {
@@ -4821,6 +4763,7 @@
                 }
                 else {
                     if ($('#collapse_repeats_checkbox')[0].checked) {
+                        // store repetitive edges
                         if (baseLoopEdgeDict[edgeId]) {
                             var repeatEdgesCount = 0;
                             for (var k = 0; k < baseLoopEdgeDict[edgeId].length; k++) {
@@ -4831,6 +4774,7 @@
                                     edgesColor[edge.id] = dotSrcLines[i].match(colorPattern)[1];
                                 }
                             }
+                            //collapse if all loop edges are repetitive
                             if (repeatEdgesCount == baseLoopEdgeDict[edgeId].length) repeatEdges.add(edgeId);
                         }
                         else {
@@ -4857,7 +4801,7 @@
             }
             var collapsedNodes = {};
             newNodes = new Set();
-            var strongEdges = {};
+            // store edges that should be collapsed based on their repetitiveness or length/depth thresholds
             for (node in graph) {
                 for (i = 0; i < Object.keys(graph[node]).length; i++) {
                     edgesToCollapse = 0;
@@ -4884,30 +4828,25 @@
                         }
                     }
                     graph[node][node2] = filteredEdges;
-                    //console.log(filteredEdges)
+        
                     if (edgesToCollapse && node != node2 && !expandedNodes.has(node) && !expandedNodes.has(node2)) {
-                            collapsedNodes[node] = collapsedNodes[node] || new Set();
-                            collapsedNodes[node].add(node2);
-                    }
-                    else if (edgesToCollapse == 0) {
-                        //strongEdges[node] = strongEdges[node] || {};
-                        //strongEdges[node][node2] = curEdges;
+                        collapsedNodes[node] = collapsedNodes[node] || new Set();
+                        collapsedNodes[node].add(node2);
                     }
                 }
             }
-            //console.log(collapsedNodes,strongEdges)
+        
             newData = {};
             replacementDict = {};
             nodeColors = {};
             collapsedEdges = {};
+            // iteratively collapse stored edges
             for (node in collapsedNodes) {
                 edgeS = replacementDict[node] ? replacementDict[node] : node;
                 collapsedEdges[edgeS] = collapsedEdges[edgeS] || new Set();
-                for (let node2 of collapsedNodes[node]) {  
+                for (let node2 of collapsedNodes[node]) {
                     edgeE = replacementDict[node2] ? replacementDict[node2] : node2;
                     if (edgeS == edgeE || !graph[edgeE]) continue;
-                    if ((strongEdges[edgeS] && strongEdges[edgeS][edgeE]) || (strongEdges[edgeE] && strongEdges[edgeE][edgeS]))
-                        continue;
                     newNodes.add(edgeS);
                     for (i = 0; i < Object.keys(graph[edgeE]).length;) {
                         pairNode = Object.keys(graph[edgeE])[i];
@@ -4948,12 +4887,6 @@
                         if (replacementDict[e1] == edgeE)
                             replacementDict[e1] = edgeS
                     }
-                    for (e1 in strongEdges) {
-                        if (strongEdges[e1][node2])
-                            strongEdges[e1][edgeS] = strongEdges[e1][node2];
-                        if (strongEdges[e1][edgeE])
-                            strongEdges[e1][edgeS] = strongEdges[e1][edgeE];
-                    }
                 }
             }
             clusterNodeSizeDict = {};
@@ -4963,21 +4896,70 @@
             dotSrcLines = ['digraph {','graph [pad="0.5", ranksep=1,nodesep=0.5];', 'node [shape = circle, label = "", height = 0.15];'];
             newEdges = new Set();
             loopEdges = {};
+            parallelEdgeDict = {};
+            var edgesToLeaves = {};
+            var parallelEdges = {};
+            var leaves = leafNodes[componentN] ? new Set(leafNodes[componentN]) : new Set();
+            // if more than 4 parallel edges between 2 nodes or between 1 node and several leaf nodes, render them as 1 edge
+        
             for (node in graph) {
+                edgesToLeaves[node] = edgesToLeaves[node] || new Set();
                 for (i = 0; i < Object.keys(graph[node]).length; i++) {
                     pairNode = Object.keys(graph[node])[i];
-                    for (let edgeId of graph[node][pairNode]) {   
-                        if (node == pairNode) {
-                            loopEdges[node] = loopEdges[node] || [];
-                            loopEdges[node].push(edgeId)
+                    edgesToLeaves[pairNode] = edgesToLeaves[pairNode] || new Set();
+                    var parallelVisibleEdges = new Set();
+                    if (node != pairNode && graph[node][pairNode].size > MAX_PARALLEL_EDGES_LARGE_GRAPH) {
+                        for (let edgeId of graph[node][pairNode]) {
+                            if (!isEdgeHidden(node, pairNode, edgeId)) {
+                                parallelVisibleEdges.add(edgeId);
+                            }
                         }
-                        else newEdges.add(edgeId);
+                    }
+                    if (parallelVisibleEdges.size > MAX_PARALLEL_EDGES_LARGE_GRAPH) {
+                        var parallelEdgeId = 'parallel' + Math.min(parseInt(node.replace(/[^0-9]/g,'')), parseInt(pairNode.replace(/[^0-9]/g,''))) + '_' +
+                            Math.max(parseInt(node.replace(/[^0-9]/g,'')), parseInt(pairNode.replace(/[^0-9]/g,'')));
+                        parallelEdges[parallelEdgeId] = parallelVisibleEdges;
+                    }
+                    else {
+                        for (let edgeId of graph[node][pairNode]) {
+                            if (node == pairNode) {
+                                loopEdges[node] = loopEdges[node] || [];
+                                loopEdges[node].push(edgeId)
+                            }
+                            else {
+                                newEdges.add(edgeId);
+                                if (node != pairNode && leaves.has(pairNode)) edgesToLeaves[node].add(edgeId);
+                                else if (node != pairNode && leaves.has(node)) edgesToLeaves[pairNode].add(edgeId);
+                            }
+                        }
                     }
                 }
             }
-            //console.log(newEdges,graph)
-            
-            // find loop edges
+            if (newEdges.size > 100) {
+                for (let node in edgesToLeaves) {
+                    if (edgesToLeaves[node].size > MAX_PARALLEL_EDGES_LARGE_GRAPH) {
+                        var parallelEdgeId = 'parallel' + node;
+                        parallelEdgeDict[parallelEdgeId] = Array.from(edgesToLeaves[node]);
+                        for (var j = 0; j < parallelEdgeDict[parallelEdgeId].length; j++) {
+                            newEdges.delete(parallelEdgeDict[parallelEdgeId][j]);
+                        }
+                        newEdges.add(parallelEdgeId);
+                    }
+                }
+            }
+            for (let parallelEdgeId in parallelEdges) {
+                if (newEdges.size > 100 || parallelEdges[parallelEdgeId].size > MAX_PARALLEL_EDGES) {
+                    parallelEdgeDict[parallelEdgeId] = Array.from(parallelEdges[parallelEdgeId]);
+                    newEdges.add(parallelEdgeId);
+                }
+                else {
+                    var it = parallelEdges[parallelEdgeId].values();
+                    for (var nextId=it.next().value; nextId=it.next().value;) {
+                        newEdges.add(nextId);
+                    }
+                }
+            }
+            // find new loop edges
             loopEdgeDict = {};
             for (node in loopEdges) {
                 if (loopEdges[node]) {
@@ -4990,12 +4972,7 @@
                             newEdgesDict[edgeId] = loopId;
                             source = newData[edgeId] ? newData[edgeId][0] : edge.s;
                             end = newData[edgeId] ? newData[edgeId][1] : edge.e;
-                            if (expandedNodes.has(source) && expandedNodes.has(end))
-                                isWrong = false;
-                            else if (repeatEdges.has(edge.id) || hiddenEdges.has(edge.id) || !checkEdgeWithThresholds(edge.id))
-                                isWrong = true;
-                            else isWrong = false;
-                            if (!isWrong) {
+                            if (!isEdgeHidden(source, end, edge.id)) {
                                 loopEdgeDict[loopId].add(edgeId);
                                 diGraph[node] = diGraph[node] || {};
                                 diGraph[node][node] = diGraph[node][node] || {};
@@ -5007,12 +4984,7 @@
                                 newEdgesDict[baseLoopEdgeDict[edgeId][k]] = loopId;
                                 edge = edgeData[baseLoopEdgeDict[edgeId][k]];
                                 source = newData[edgeId] ? newData[edgeId][0] : edge.s;
-                                if (expandedNodes.has(source))
-                                    isWrong = false;
-                                else if (repeatEdges.has(edge.id) || hiddenEdges.has(edge.id) || !checkEdgeWithThresholds(edge.id))
-                                    isWrong = true;
-                                else isWrong = false;
-                                if (!isWrong) {
+                                if (!isEdgeHidden(source, source, edge.id)) {
                                     loopEdgeDict[loopId].add(baseLoopEdgeDict[edgeId][k]);
                                     diGraph[node] = diGraph[node] || {};
                                     diGraph[node][node] = diGraph[node][node] || {};
@@ -5026,7 +4998,8 @@
                 }
             }
         
-            for (let edgeId of newEdges) {   
+            // create new DOT
+            for (let edgeId of newEdges) {
                 edge = edgeData[edgeId];
                 if (edge) {
                     source = newData[edgeId] ? newData[edgeId][0] : edge.s;
@@ -5046,7 +5019,14 @@
                     var s = '"' + source + '" -> "' + end + '" [label="' + label + '",id = "' + edgeId + '", color="' + edge.color + '"];';
                     dotSrcLines.push(s);
                 }
-                else if (loopEdgeDict[edgeId].length > 0) {
+                else if (parallelEdgeDict[edgeId] && parallelEdgeDict[edgeId].length > 0) {
+                    var originalEdgeId = parallelEdgeDict[edgeId][0];
+                    source = newData[originalEdgeId] ? newData[originalEdgeId][0] : edgeData[originalEdgeId].s;
+                    end = newData[originalEdgeId] ? newData[originalEdgeId][1] : edgeData[originalEdgeId].e;
+                    var s = '"' + source + '" -> "' + end + '" [label="",id = "' + edgeId + '", color="black:white:black",penwidth=8,arrowType="tee"];';
+                    dotSrcLines.push(s);
+                }
+                else if (loopEdgeDict[edgeId] && loopEdgeDict[edgeId].size > 0) {
                     curEdges = 0;
                     var loopNode;
                     var filterEdges = [];
@@ -5066,12 +5046,14 @@
                                 s = '"' + loopNode + '" -> "' + loopNode + '" [label="' + label + '",id = "' + edgeId + '", color="' + edge.color + '"];';
                             }
                         }
+                        // special case: two loop edges are forward and reverse complement components of the same edge
                         else if (filterEdges.length == 2 && filterEdges[0].name.replace('-', '') === filterEdges[1].name.replace('-', '')) {
                             edge = filterEdges[0];
                             label = edge.len ? 'id ' + edge.name.replace('-', '') + '\\l' + edge.len + 'k ' + edge.cov + 'x' : "";
                             s = '"' + loopNode + '" -> "' + loopNode + '" [label="' + label + '",id = "' + edgeId + '", color="' +
                                 edge.color + '",penwidth=5];';
                         }
+                        // if there are several loop edges, hide their labels and display as one
                         else {
                             s = '"' + loopNode + '" -> "' + loopNode + '" [label="",id = "' + edgeId + '", color="' +
                                 (loopColors.size === 1 ? loopColors.values().next().value : "black") + '",penwidth=5];';
@@ -5085,22 +5067,17 @@
             var colorErrorEdges = document.getElementById('color_select').selectedIndex == 2;
             var colorCovEdges = document.getElementById('color_select').selectedIndex == 3;
         
-            //components = calculateComponents(toGraph(dotSrcLines));
             var filteredNodes = new Set();
+            // store nodes that are contained in a new DOT
             for (i = 0; i < dotSrcLines.length;) {
                 var matches = dotSrcLines[i].match(idPattern);
                 if (matches) {
                     edgeId = matches[1];
-                    //if (components[edgeId] < minComponents) {
-                    //    dotSrcLines.splice(i, 1);
-                    //}
-                    //else {
                     var matches = dotSrcLines[i].match(edgePattern);
                     var node1 = matches[1], node2 = matches[2];
                     filteredNodes.add(node1);
                     filteredNodes.add(node2);
                     i++;
-                    //}
                 }
                 else {
                     i++;
@@ -5112,6 +5089,7 @@
                 $('#unique_warning').show();
             }
             else {
+                // if there are less than 300 edges, show adjacent edges if they are satisfied with length/depth thresholds
                 $('#unique_warning').hide();
                 for (i = 0; i < uniqueEdges.length; i++) {
                     var edgeMatches = uniqueEdges[i].match(edgePattern);
@@ -5128,18 +5106,17 @@
                                     node1 = newEdges[edgeId][0];
                                     node2 = newEdges[edgeId][1];
                                 }
-                                newData[edgeId] = [node1, node2]
+                                newData[edgeId] = [node1, node2];
                                 label = (edge.len && edge.name.indexOf('part') == -1) ? 'id ' + edge.name + '\\l' + edge.len + 'k ' + edge.cov +'x' : "";
                                 var s = '"' + node1 + '" -> "' + node2 + '" [label="' + label + '",id = "' + edgeId + '", color="' + edge.color + '"];';
-                                //console.log(s)
-                                //dotSrcLines.push(s);
+        
                                 flankingEdges.push(s);
                                 graph[node1] = graph[node1] || {};
                                 graph[node1][node2] = graph[node1][node2] || new Set();
                                 graph[node2] = graph[node2] || {};
                                 graph[node2][node1] = graph[node2][node1] || new Set();
-                                graph[node1][node2].add(edgeId)
-                                graph[node2][node1].add(edgeId)
+                                graph[node1][node2].add(edgeId);
+                                graph[node2][node1].add(edgeId);
                             }
                         }
                     }
@@ -5150,6 +5127,8 @@
                 dotSrcLines = dotSrcLines.concat(flankingEdges);
                 dotSrcLines.push("}");
             }
+        
+            // color graph edges depending on settings
             graph = parseGraph(dotSrcLines);
             for (i = 0; i < dotSrcLines.length; i++) {
                 var matches = dotSrcLines[i].match(lenCovPattern);
@@ -5157,42 +5136,47 @@
                     edge_len = parseFloat(matches[1]);
                     coverage = parseInt(matches[2]);
                     var edge_width = 2;
-                    var multiplicity = coverage / median_cov;
+                    var multiplicity = coverage / medianCov;
                     multiplicity = multiplicity < 1.75 ? 1 : Math.round(multiplicity);
-                    if (multiplicity > 10) edge_width = 9;
+                    if (multiplicity > 10) edge_width = 9; // set edge width based on inferred miltiplicity
                     else if (multiplicity > 5) edge_width = 7;
                     else if (multiplicity > 1) edge_width = 5;
                     //else edge_width = multiplicity;
                     dotSrcLines[i] = dotSrcLines[i].replace("]", ", penwidth=" + edge_width + " ]");
                     if (colorChromEdges) {
+                        // color graph edges based on their mappings to the reference genome
                         var matches = dotSrcLines[i].match(idPattern);
                         edgeId = matches[1];
                         edgeRealId = (edgeInfo[edgeId] || !edgeData[edgeId]) ? edgeId : edgeData[edgeId].el_id;
                         var color = 'black';
-                        if (edgeDataRef[edgeRealId] && edgeDataRef[edgeRealId].chrom)
-                            color = edgeDataRef[edgeRealId].chrom;
+                        if (refEdgeData[edgeRealId] && refEdgeData[edgeRealId].chrom) {
+                            color = refEdgeData[edgeRealId].chrom;
+                        }
                         var oldColor = dotSrcLines[i].match(colorPattern);
         
                         dotSrcLines[i] = dotSrcLines[i].replace(oldColor[0], 'color="' + color + '"');
                     }
                     else if (colorCovEdges) {
-                        var color = 'red';
-                        if (coverage >= q3_cov)
+                        // color graph edges based on their coverage
+                        var color = 'red'; // color low covered edges as red
+                        if (coverage >= q3_cov)  // color high covered edges as green
                             color = 'green';
-                        else if (coverage >= median_cov)
+                        else if (coverage >= medianCov)
                             color = '#d39200';
         
                         var oldColor = dotSrcLines[i].match(colorPattern);
-                        if (dotSrcLines[i].indexOf(' = "black"') == -1) {  // use parallel edges for repeat
+                        if (dotSrcLines[i].indexOf(' = "black"') == -1) {  // use parallel edges to display repeat edges
                             dotSrcLines[i] = dotSrcLines[i].replace(oldColor[1], color + ':white:' + color);
                         }
                         else dotSrcLines[i] = dotSrcLines[i].replace(oldColor[1], color);
                     }
                     else if (colorErrorEdges) {
+                        // color graph edges based on the presence of assembly errors
                         var color = "green";
                         var matches = dotSrcLines[i].match(idPattern);
                         edgeId = matches[1];
                         edgeRealId = (edgeInfo[edgeId] || !edgeData[edgeId]) ? edgeId : edgeData[edgeId].el_id;
+                        // highlight an edge with red color if it is in a misassembled contig and with dark red color if it contains a misassembly itself
                         if (edgeData[edgeRealId] && edgeData[edgeRealId].errors.length > 0)
                             color = "#b90000:white:#b90000";
                         else if (edgeInfo[edgeRealId]) {
@@ -5202,6 +5186,7 @@
                                     break;
                                 }
                         }
+                        // if errors are not found, repeat the check for reverse complement edge
                         if (color === "green") {
                             edgeRealId = edgeRealId[0] == "e" ? edgeRealId.replace("e", "rc") : edgeRealId.replace("rc", "e");
                             if (edgeData[edgeRealId] && edgeData[edgeRealId].errors.length > 0)
@@ -5224,6 +5209,14 @@
             render(doRefresh, doAnimate, doRefreshTables);
         }
         
+        function isEdgeHidden(source, end, edgeId) {
+            if (expandedNodes.has(source) && expandedNodes.has(end)) // check that the node is not expanded
+                return false;
+            else if (repeatEdges.has(edgeId) || hiddenEdges.has(edgeId) || !checkEdgeWithThresholds(edgeId))
+                return true;
+            return false;
+        }
+        
         function searchEdge(event) {
           var input, filter, table, tr, td, i;
           input = document.getElementById("searchEdgeBox");
@@ -5232,6 +5225,7 @@
           tr = table.getElementsByTagName("tr");
         
           for (i = 0; i < tr.length; i++) {
+              // filter edges in a table
             td = tr[i].getElementsByTagName("td")[0];
             if (td) {
               if (td.innerHTML.toUpperCase().indexOf(filterVal) > -1) {
@@ -5239,22 +5233,23 @@
               } else {
                 tr[i].style.display = "none";
               }
-            } 
+            }
           }
         }
         
         function getEdgeComponent(edgeId) {
+            // get the number of component containing the edge
             if (edgeData[edgeId])
                 edge = edgeData[edgeId];
-            else if (loopEdgeDict[edgeId]) 
+            else if (loopEdgeDict[edgeId])
                 edge = edgeData[loopEdgeDict[edgeId][0]];
             if (selectedMethod == "repeat")
                 edgeComponent = edge.rep_comp;
             else if (selectedMethod == "ref") {
-                edgeComponent =  edgeDataRef[edgeId].ref_comp;
+                edgeComponent = refEdgeData[edgeId].ref_comp;
             }
             else if (selectedMethod == "contig")
-                edgeComponent =  edgeDataRef[edgeId].contig_comp;
+                edgeComponent = refEdgeData[edgeId].contig_comp;
             else edgeComponent = edge.comp;
             return edgeComponent;
         }
@@ -5280,6 +5275,7 @@
         }
         
         function checkContigEdge(edge) {
+            // check whether the current contig contains the edge
             if (!edge) return false;
             var matchEdge = edge.name[0] === '-' ? edge.name.replace('-', '') : '-' + edge.name;
             var contigName = srcGraphs[componentN].contig;
@@ -5287,6 +5283,7 @@
         }
         
         function checkChromEdge(edgeId) {
+            // check whether the edge is mapped to the current reference chromosome
             return !edgeData[edgeId] || (!edgeMappingInfo || (edgeMappingInfo[edgeId] && edgeMappingInfo[edgeId].indexOf(curChrom) !== -1));
         }
         
@@ -5319,6 +5316,7 @@
                 source = newData[edgeId] ? newData[edgeId][0] : edge.s;
                 end = newData[edgeId] ? newData[edgeId][1] : edge.e;
             }
+            // check whether the edge is repetitive and should be shown
             if ($('#collapse_repeats_checkbox')[0].checked && !edgeData[edgeId].unique && !expandedNodes.has(source) && !expandedNodes.has(end))
                 return false;
             return true;
@@ -5335,18 +5333,19 @@
                 return false;
             if (!checkEdgeWithThresholds(edgeId))
                 return false;
-            if (selectedMethod == "default" && getEdgeComponent(edgeId) !== targetComponent)
+            if (selectedMethod == "default" && getEdgeComponent(edgeId) !== targetComponent)  // check whether the edge is in current graph component
                 return false;
             if (!checkRepeatEdgeId(edgeId))
                 return false;
             // if($('#break_checkbox')[0].checked && edgeData[edgeId].unique)
             //    return false;
-            if (selectedMethod == "ref" && (!edgeDataFull[edgeId] || !edgeMappingInfo[edge.id] || (targetComponent && edgeMappingInfo[edge.id].indexOf(targetComponent) === -1)))
+            if (selectedMethod == "ref" && (!defEdgeData[edgeId] || !edgeMappingInfo[edge.id] || (targetComponent && edgeMappingInfo[edge.id].indexOf(targetComponent) === -1)))
             {
                if (!$('#adj_edges_checkbox')[0].checked || !checkEdgeWithThresholds(edgeId))
                    return false;
             }
             if (selectedMethod == "contig") {
+                // check whether the contig contains the edge or the edge is adjacent to contig edges
                 var contigEdges = targetComponent ? contigInfo[targetComponent].edges : contigInfo[contigs[componentN]].edges;
                 var edgeName = edgeData[edgeId].name;
                 var edgeMatchName = edgeName[0] == '-' ? edgeName.replace('-', '') : '-' + edgeName;
@@ -5363,19 +5362,22 @@
             deselectAll();
             selectedEdge = edge;
             console.log(edge);
+            // select an edge and its reverse complement component
             selectedMatchEdge = selectedEdge.indexOf("rc") == -1 ? selectedEdge.replace('e', 'rc') : selectedEdge.replace('rc', 'e');
             if (d3.select('#' + selectedMatchEdge).empty()) selectedMatchEdge = null;
-            d3.select('#' + selectedEdge).classed('selected', true); 
+            d3.select('#' + selectedEdge).classed('selected', true);
             if (selectedMatchEdge)
                 d3.select('#' + selectedMatchEdge).classed('selected', true);
+        
+            // print all selected edges if they are shown (depends on options and thresholds)
             if (selectedEdge.lastIndexOf('loop', 0) === 0) {
                 edgeDescription = '<ul><b>Loop edges:</b>';
                 for (var k = 0; k < loopEdgeDict[selectedEdge].length; k++) {
                     var curLoopEdge = loopEdgeDict[selectedEdge][k];
                     if (checkEdge(curLoopEdge)) {
-                        edge = edgeDataFull[curLoopEdge];
+                        edge = defEdgeData[curLoopEdge];
         
-                        edgeDescription = edgeDescription + 
+                        edgeDescription = edgeDescription +
                                 '<li>Edge ID: ' + edge.name +
                                 ', length: '  + edge.len +
                                 'kb, coverage: '  + edge.cov + 'x, inferred multiplicity: '  + edge.mult;
@@ -5401,11 +5403,11 @@
                     }
                 }
             }
-            else if (uniqueEdgesDict[selectedEdge]) {
+            else if (parallelEdgeDict[selectedEdge]) {
                 edgeDescription = '<ul><b>Edges:</b>';
-                for (var k = 0; k < uniqueEdgesDict[selectedEdge].length; k++) {
-                    if (edgeDataFull[uniqueEdgesDict[selectedEdge][k]]) {
-                        edge = edgeDataFull[uniqueEdgesDict[selectedEdge][k]];
+                for (var k = 0; k < parallelEdgeDict[selectedEdge].length; k++) {
+                    if (defEdgeData[parallelEdgeDict[selectedEdge][k]]) {
+                        edge = defEdgeData[parallelEdgeDict[selectedEdge][k]];
         
                         edgeDescription = edgeDescription + 
                                 '<li>Edge ID: ' + edge.name +
@@ -5440,7 +5442,8 @@
                         chromPos = edgeData[selectedEdge].aligns && edgeData[selectedEdge].aligns[chrom] ? edgeData[selectedEdge].aligns[chrom] : chrom;
                         edgeDescription = edgeDescription + '<li onclick="changeToChromosome(' + chromN + ')"> ' + chromPos + '</li>';
                     }
-                    if (edgeData[selectedEdge].aligns) edgeDescription = edgeDescription + "Note: maximum top 3 alignments per chromosome are shown.<br/>";
+                    if (edgeData[selectedEdge].aligns && edgeMappingInfo[selectedEdge].length === 3)
+                        edgeDescription = edgeDescription + "Note: maximum top 3 alignments per chromosome are shown.<br/>";
                 }
                 if (edgeData[selectedEdge] && edgeData[selectedEdge].errors && edgeData[selectedEdge].errors.length > 0) {
                     edgeDescription = edgeDescription + '<br/><b>Misassembly breakpoints:</b>';
@@ -5464,6 +5467,7 @@
                 }
             }
             if (selectedMethod == "ref" && aligns) {
+                // highlight alignments of this edge to the reference
                 selectedAlignId = 'align_' + selectedEdge;
                 d3.selectAll('.align').classed("selected", false);
                 d3.selectAll('.' + selectedEdge).classed("selected", true);
@@ -5474,6 +5478,7 @@
         }
         
         function selectContig(selectedContig){
+            // switch to contig-based mode
             $('#wrongOptionsWarning').hide();
             $('#uniqueEdgesWarning').hide();
             contigComponent = null;
@@ -5506,6 +5511,7 @@
         }
                
         function selectChrom(chromName){
+            // switch to reference-based mode
             chromN = chromosomes.indexOf(chromName);
             chromEdges = chromosomesData[chromName];
             changeToChromosome(chromN);
@@ -5520,7 +5526,6 @@
 <script type="text/javascript" name="interface.js">
         function setupInterfaceBtns() { 
             var minLeftPanelHeight = 800;
-            console.log(window.innerHeight)
             
             addModeSwitch();
             if (window.innerHeight <= minLeftPanelHeight) {
@@ -5530,7 +5535,7 @@
             else {
                 document.getElementById("left_panel").style.height = (window.innerHeight - 80) + "px";
             }
-            // document.getElementById('title').innerHTML = capitalizeFirstLetter(title);
+        
             document.getElementById('max_cov_threshold').value = maxCoverage;
             document.getElementById('max_cov_threshold').onkeyup = function(event) {
                 setMaxCoverage(event, this);
@@ -5585,12 +5590,13 @@
                 }
             });
             $('#unbalanced_checkbox').on('change', function() {
-                highlightNodes();
+                highlightNodes();  // highlight nodes with non-zero balance with red
             });
         
             $('#adj_edges_option').hide();
         
             $('#default_mode').on("click",function(){
+                // change viewer to default mode
                 changeSplitMethod('default');
                 $('#default_mode').attr('disabled','disabled');
                 $('#repeat_mode').removeAttr('disabled');
@@ -5598,6 +5604,7 @@
                 $('#contig_mode').removeAttr('disabled');
             });
             $('#ref_mode').on("click",function(){
+                // change viewer to ref-based mode
                 changeSplitMethod('ref');
                 $('#default_mode').removeAttr('disabled');
                 $('#repeat_mode').removeAttr('disabled');
@@ -5605,6 +5612,7 @@
                 $('#contig_mode').removeAttr('disabled');
             });
             $('#contig_mode').on("click",function(){
+                // change viewer to contig-focused mode
                 changeSplitMethod('contig');
                 $('#default_mode').removeAttr('disabled');
                 $('#repeat_mode').removeAttr('disabled');
@@ -5612,6 +5620,7 @@
                 $('#contig_mode').attr('disabled','disabled');
             });
             $('#repeat_mode').on("click",function(){
+                // change viewer to repeat-focused mode
                 changeSplitMethod('repeat');
                 $('#default_mode').removeAttr('disabled');
                 $('#ref_mode').removeAttr('disabled');
@@ -5619,6 +5628,7 @@
                 $('#contig_mode').removeAttr('disabled');
             });
             $('#adj_edges_checkbox').on('change', function() {
+                // show/hide adjacent edges
                 updateDot(false, true, false);
             });
             $('#show_labels').on('change', function() {
@@ -5630,10 +5640,18 @@
         
             addColorSelect();
             document.getElementById('color_select').onchange = function(event) {
-                document.getElementById('repeat_info').style.display = 'none';
-                document.getElementById('errors_info').style.display = 'none';
-                if (document.getElementById('color_select').selectedIndex == 2) document.getElementById('errors_info').style.display = '';
-                if (document.getElementById('color_select').selectedIndex == 3) document.getElementById('repeat_info').style.display = '';
+                $('#repeat_info').hide();
+                $('#errors_info').hide();
+                $('#single_chrom_info').hide();
+                var selectedOption = document.getElementById('color_select').selectedIndex;
+        
+                if (selectedOption == 1) { // edge alignments to reference
+                    if (chromosomes.length == 1) $('#single_chrom_info').show()
+                }
+                if (selectedOption == 2) { // erroneous edges
+                    $('#errors_info').show();
+                }
+                // if (selectedOption == 3) document.getElementById('repeat_info').style.display = '';
                 updateDot(false, false, false);
             };
         
@@ -5646,6 +5664,7 @@
         
             $('#saveBtns').hide();
             $('#saveButton').on('click', function(){
+                // save svg image of displayed graph
                 try {
                     var isFileSaverSupported = !!new Blob();
                 } catch (e) {
@@ -5672,30 +5691,13 @@
                 saveAs(blob, "graph.dot");
             });
             addRefView();
-            /*document.getElementById("edges_textarea").addEventListener("keypress", submitOnEnter);
-            document.getElementById('draw_edges_btn').onclick = function(event) {
-                var err_msg = '';
-                if (document.getElementById('edges_textarea').value.length < 1)
-                    err_msg = 'Please specify at least one edge';
-                else {
-                    selectedEdges = document.getElementById('edges_textarea').value.split(',');
-                    for (i = 0; i < selectedEdges.length; i++) {
-                        edge = selectedEdges[i];
-                        edgeId = edge[0] == '-' ? 'redge' + edge.substr(1) : 'edge' + edge;
-                        if (!edgeInfo[edgeId])
-                            err_msg = 'Edge ' + edge + ' does not exist! Please check edge ID and resubmit';
-                    }
-                }
-                if (err_msg) alert(err_msg);
-                else window.open("fa2.html?" + selectedEdges.join(','));
-            };*/
         }
         
         function addModeSwitch(){
             var div = "";
             var divWidth = 120;
-            if (Object.keys(edgeDataRef).length) divWidth += 70;
-            if (Object.keys(edgeDataContig).length) divWidth += 50;
+            if (Object.keys(refEdgeData).length) divWidth += 70;
+            if (Object.keys(contigEdgeData).length) divWidth += 50;
             div += '<div style="padding-top:-30px; width:' + divWidth + 'px; text-align:center">Mode</div>';
             div += '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
             div += '<label class="btn btn-info active option_mode" id="default_mode">';
@@ -5704,23 +5706,23 @@
             div += '<label class="btn btn-info option_mode" id="repeat_mode">';
             div += '<input type="radio" name="mode" autocomplete="off" checked> repeat';
             div += '</label>';
-            if (Object.keys(edgeDataRef).length) {
+            if (Object.keys(refEdgeData).length) {
                 div += '<label class="btn btn-info option_mode" id="ref_mode">';
                 div += '<input type="radio" name="mode" autocomplete="off" val="ref"> reference';
                 div += '</label>';
             }
-            if (Object.keys(edgeDataContig).length) {
+            if (Object.keys(contigEdgeData).length) {
                 div += '<label class="btn btn-info option_mode" id="contig_mode">';
                 div += '<input type="radio" name="mode" autocomplete="off" val="contig"> contig';
                 div += '</label>';
             }
             div += '</div>';
-             document.getElementById('div_switch').innerHTML = div;
+            document.getElementById('div_switch').innerHTML = div;
         }
         
         function addColorSelect(){
             var selectOptions = '<option value="0" selected>repeat edges</option>';
-            if (Object.keys(edgeDataRef).length) {
+            if (Object.keys(refEdgeData).length) {
                 selectOptions += '<option value="1">edge alignments to reference</option>';
                 selectOptions += '<option value="2">erroneous edges</option>';
             }
@@ -5750,9 +5752,9 @@
                 $('#numberEdgesWarning').show();
                 $('#refView').show();
                 srcGraphs = ref_graphs;
-                edgeData = edgeDataRef;
+                edgeData = refEdgeData;
                 srcPartDict = refPartitionDict;
-                hangNodes = defaultHangNodes;
+                leafNodes = defLeafNodes;
                 selectedChrom = 0;
             }
             else if(selectedMethod == 'contig') {
@@ -5764,7 +5766,7 @@
                 $('#numberEdgesWarning').hide();
                 $('#refView').hide();
                 srcGraphs = contig_graphs;
-                edgeData = edgeDataContig;
+                edgeData = contigEdgeData;
                 srcPartDict = null;
                 selectedChrom = "";
             }
@@ -5778,8 +5780,8 @@
                 $('#refView').hide();
                 srcGraphs = repeat_graphs;
                 srcPartDict = repeatPartitionDict;
-                edgeData = edgeDataRepeat;
-                hangNodes = repeatHangNodes;
+                edgeData = repeatEdgeData;
+                leafNodes = repeatLeafNodes;
             }
             else {
                 $('#default_mode').addClass('active');
@@ -5791,9 +5793,9 @@
                 $('#numberEdgesWarning').show();
                 $('#refView').hide();
                 srcGraphs = def_graphs;
-                edgeData = edgeDataFull;
-                srcPartDict = partitionDict;
-                hangNodes = defaultHangNodes;
+                edgeData = defEdgeData;
+                srcPartDict = defPartitionDict;
+                leafNodes = defLeafNodes;
                 selectedChrom = "";
             }
             changeComponent(componentN, true);
@@ -5853,10 +5855,14 @@
         }
         
         function buildContigsTable() {
-            if (!Object.keys(contigInfo).length) {
+            // in contig-based mode take into account all edges satisfied with thresholds for each contig
+            // otherwise, take into account only displayed edges
+            var numContigs = Object.keys(contigInfo).length;
+            if (numContigs === 0) {
                 document.getElementById("contig_tab").style.display="none";
                 return;
             }
+            var showAllContigs = numContigs < 500;
             var showAssemblyErrors = chromosomes.length > 0;
             var table = '';
             table += "<table border='1' id='contig_table' class='sortable scroll_table'>";
@@ -5865,7 +5871,6 @@
             enableContigs = [];
             for (x in contigInfo) {
                 var contigLen = contigInfo[x].length;
-                contigLen = contigLen < 10000 ? Math.round(contigLen / 100) / 10 : Math.round(contigLen / 1000);
                 var edgesN = 0;
                 var errorsN = 0;
                 // if (misassembledContigs && misassembledContigs[x]) errorsN = misassembledContigs[x].length;
@@ -5874,13 +5879,13 @@
                     if (edge != "*" && edge != "??") {
                         var edgeId = edge[0] == '-' ? 'rc' + edge.substr(1) : 'e' + edge;
                         //edgeId = getEdgeElement(edgeData[edgeElId]);
-                         var edgeErrorsN = 0;
+                         var edgeErrorsN = 0; // sum misassemblies in all edges
                          if (edgeData[edgeId] && ((selectedMethod == "contig" && checkEdgeWithThresholds(edgeId)) || checkEdge(edgeId))) {
                             edgesN++;
                             edgeErrorsN = edgeData[edgeId].errors.length;
                          }
                          else if (loopEdgeDict[edgeId]) {
-                             var edgeChecked = false;
+                            var edgeChecked = false;
                             for (var k = 0; k < loopEdgeDict[edgeId].length; k++) {
                                 if ((selectedMethod == "contig" && checkEdgeWithThresholds(loopEdgeDict[edgeId][k])) || checkEdge(loopEdgeDict[edgeId][k])) {
                                     edgeErrorsN += edgeData[loopEdgeDict[edgeId][k]].errors.length;
@@ -5892,11 +5897,12 @@
                          errorsN = errorsN + edgeErrorsN;
                     }
                 }
-                // if (edgesN) {
+                if (edgesN || showAllContigs) {
                     enableContigs.push(x);
+                    contigLen = contigLen < 10000 ? Math.round(contigLen / 100) / 10 : Math.round(contigLen / 1000);
                     table += "<tr id='contigrow" + x + "'><td>" + x + "</td><td>" + contigLen + "</td><td>" + contigInfo[x].cov +
                         "</td><td>" + (edgesN ? edgesN : "-") + (showAssemblyErrors ? "</td><td>" + (errorsN ? errorsN : "-") : "") + "</td>" + "</tr>";
-                // }
+                }
                 //table += "<tr id='contigrow" + x + "'><td>" + x + "</td><td>" + contigLen + "</td><td>" + contigInfo[x].cov + "</td><td>" + contigInfo[x].n_edges + "</td></tr>";
             }
             table += "</tbody></table>";
@@ -5907,6 +5913,7 @@
                 selectedContig = $(this).find('td:first').html();
                 selectContig(selectedContig);
             });
+            // add alphanumeric sort
             sorttable.sort_alpha = function(a,b) {
                 var as = a[0], bs = b[0];
                 var a, b, a1, b1, i= 0, n, L,
@@ -5931,6 +5938,8 @@
         }
         
         function buildRefTable() {
+            // in reference-based mode take into account all edges satisfied with thresholds for each chromosome
+            // otherwise, take into account only displayed edges
             if (chromosomes.length == 0) {
                 document.getElementById("ref_tab").style.display="none";
                 return;
@@ -5946,6 +5955,7 @@
                 for (i = 0; i < edgeMappingInfo[edgeId].length; i++) {
                      chrom = edgeMappingInfo[edgeId][i];
                      chromosomesData[chrom] = chromosomesData[chrom] || [];
+                     // calculate total length of edges mapped to the chromosome
                      if (edgeData[edgeId] && ((selectedMethod == "ref" && checkEdgeWithThresholds(edgeId)) || checkEdge(edgeId))) {
                         chromosomesData[chrom].push(edgeData[edgeId].len * 1000);
                      }
@@ -5999,6 +6009,7 @@
                 selectedChromName = $(this).find('td:first').html();
                 selectChrom(selectedChromName);
             });
+            // add alphanumeric sort
             sorttable.sort_alpha = function(a,b) {
                 var as = a[0], bs = b[0];
                 var a, b, a1, b1, i= 0, n, L,
@@ -6026,14 +6037,16 @@
         }
         
         function buildEdgesTable() {
+            // show only displayed edges
             table = '';
             table += "<table border='1' id='edge_table' class='sortable scroll_table'>";
             table += "<thead><tr class='header'><th>Edge</th><th>Len (kbp)</th><th>Cov</th><th>Mult.</th></tr></thead><tbody>";
             enableEdges = [];
             for (x in edgeData) {
+                // add only forward edges satisfied with length/depth thresholds
                 if (edgeData[x].name.toString()[0] != '-' && x.indexOf('_') == -1 && checkEdge(x) && 
-                    (selectedMethod != "ref" || !isNaN(parseInt(edgeDataRef[x].ref_comp)))) {
-                    enableEdges.push(edgeDataFull[x] || edgeData[x]);
+                    (selectedMethod != "ref" || !isNaN(parseInt(refEdgeData[x].ref_comp)))) {
+                    enableEdges.push(defEdgeData[x] || edgeData[x]);
                 }
             }
             enableEdges.sort(function(a, b) {
@@ -6074,6 +6087,7 @@
         }
         
         function buildVertexTable() {
+            // show only displayed nodes
             table = '';
             table += "<table border='1' id='vertex_table' class='sortable scroll_table' style='width:" + (leftPanelWidth) + "px'>";
             table += "<thead><tr class='header'><th>Node ID</th><th>Incoming edges(mult.)</th><th>Outgoing edges(mult.)</th><th>Loops</th><th>Balance</th>" + ($('#collapse_repeats_checkbox')[0].checked ? "<th>Size</th>" : "") + "</tr></thead><tbody>";
@@ -6095,9 +6109,10 @@
                     var edgeIds = Array.from(graph[node][node2]);
                     for (var j=0; j<edgeIds.length; j++) {
                         edgeId = edgeIds[j];
-                        //if (!d3.select('#' + edgeId).empty() == componentN) adjEdges[node] = componentN;
+        
                         if (diGraph[node] && diGraph[node][node2] && diGraph[node][node2].has(edgeId)) {
                             if (diGraph[node2] && diGraph[node2][node] && diGraph[node2][node].has(edgeId)) {
+                                // calculate loop edges in the node
                                 if (edgeData[edgeId] && checkEdge(edgeId))
                                     nodeInfo['loop']++;
                                 else if (loopEdgeDict[edgeId]) {
@@ -6108,6 +6123,7 @@
                             }
                             else {
                                 edgeRealId = edgeInfo[edgeId] ? edgeId : (edgeData[edgeId] ? edgeData[edgeId].el_id : edgeId);
+                                // calculate node outdegree
                                 if (edgeData[edgeRealId] && checkEdge(edgeRealId)) {
                                     nodeInfo['out']++;
                                     nodeInfo['out_mult'] = nodeInfo['out_mult'] + edgeData[edgeRealId].mult;
@@ -6120,29 +6136,26 @@
                             }
                             else {
                                 edgeRealId = edgeInfo[edgeId] ? edgeId : (edgeData[edgeId] ? edgeData[edgeId].el_id : edgeId);
+                                // calculate node indegree
                                 if (edgeData[edgeRealId] && checkEdge(edgeRealId)) {
                                     nodeInfo['in']++;
                                     nodeInfo['in_mult'] = nodeInfo['in_mult'] + edgeData[edgeRealId].mult;
                                     inCoverage += edgeData[edgeRealId].cov;
                                 }
                             }
-                            /*else if (loopEdgeDict[edgeId]) {
-                                for (var k = 0; k < loopEdgeDict[edgeId].length; k++) {
-                                    if (checkEdge(loopEdgeDict[edgeId][k])) nodeInfo['in_mult'] = nodeInfo['in_mult'] + edgeData[loopEdgeDict[edgeId][k]].mult;
-                                }
-                            }*/
                         }
                     }
                 }
                 nodeInfo['balance'] = Math.abs(nodeInfo['out_mult'] - nodeInfo['in_mult']);
                 if (inCoverage && outCoverage && Math.abs(1 - (inCoverage / outCoverage)) > 0.1)
-                    unbalancedNodes.add(node);
+                    unbalancedNodes.add(node); // consider node as unbalanced if differencies between coverage of incoming and outgoing edges more than 10%
                 nodeInfo['size'] = clusterNodeSizeDict[node] || 0;
                 if (!adjEdges[node]) adjEdges[node] = edgeId;
                 if (node.indexOf('part') === -1)
                     nodes.push(nodeInfo);
             }
             for (i = 0; i < nodes.length; i++) {
+                // add only nodes with visible edges
                 if (nodes[i]['in'] || nodes[i]['out'] || nodes[i]['loop'])
                     table += "<tr id='noderow" + nodes[i]['id'] + "'><td>" + nodes[i]['id'] + "</td><td>" + 
                         (nodes[i]['in'] ? nodes[i]['in'] + " (" + nodes[i]['in_mult'] + ")" : "-") + 
@@ -6166,6 +6179,7 @@
         }
         
         function buildComponentsTable() {
+            // take into account only displayed edges
             table = '';
             table += "<table border='1' id='components_table' class='sortable scroll_table'>";
             var components = [];
@@ -6224,7 +6238,7 @@
                 componentInfo['unique'] = componentInfo['unique'] + loopEdges.size;
                 componentInfo['repeat'] = componentInfo['repeat'] + loopRepeatEdges.size;
                 if (selectedMethod == "ref")
-                    componentInfo['n'] = calculateComponents(toGraph(filteredDotLines));
+                    componentInfo['n'] = calculateComponents(parseGraph(filteredDotLines), true);  // show number of connected components
                 componentInfo['enter'] = srcGraphs[i].enters;
                 componentInfo['exit'] = srcGraphs[i].exits;
                 maxEnters = Math.max(maxEnters, srcGraphs[i].enters);
@@ -6244,6 +6258,7 @@
             for (i = 0; i < components.length; i++) {
                 if (components[i]['len']) {
                     numRows++;
+                    // do not show row if the total number of components is > 1000 or the component does not have any edges
                     if (components.length < 1000 || components[i]['unique'] > 1 || components[i]['repeat'] > 1) {
                         len = components[i]['len'] / 2;
                         len = Math.round(components[i]['len'] * 10 / factor) ? Math.round(components[i]['len'] * 10 / factor) / 10 : Math.round(components[i]['len'] * 100 / factor) / 100;
@@ -6289,24 +6304,32 @@
             if (contigN != componentN || selectedMethod != "contig") {
                 changeSplitMethod('contig', contigN);
             }
-            else highlightChromEdges();
+            else highlightContigEdges();
         }
         
         function zoomToElement(elementId) {
             var graphBox = $("#graph0")[0].getBBox();
             if ((graphBox.width > 500 || graphBox.height > 500) && ("#" + elementId)[0]) {
-                var b = $("#" + elementId)[0].getBBox();
-                var scaleFactor = Math.ceil(graphBox.width / 400);
-                //console.log(b)
-                var zoomX = (-b.x)*scaleFactor+100;
-                var zoomY = (-b.y)*scaleFactor+100;
-                d3.select('svg').transition()
-                  .duration(150)
-                  .call(d3.zoom().transform,
-                        d3.zoomIdentity
-                        .translate(zoomX, zoomY)
-                        .scale(scaleFactor));
-                d3.select("#graph0").attr("transform", "translate("+zoomX+","+zoomY+")"+"scale(" + scaleFactor + ")");
+                graphviz.resetZoom();
+                var bbox = $("#" + elementId)[0].getBBox();
+                var svgBox = d3.select('#graph > svg').attr("viewBox").split(/\s+|,/);
+                var svgx = parseInt(svgBox[0]), svgy = parseInt(svgBox[1]), svgw = parseInt(svgBox[2]), svgh = parseInt(svgBox[3]);
+        
+                // top-left coordinates of element
+                var bx = bbox.x;
+                var by = bbox.y;
+                var realHeight = parseInt($('#graph > svg').attr('height'));
+                var scaleFactor = Math.min(Math.round(svgh / 500), Math.round(svgw / 500));  // zoom to 500px
+                var offsetY = (svgh+500/2) - realHeight;
+                var tx = -bx*scaleFactor + svgx + svgw/4;
+                var ty = -by*scaleFactor + svgy - offsetY;
+        
+                var t = d3.zoomTransform(graphviz.zoomSelection().node());
+                t = t.translate(tx, ty);
+                t = t.scale(scaleFactor);
+                graphviz.zoomBehavior().transform(graphviz.zoomSelection(), t); // Translate the zoom transform for the top level svg
+                var g = d3.select(d3.select("svg").node().querySelector("g"));
+                g.attr('transform', "translate("+tx+","+ty+")"+"scale(" + scaleFactor + ")");
             }
         }
         
@@ -6318,18 +6341,19 @@
             var outEdges = [];
             var loopEdges = [];
             if (selectedNode.lastIndexOf('part', 0) === 0) {
+                // a node represents a hidden part of a large graph
                 part = srcPartDict[selectedNode];
                 s = 'Graph part, ' + part.n + ' nodes.';
                 s = s + ' <span class="link" onclick="javascript:changeComponent(' + part.idx + ');">Show</span>';
                 for (var i = 0; i < part.in.length; i++) {
                      edgeId = part.in[i];
-                     if (uniqueEdgesDict[edgeId]) {
+                     if (parallelEdgeDict[edgeId]) {
                         bigEdge = edgeData[edgeId];
                         d3.select('#' + edgeId).classed('node_selected_in', true);
                         if ((selectedMethod != "repeat" && bigEdge.comp == componentN) || (selectedMethod == "repeat" && bigEdge.rep_comp == componentN)) {
-                            for (var k = 0; k < uniqueEdgesDict[edgeId].length; k++) {
-                                if (edgeDataFull[uniqueEdgesDict[edgeId][k]]) {
-                                    edge = edgeData[uniqueEdgesDict[edgeId][k]];
+                            for (var k = 0; k < parallelEdgeDict[edgeId].length; k++) {
+                                if (defEdgeData[parallelEdgeDict[edgeId][k]]) {
+                                    edge = edgeData[parallelEdgeDict[edgeId][k]];
                                     if ((selectedMethod != "repeat" && edge.comp == componentN) || (selectedMethod == "repeat" && edge.rep_comp == componentN))
                                         inEdges.push(edge);
                                 }
@@ -6345,13 +6369,13 @@
                 }
                 for (var i = 0; i < part.out.length; i++) {
                     edgeId = part.out[i];
-                     if (uniqueEdgesDict[edgeId]) {
+                     if (parallelEdgeDict[edgeId]) {
                         bigEdge = edgeData[edgeId];
                         d3.select('#' + edgeId).classed('node_selected_out', true);
                         if ((selectedMethod != "repeat" && bigEdge.comp == componentN) || (selectedMethod == "repeat" && bigEdge.rep_comp == componentN)) {
-                            for (var k = 0; k < uniqueEdgesDict[edgeId].length; k++) {
-                                if (edgeData[uniqueEdgesDict[edgeId][k]]) {
-                                    edge = edgeData[uniqueEdgesDict[edgeId][k]];
+                            for (var k = 0; k < parallelEdgeDict[edgeId].length; k++) {
+                                if (edgeData[parallelEdgeDict[edgeId][k]]) {
+                                    edge = edgeData[parallelEdgeDict[edgeId][k]];
                                         outEdges.push(edge);
                                 }
                             }
@@ -6366,6 +6390,7 @@
                 }
             }
             else {
+                // color incoming and outgoing edges
                 var adjEdges = graph[selectedNode];
                 if (adjEdges) {
                     var adjNodes = Object.keys(adjEdges);
@@ -6373,7 +6398,7 @@
                         var edges = Array.from(adjEdges[adjNodes[i]]);
                         for (var j = 0; j < edges.length; j++) {
                             edgeId = edges[j];
-                            edge = edgeDataFull[edgeId];
+                            edge = defEdgeData[edgeId];
                             //console.log(edge)
                             if (selectedNode == adjNodes[i]) {
                                 if (edgeId.lastIndexOf('loop', 0) === 0) {
@@ -6444,6 +6469,7 @@
         }
         
         function changeComponent(component, doRefreshTables) {
+            // display the specified graph component
             componentN = component;
             if (!srcPartDict || !srcPartDict['part' + componentN] || !srcPartDict['part' + componentN].big) $('#partition_warning').hide();
             else $('#partition_warning').show();
@@ -6476,19 +6502,19 @@
         function attributer(datum, index, nodes) {
             var selection = d3.select(this);
             if (datum.tag == "svg") {
-                var graphHeight = datum.children[1].translation.y;
+                graphHeight = datum.children[1].translation.y;
                 var graphWidth = parseInt(datum.attributes.width);
                 var margin = 100;
                 var width = window.innerWidth - (leftPanelWidth + margin);
-                var ratio = (window.innerHeight - margin) / width;
-                var height = width * ratio;
+                aspectRatio = (window.innerHeight - margin) / width;
+                var height = width * aspectRatio;
                 //var height = Math.min(graphHeight, newHeight - 50);
         
                 var x = 0;
                 var y = 0;
-                var scale = Math.min(1, width/graphWidth);
+                var scale = Math.min(1, width / graphWidth);
                 document.getElementById("pathDiv").style.width = width + "px";
-                console.log(window.innerWidth,width, graphWidth, height, scale, width/scale);
+                console.log(window.innerWidth, width, graphWidth, height, graphHeight, scale, width/scale);
                 selection
                     .attr("width", width + "px")
                     .attr("height", height + "px");
@@ -6498,105 +6524,10 @@
                 datum.attributes.overflow = "hidden";
                 datum.attributes.preserveAspectRatio="none";
                 datum.attributes.viewBox = x + " " + y + " " + (width / scale) + " " + (height / scale);
+                graphHeight = height / scale;
                 chromViewWidth = width - 100;
                 addRefView();
             }
-        }
-        
-        function moveEdgeStartPoint(edge, endNode, x1, y1) {
-            var endNodeEl = endNode.select('ellipse');
-            _updateEdge(edge, x1, y1, endNodeEl.attr('cx'),endNodeEl.attr('cy'), true);
-        
-            return this;
-        }
-            
-        function moveEdgeEndPoint(edge, startNode, x2, y2) {
-            var startNodeEl = startNode.select('ellipse');
-            _updateEdge(edge, startNodeEl.attr('cx'), startNodeEl.attr('cy'), x2, y2);
-        
-            return this;
-        }
-        
-        function _updateEdge(edge, x1, y1, x2, y2, isStart) {
-            var line = edge.selectWithoutDataPropagation("path");
-            var id = edge.attr("id");
-            var shortening = 0;
-            var arrowHeadLength = 10;
-            var nodeMargin = 11;
-            var arrowHeadWidth = 6;
-            var margin = 0.174;
-            var edgeOffset = 10;
-        
-            var arrowHeadPoints = [[0, -arrowHeadWidth / 2], [arrowHeadLength, 0], [0, arrowHeadWidth / 2], [0, -arrowHeadWidth / 2]];
-        
-            var x1 = parseFloat(x1), x2 = parseFloat(x2), y1 = parseFloat(y1), y2 = parseFloat(y2);
-            var dx = x2 - x1;
-            var dy = y2 - y1;
-            var length = Math.sqrt(dx * dx + dy * dy);
-            var cosA = dx / length;
-            var sinA = dy / length;
-        
-            if (!isStart) {
-                x1 = x1 + edgeOffset*cosA;
-                y1 = y1 + edgeOffset*sinA;
-                x2 = x1 + (length - shortening - (arrowHeadLength + nodeMargin + margin)) * cosA;
-                y2 = y1 + (length - shortening - (arrowHeadLength + nodeMargin + margin)) * sinA;
-            }
-            else {
-                x1 = x1 + edgeOffset*cosA;
-                y1 = y1 + edgeOffset*sinA;
-                x2 = x2 - edgeOffset*cosA;
-                y2 = y2 - edgeOffset*sinA;
-            }
-        
-            var line = edge.selectWithoutDataPropagation("path");
-            var arrowHead = edge.selectWithoutDataPropagation("polygon");
-            var text =  edge.selectWithoutDataPropagation("text");
-        
-            var path1 = path();
-            path1.moveTo(x1, y1)
-            //path1.lineTo(x2, y2);
-            //path1.quadraticCurveTo(x1, y1, x2, y2)
-            path1='M'+x1+',' + y1 + 'Q'+x1+','+y1+','+x2+',' +y2
-            line.attr("d", path1);
-        
-            var pos = line.node().getPointAtLength(line.node().getTotalLength()/2);
-            text.attr('x', pos.x);
-            text.attr('y', x2>x1 == y2>y1 ? pos.y-5 : pos.y+5);
-            text.attr('text-anchor', 'left');
-        
-            x2 = x1 + (length - shortening - (arrowHeadLength + nodeMargin + edgeOffset)) * cosA;
-            y2 = y1 + (length - shortening - (arrowHeadLength + nodeMargin + edgeOffset)) * sinA;
-        
-            for (var i = 0; i < arrowHeadPoints.length; i++) {
-                var point = arrowHeadPoints[i];
-                arrowHeadPoints[i] = rotate(point[0], point[1], cosA, sinA);
-            }
-            for (var i = 0; i < arrowHeadPoints.length; i++) {
-                var point = arrowHeadPoints[i];
-                arrowHeadPoints[i] = [x2 + point[0], y2 + point[1]];
-            }
-            var allPoints = [];
-            for (var i = 0; i < arrowHeadPoints.length; i++) {
-                var point = arrowHeadPoints[i];
-                allPoints.push(point.join(','));
-            }
-            var pointsAttr = allPoints.join(' ');
-        
-            arrowHead.attr("points", pointsAttr);
-        
-            return this;
-        }
-        function rotate(x, y, cosA, sinA) {
-            // (x + j * y) * (cosA + j * sinA) = x * cosA - y * sinA + j * (x * sinA + y * cosA)
-            y = -y;
-            sinA = -sinA;
-            var _ref = [x * cosA - y * sinA, x * sinA + y * cosA];
-            x = _ref[0];
-            y = _ref[1];
-        
-            y = -y;
-            return [x, y];
         }
         
         function setupAutocompleteSearch(){
@@ -6658,7 +6589,7 @@
             var autocompleteItems = [];
             for (x in edgeData) {
                 if (edgeData[x].name.toString()[0] !== '-' && x.indexOf('_') === -1) {
-                    edge = edgeDataFull[x] || edgeData[x];
+                    edge = defEdgeData[x] || edgeData[x];
                     autocompleteItems.push({
                         label: edge.name,
                         value: 'edge,' + edge.name,
@@ -6692,6 +6623,7 @@
         function addRefView() {
             if (chromViewWidth === 0) return;
             if (typeof(chromosomeView) === 'undefined') {
+                // add reference viewer
                 var chart = d3.select('#refView')
                     .append('svg:svg')
                     .attr('width', chromViewWidth + 20)
@@ -6712,7 +6644,7 @@
                     .scaleExtent([1, 32])
                     .translateExtent([[0, 0], [chromViewWidth, chromHeight]])
                     .extent([[0, 0], [chromViewWidth, chromHeight]])
-                    .on("zoom", zoomFunction);
+                    .on("zoom", zoomFunction); // add zoom to reference viewer
                 chromosomeView.call(zoom);
         
                 tooltipDiv = d3.select("body").append("div")
@@ -6748,8 +6680,10 @@
             var lastTickText = d3.select(lastTick).select('text');
             lastTickText.text(lastTickText.text() + ' ' + tickValue);
         
+            // delete all blocks
             chromosomeView.selectAll('.align').remove();
             if (chromAligns && chromAligns[curChrom]) {
+                // add alignment blocks
                 aligns = chromosomeView.append('g').selectAll('.align')
                             .data(chromAligns[curChrom])
                             .enter().append('rect')
@@ -6766,47 +6700,50 @@
                                 return xScale(align.e) - xScale(align.s);
                             })
                             .attr('height', chromHeight);
-                aligns.on('click', function (align) {
-                    selectAlign(align, this);
-                })
-                      .on("mouseover", function(align) {
-                           tooltipDiv.transition()
-                               .delay(500)
-                             .duration(200)
-                             .style("opacity", .9);
-                           numMisassemblies = align.ms.length == 0 ? 0 : (align.ms.indexOf(';') !== -1 ? 2 : 1);
-                           misassembliesText = "";
-                           if (align.ms.length > 0) {
-                               misassemblies = align.ms.split(';');
-                               misTypes = [];
-                               for (var i=0; i< misassemblies.length; i++) {
-                                   misTypes.push(misassemblies[i].split(',')[0]);
-                               }
-                               misassembliesText = misTypes.join(', ')
-                           }
-                           else misassembliesText = "No misassemblies";
-                           tooltipDiv.html("<b>Edge:</b> " + edgeData[align.edge].name +
-                               "<br> <b>Aligned to:</b> " + align.s + "-" + align.e +
-                               "<br> " + misassembliesText)
-                             .style("left", (d3.event.pageX) + "px")
-                             .style("top", (d3.event.pageY - 28) + "px");
         
-                           var selectedItem = d3.select(this);
-                           chromosomeView.append('rect')
-                                .attr('class', 'glow')
-                                .attr('pointer-events', 'none')
-                                .attr('width', selectedItem.attr('width'))
-                                .attr('height', selectedItem.attr('height'))
-                                .attr('fill', 'white')
-                                .attr('opacity', .3)
-                                .attr('transform', selectedItem.attr('transform'));
+                aligns
+                    .on('click', function (align) {
+                        selectAlign(align, this);
+                    })
+                    .on("mouseover", function(align) {
+                        // show misassemblies on hover
+                       tooltipDiv.transition()
+                           .delay(500)
+                         .duration(200)
+                         .style("opacity", .9);
+                       numMisassemblies = align.ms.length == 0 ? 0 : (align.ms.indexOf(';') !== -1 ? 2 : 1);
+                       misassembliesText = "";
+                       if (align.ms.length > 0) {
+                           misassemblies = align.ms.split(';');
+                           misTypes = [];
+                           for (var i=0; i< misassemblies.length; i++) {
+                               misTypes.push(misassemblies[i].split(',')[0]);
+                           }
+                           misassembliesText = misTypes.join(', ')
+                       }
+                       else misassembliesText = "No misassemblies";
+                       tooltipDiv.html("<b>Edge:</b> " + edgeData[align.edge].name +
+                           "<br> <b>Aligned to:</b> " + align.s + "-" + align.e +
+                           "<br> " + misassembliesText)
+                         .style("left", (d3.event.pageX) + "px")
+                         .style("top", (d3.event.pageY - 28) + "px");
+        
+                       var selectedItem = d3.select(this);
+                       chromosomeView.append('rect')
+                            .attr('class', 'glow')
+                            .attr('pointer-events', 'none')
+                            .attr('width', selectedItem.attr('width'))
+                            .attr('height', selectedItem.attr('height'))
+                            .attr('fill', 'white')
+                            .attr('opacity', .3)
+                            .attr('transform', selectedItem.attr('transform'));
                        })
-                      .on("mouseout", function() {
-                           tooltipDiv.transition()
-                             .duration(300)
-                             .style("opacity", 0);
-                           chromosomeView.select('.glow').remove();
-                       });
+                    .on("mouseout", function() {
+                       tooltipDiv.transition()
+                         .duration(300)
+                         .style("opacity", 0);
+                       chromosomeView.select('.glow').remove();
+                    });
                 if (selectedAlign) selectAlign(selectedAlign);
             }
         }
@@ -6878,6 +6815,74 @@
             selectedContig = "";
             selectedChrom = "";
         }
+        
+        function parseGraph(srcLines, skipIds) {
+            // parse DOT file
+            var g = {};
+            for (var i = 0; i < srcLines.length; i++) {
+                var matches = srcLines[i].match(edgePattern);
+                if (matches && matches.length >= 3) {
+                    var node1 = matches[1], node2 = matches[2];
+                    g[node1] = g[node1] || {};
+                    g[node2] = g[node2] || {};
+                    g[node1][node2] = g[node1][node2] || new Set();
+                    g[node2][node1] = g[node2][node1] || new Set();
+                    if (!skipIds) {  // do not store excessive information for calculation of connected components
+                        var edgeId = srcLines[i].match(idPattern)[1];
+                        g[node1][node2].add(edgeId);
+                        g[node2][node1].add(edgeId);
+                    }
+                }
+            }
+            return g;
+        }
+        
+        function parseDirectedGraph(srcLines) {
+            // parse DOT file taking into account edge directions
+            var g = {};
+            for (var i = 0; i < srcLines.length; i++) {
+                var matches = srcLines[i].match(edgePattern);
+                if (matches && matches.length >= 3) {
+                    var node1 = matches[1], node2 = matches[2];
+                    var edgeId = srcLines[i].match(idPattern)[1];
+                    g[node1] = g[node1] || {};
+                    g[node1][node2] = g[node1][node2] || new Set();
+                    g[node1][node2].add(edgeId);
+                }
+            }
+            return g;
+        }
+        
+        function calculateComponents(g) {
+            // get a number of connected components in a graph
+        
+            var components = 0;
+            var visited = {};
+            for (var i in g) {
+                var subGraph = dfs(g, i, visited);
+                if (subGraph != null) {
+                    components++;
+                }
+            }
+            return components;
+        }
+        
+        function dfs(g, node, visited) {
+            if (visited[node]) return null;
+            var subGraph = [];
+            visited[node] = true;
+            for (var i in g[node]) {
+                if (i == node) {
+                    subGraph = subGraph.concat(Array.from(g[node][i]));
+                    continue
+                }
+                var result = dfs(g, i, visited);
+                if (result == null) continue;
+                subGraph = subGraph.concat(Array.from(g[node][i]));
+                subGraph = subGraph.concat(result);
+            }
+            return subGraph;
+        }
     </script>
 
 <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
@@ -6905,10 +6910,11 @@
 
 <h2 style="margin-left: 20px;">Assembly Graph Browser <a href="javascript:infoPopUpShow()">(show help)</a></h2>
 
+<!--Help pop-up window-->
 <div class="info-popup" id="info_popup" style="display:none" onclick="javascript:infoPopUpHide()">
     <div class="info-popup-content" onclick="javascript:infoPopUpShow()">
         <h4><b>Edges</b></h4>
-        <svg width="800" height="110">
+        <svg width="800" height="140">
             <g transform="translate(0,5)">
             <path fill="none" stroke="#000000" stroke-width="2" d="M0,5 40,5" style=""></path>
             <polygon fill="#000000" stroke="#000000" stroke-width="2" points="35,2 42,5 35,8" style=""></polygon>
@@ -6922,16 +6928,24 @@
                     <text x="0" y="32" text-anchor="start" font="16px">Clusters of adjacent repeat edges are shown with the same color.
                     </text>
             </g>
-            <text x="0" y="95" text-anchor="start" font="24px">When a node is selected:</text>
-            <g transform="translate(205,85)" class="node_selected_in">
-            <path fill="none" stroke-width="2" d="M0,5 40,5" style=""></path>
-            <polygon stroke-width="2" points="35,2 42,5 35,8" style=""></polygon>
-                <text x="50" y="10" text-anchor="start" font="16px"> incoming edge</text>
+            <g transform="translate(0,90)">
+                <path fill="none" stroke="black" stroke-width="4" d="M0,3 37,3" style=""></path>
+                <path fill="none" stroke="black" stroke-width="2" d="M0,7 37,7" style=""></path>
+                <polygon fill="black" stroke="black" stroke-width="2" points="35,0 42,5 35,10" style=""></polygon>
+                    <text x="50" y="10" text-anchor="start" font="16px"> in large graphs this edge replaces several parallel edges (for simplicity).
+                        <text x="0" y="32" text-anchor="start" font="16px">Clusters of adjacent repeat edges are shown with the same color.
+                        </text>
             </g>
-            <g transform="translate(390,85)" class="node_selected_out">
-            <path fill="none" stroke-width="2" d="M0,5 40,5" style=""></path>
-            <polygon stroke-width="2" points="35,2 42,5 35,8" style=""></polygon>
-                <text x="50" y="10" text-anchor="start" font="16px"> outgoing edge</text>
+            <text x="0" y="135" text-anchor="start" font="24px">When a node is selected:</text>
+            <g transform="translate(205,125)" class="node_selected_in">
+                <path fill="none" stroke-width="2" d="M0,5 40,5" style=""></path>
+                <polygon stroke-width="2" points="35,2 42,5 35,8" style=""></polygon>
+                    <text x="50" y="10" text-anchor="start" font="16px"> incoming edge</text>
+            </g>
+            <g transform="translate(390,125)" class="node_selected_out">
+                <path fill="none" stroke-width="2" d="M0,5 40,5" style=""></path>
+                <polygon stroke-width="2" points="35,2 42,5 35,8" style=""></polygon>
+                    <text x="50" y="10" text-anchor="start" font="16px"> outgoing edge</text>
             </g>
         </svg>
 
@@ -6968,27 +6982,28 @@
         <h4><b>Reference-based mode</b></h4>
         <p>You can scroll and zoom into the reference panel using the mouse or touchpad.
         <svg width="800" height="80">
-        <g transform="translate(0,10)">
-            <rect class="chromBg" width="430" height="30"></rect>
-        </g>
-        <g transform="translate(10,10)">
-            <rect class="align correct" width="120" height="30"></rect>
-            <text x="5" y="20" text-anchor="start" font="16px">correct edge</text>
-        </g>
-        <g transform="translate(140,10)">
-            <text x="10" y="20" text-anchor="start" font="16px">gap</text>
-        </g>
-        <g transform="translate(200,10)">
-            <rect class="align wrong" width="220" height="30"></rect>
-            <text x="5" y="20" text-anchor="start" font="16px">edge with assembly errors</text>
-        </g>
-        <g transform="translate(180,60)">
-            <text text-anchor="start" font="16px">chromosome</text>
-        </g>
+            <g transform="translate(0,10)">
+                <rect class="chromBg" width="430" height="30"></rect>
+            </g>
+            <g transform="translate(10,10)">
+                <rect class="align correct" width="120" height="30"></rect>
+                <text x="5" y="20" text-anchor="start" font="16px">correct edge</text>
+            </g>
+            <g transform="translate(140,10)">
+                <text x="10" y="20" text-anchor="start" font="16px">gap</text>
+            </g>
+            <g transform="translate(200,10)">
+                <rect class="align wrong" width="220" height="30"></rect>
+                <text x="5" y="20" text-anchor="start" font="16px">edge with assembly errors</text>
+            </g>
+            <g transform="translate(180,60)">
+                <text text-anchor="start" font="16px">chromosome</text>
+            </g>
         </svg>
         <a>OK</a>
     </div>
 </div>
+
 <div id="left_panel" style="margin-top: 10px;">
     <div style="margin-left: 20px;">
           <div class="menu_div panel panel-default collapse_panel" style="margin-top: 10px;">
@@ -7021,6 +7036,9 @@
                 <p>Use color to highlight
                 <select id="color_select">
                 </select></p>
+                  <p><span id='single_chrom_info' class='gray_text' style='display: none;'>The reference is composed of a single chromosome.
+                      Edges are colored according to their position in the reference using the following order:
+                      red-green-blue-purple.</span></p>
                   <p><span id='repeat_info' class='gray_text' style='display: none;'>Note: repeat edges are represented with parallel edges</span></p>
                   <p><span id='errors_info' class='gray_text' style='display: none;'>Edges of misassembled contigs are represented with red lines,
                   two parallel red lines mean that an edge itself contains an assembly error.</span></p>
@@ -7190,6 +7208,8 @@ var minComponents = 1;
 var componentN = 0;
 var leftPanelWidth = 350;
 var chromViewWidth = 0;
+var graphHeight = 0;
+var aspectRatio = 1;
 
 var lenCovPattern = /([0-9\.]+)k (\d+)x/i;
 var labelPattern = /(.+)\\l\(*([0-9\.]+)k/i;
@@ -7202,46 +7222,25 @@ var curChrom = "";
 var srcGraphs = def_graphs;
 var dotSrc = srcGraphs[componentN].dot;
 var dot;
-var partitionDict = JSON.parse(def_parts_info);
-var repeatPartitionDict = JSON.parse(repeat_parts_info);
-var refPartitionDict = JSON.parse(ref_parts_info);
-var srcPartDict = partitionDict;
+var srcPartDict = defPartitionDict;
 if (srcPartDict['part' + componentN] && srcPartDict['part' + componentN].big) $('#partition_warning').show();
 
 var selectedMethod = "default";
 
-var loopEdgeDict = JSON.parse(def_loop_edges);
-var baseLoopEdgeDict = JSON.parse(def_loop_edges);
-var uniqueEdgesDict = {};//JSON.parse(unique_edges_dict);
+var baseLoopEdgeDict = defLoopEdgeDict;
+var parallelEdgeDict = {}; // parallel edges collapsed to 1 edge
 
 var collapsedNodes = new Set();
-var defaultHangNodes = JSON.parse(def_hanging_nodes);
-var repeatHangNodes = JSON.parse(repeat_hanging_nodes);
-var hangNodes = defaultHangNodes;
-var repeatConnectNodes = JSON.parse(repeat_connected_nodes);
+var leafNodes = defLeafNodes;
 var newNodes, nodeColors;
-var edgeInfo = JSON.parse(edge_info);
-var edgeMappingInfo = mapping_info ? JSON.parse(mapping_info) : [];
 
-var edgeDataFull = JSON.parse(def_edge_data);
-var edgeDataRef = JSON.parse(ref_edge_data);
-var edgeDataContig = JSON.parse(contig_edge_data);
-var edgeDataRepeat = JSON.parse(repeat_edge_data);
-var edgeData = edgeDataFull;
-
-var misassembledContigs = misassembled_contigs ? JSON.parse(misassembled_contigs) : {};
-var chromosomes = chromosomes ? JSON.parse(chromosomes) : [];
-var chrom_lengths = chrom_lengths ? JSON.parse(chrom_lengths) : [];
-var chromGaps = gaps ? JSON.parse(gaps) : [];
-var chromAligns = chrom_aligns ? JSON.parse(chrom_aligns) : [];
+var edgeData = defEdgeData;
 
 var newData;
 var diGraph = parseDirectedGraph(full_graph.split('\n'));
 var graph = parseGraph(full_graph.split('\n'));
 var full_diGraph = parseDirectedGraph(full_graph.split('\n'));
 var full_graph = parseGraph(full_graph.split('\n'));
-var contigInfo = JSON.parse(contig_info);
-var contigs = contigs ? JSON.parse(contigs) : [];
 
 var clusterNodeSizeDict = {};
 var newEdgesDict = {};

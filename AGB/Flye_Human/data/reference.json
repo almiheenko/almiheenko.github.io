@@ -1,4 +1,5 @@
-chrom_lengths='[]';
-mapping_info='[]';
-gaps='[]';
-chrom_aligns='[]';
+chrom_lengths=[];
+edgeMappingInfo=[];
+chromGaps=[];
+chromAligns=[];
+chromosomes=[];
