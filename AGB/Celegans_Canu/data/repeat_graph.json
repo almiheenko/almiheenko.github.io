@@ -1,23 +1,23 @@
 repeat_graphs=[{n:8, enters: 0, exits: 1, dot:`digraph {
 nodesep = 0.5;
 node [shape = circle, label = "", height = 0.3];
-"326" -> "95" [label = id rc130\l17k 1x(1), id = "rc130", color = "black"] ;
-"95" -> "96" [label = id rc129\l14k 5x(1), id = "rc129", color = "red"] ;
-"324" -> "96" [label = id rc128\l16k 1x(1), id = "rc128", color = "black"] ;
-"96" -> "36" [label = id rc126\l1505k 33x(1), id = "rc126", color = "black"] ;
-"95" -> "96" [label = id rc34\l30k 13x(1), id = "rc34", color = "black"] ;
 "322" -> "96" [label = id rc127\l17k 1x(1), id = "rc127", color = "black"] ;
 "328" -> "95" [label = id rc131\l210k 34x(1), id = "rc131", color = "black"] ;
+"324" -> "96" [label = id rc128\l16k 1x(1), id = "rc128", color = "black"] ;
+"95" -> "96" [label = id rc129\l14k 5x(1), id = "rc129", color = "red"] ;
+"96" -> "36" [label = id rc126\l1505k 33x(1), id = "rc126", color = "black"] ;
+"95" -> "96" [label = id rc34\l30k 13x(1), id = "rc34", color = "black"] ;
+"326" -> "95" [label = id rc130\l17k 1x(1), id = "rc130", color = "black"] ;
 "95" -> "95" [label = id rc35\l29k 5x(1), id = "rc35", color = "black"] ;
 }`},{n:8, enters: 1, exits: 0, dot:`digraph {
 nodesep = 0.5;
 node [shape = circle, label = "", height = 0.3];
-"94" -> "94" [label = id e35\l29k 5x(1), id = "e35", color = "black"] ;
+"94" -> "327" [label = id e131\l210k 34x(1), id = "e131", color = "black"] ;
+"321" -> "93" [label = id e127\l17k 1x(1), id = "e127", color = "black"] ;
 "93" -> "94" [label = id e34\l30k 13x(1), id = "e34", color = "black"] ;
+"94" -> "94" [label = id e35\l29k 5x(1), id = "e35", color = "black"] ;
 "323" -> "93" [label = id e128\l16k 1x(1), id = "e128", color = "black"] ;
+"35" -> "93" [label = id e126\l1505k 33x(1), id = "e126", color = "black"] ;
 "93" -> "94" [label = id e129\l14k 5x(1), id = "e129", color = "red"] ;
 "325" -> "94" [label = id e130\l17k 1x(1), id = "e130", color = "black"] ;
-"35" -> "93" [label = id e126\l1505k 33x(1), id = "e126", color = "black"] ;
-"321" -> "93" [label = id e127\l17k 1x(1), id = "e127", color = "black"] ;
-"94" -> "327" [label = id e131\l210k 34x(1), id = "e131", color = "black"] ;
 }`},];
