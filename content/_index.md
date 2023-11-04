@@ -88,7 +88,7 @@ sections:
       columns: '2'
       view: citation
     sort_by: 'Date'
-  - block: collection
+  - block: portfolio
     id: teaching
     content:
       title: Teaching Positions 
@@ -97,7 +97,7 @@ sections:
           - teaching
         featured_only: false
     design:
-      columns: '2'
+      columns: '1'
       view: showcase
     sort_by: 'Date'
 ---
