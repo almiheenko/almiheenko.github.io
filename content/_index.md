@@ -13,6 +13,7 @@ sections:
       username: admin
 
   - block: features
+    id: skills
     content:
       title: Skills
       items:
@@ -29,14 +30,10 @@ sections:
           description: 'Next‐generation and long‐read genome sequencing data, metagenomics, ChIP‐seq'
           icon: dna
           icon_pack: fas
-        - name: Transcriptomics
-          description: 'Single‐cell, spatial, bulk RNA‐Seq data'
-          icon: rna
-          icon_pack: custom
-        - name: Proteomics
-          description: 'Mass-spectrometry‐based quantitative proteomics data'
-          icon: protein
-          icon_pack: custom
+        - name: Transcriptomics & Proteomics
+          description: 'Single‐cell, spatial, bulk RNA‐Seq data. Mass-spectrometry‐based quantitative proteomics data'
+          icon: database
+          icon_pack: fas
         - name: Algorithms
           description: 'Implementation and development of bioinformatic algorithms'
           icon: circle-nodes 
