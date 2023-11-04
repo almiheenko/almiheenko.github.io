@@ -12,7 +12,7 @@ authors:
 - Byung Il Lee
 - Mengke Yang
 - Raja S Nirujogi
-- ' others'
+- ' et al'
 date: '2023-01-01'
 publishDate: '2023-11-04T11:15:43.498717Z'
 publication_types:

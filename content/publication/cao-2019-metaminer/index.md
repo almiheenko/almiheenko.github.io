@@ -12,7 +12,7 @@ authors:
 - Fernando Vargas
 - Robby Quinn
 - Amina Bouslimani
-- ' others'
+- ' et al'
 date: '2019-01-01'
 publishDate: '2023-11-04T11:15:43.376787Z'
 publication_types:

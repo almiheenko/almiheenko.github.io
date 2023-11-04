@@ -38,10 +38,10 @@ interests:
 education:
   courses:
     - course: PhD in Bioinformatics
-      institution: Center of Algorithmic Biotechnology, Saint Petersburg State University
+      institution: Center of Algorithmic Biotechnology, Saint Petersburg State University, Russia
       year: 2021
     - course: Doctor of Medicine
-      institution: Ulyanovsk State University
+      institution: Ulyanovsk State University, Russia
       year: 2014
 
 # Skills

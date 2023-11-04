@@ -11,7 +11,7 @@ authors:
 - Ludovica Mercuri
 - Philip C Dishuck
 - Arang Rhie
-- ' others'
+- ' et al'
 date: '2021-01-01'
 publishDate: '2023-11-04T11:15:43.407163Z'
 publication_types:

@@ -11,7 +11,7 @@ authors:
 - Lev Uralsky
 - Fedor D Ryabov
 - Colin J Shew
-- ' others'
+- ' et al'
 date: '2022-01-01'
 publishDate: '2023-11-04T11:15:43.430165Z'
 publication_types:
