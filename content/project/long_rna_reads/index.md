@@ -2,7 +2,7 @@
 title: Long-read RNA-seq
 summary: Development of novel tools and algorithms for long-read RNA-sequencing data
 tags:
-  - RNA
+  - 2RNA
 date: "2020-06-01T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

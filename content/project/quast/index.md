@@ -2,7 +2,7 @@
 title: Genomics 
 summary: Key developer & maintainer of QUAST tool for versatile evaluation of genome assemblies
 tags:
-  - QUAST
+  - 1QUAST
 date: "2018-06-01T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

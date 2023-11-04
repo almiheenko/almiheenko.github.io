@@ -2,7 +2,7 @@
 title: C9orf72
 summary: Exploration of mechanisms of C9orf72-related neurodegenerative diseases
 tags:
-  - Neuroscience
+  - 4Neuroscience
 date: "2022-06-01T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
