@@ -121,5 +121,5 @@ social:
 highlight_name: true
 ---
 
-I am currently a postdoc at Pietro Fratta's lab at University College London, focusing on applying computational methods to exploring mechanisms of neurodegeneration. My research interests also include development of novel tools and algorithms for the analysis of genomic, transcriptomic, and proteomics data. 
+I am currently a postdoc at Pietro Fratta's lab at University College London, focusing on applying computational methods to exploring mechanisms of neurodegeneration. My research interests also include development of novel tools and algorithms for the analysis of genomic, transcriptomic, and proteomic data. 
 {style="text-align: justify;"}
