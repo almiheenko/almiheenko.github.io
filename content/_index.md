@@ -55,6 +55,9 @@ sections:
     id: projects
     content:
       title: Projects
+      filters:
+        folders:
+          - project
       # Default filter index (e.g. 0 corresponds to the first `filter_button` instance below).
       default_button_index: 0
       # Filter toolbar (optional).
@@ -65,9 +68,9 @@ sections:
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '2'
-      view: showcase
+      #view: showcase
       # For Showcase view, flip alternate rows?
-      flip_alt_rows: false
+      #flip_alt_rows: false
   - block: collection
     content:
       title: Publications
