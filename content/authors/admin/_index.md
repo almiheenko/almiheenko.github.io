@@ -1,91 +1,92 @@
 ---
 # Display name
-title: 吳健雄
+title: Alla Mikheenko
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: 
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Alla
+last_name: Mikheenko
 
 # Status emoji
 status:
-  icon: ☕️
+  icon: 
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: Postdoctoral Research Fellow
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: University College of London
+    url: https://www.ucl.ac.uk
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+#bio: My research interests include .
 
 # Interests to show in About widget
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Omics data analysis
+  - Algorithmic bioinformatics
+  - Neuroscience
+  - Neurodegenerative diseases
 
 # Education to show in About widget
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: PhD in Bioinformatics
+      institution: Center of Algorithmic Biotechnology, Saint Petersburg State University
+      year: 2021
+    - course: Doctor of Medicine
+      institution: Ulyanovsk State University
+      year: 2014
 
 # Skills
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
 skills:
-  - name: Technical
+  - name: Programming
     items:
       - name: Python
         description: ''
-        percent: 80
+        #percent: 80
         icon: python
         icon_pack: fab
-      - name: Data Science
+      - name: R
         description: ''
-        percent: 100
-        icon: chart-line
+        icon: r
         icon_pack: fas
-      - name: SQL
+      - name: Machine learning
         description: ''
-        percent: 40
         icon: database
         icon_pack: fas
-  - name: Hobbies
+      - name: Statistics
+        description: ''
+        icon: chart-simple
+        icon_pack: fas
+  - name: Computational biology
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Hiking
+      - name: Genomics
         description: ''
-        percent: 60
-        icon: person-hiking
+        icon: dna
         icon_pack: fas
-      - name: Cats
+      - name: Transcriptomics
         description: ''
-        percent: 100
         icon: cat
         icon_pack: fas
-      - name: Photography
+      - name: Proteomics
         description: ''
-        percent: 80
-        icon: camera-retro
+        icon: cat
         icon_pack: fas
-
+      - name: Bioinformatic algorithms
+        description: ''
+        icon: brain
+        icon_pack: fas
+      
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
@@ -94,31 +95,31 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
-    label: Follow me on Twitter
-    display:
-      header: true
+  #- icon: twitter
+  #  icon_pack: fab
+  #  link: https://twitter.com/almiheenko
+  #  label: Follow me on Twitter
+  #  display:
+  #    header: true
   - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
     icon_pack: fas
-    link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+    link: https://scholar.google.com/citations?user=s3kR0cQAAAAJ&hl=en
   - icon: github
     icon_pack: fab
-    link: https://github.com/gcushen
+    link: https://github.com/almiheenko
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/
+    link: https://www.linkedin.com/in/alla-mikheenko-0987788b/
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
   - icon: cv
     icon_pack: ai
-    link: uploads/resume.pdf
+    link: uploads/CV.pdf
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am currently a postdoc at Pietro Fratta's lab at University College London, focusing on applying computational methods to exploring mechanisms of neurodegeneration. My research interests also include development of novel tools and algorithms for the analysis of genomic, transcriptomic, and proteomics data. 
 {style="text-align: justify;"}
