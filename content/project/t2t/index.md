@@ -1,5 +1,5 @@
 ---
-title: Telomere-to-Telomere (T2T) consortium (participant)
+title: Telomere-to-Telomere (T2T) consortium 
 summary: High-precision read alignment algorithms developed for the first truly complete human genome assembly.
 tags:
   - 3T2T

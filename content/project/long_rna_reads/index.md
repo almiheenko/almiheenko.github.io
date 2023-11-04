@@ -1,5 +1,5 @@
 ---
-title: Long-read RNA-seq
+title: Long-read RNA-seq data analysis
 summary: Development of novel tools and algorithms for long-read RNA-sequencing data
 tags:
   - 2RNA
@@ -11,7 +11,7 @@ date: "2020-06-01T00:00:00Z"
 links:
   - icon: 
     icon_pack: 
-    name: Nature
+    name: Nature Biotechnology paper
     url: https://www.nature.com/articles/s41587-022-01565-y
   - icon: github
     icon_pack: fab
@@ -19,7 +19,7 @@ links:
     url: https://github.com/ablab/IsoQuant
   - icon: 
     icon_pack: 
-    name: Genome Research
+    name: Genome Research paper
     url: https://genome.cshlp.org/content/early/2022/03/29/gr.276405.121
   - icon: github
     icon_pack: fab

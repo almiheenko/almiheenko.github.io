@@ -1,6 +1,6 @@
 ---
 title: C9orf72
-summary: Exploration of mechanisms of C9orf72-related neurodegenerative diseases
+summary: Exploration of genes and pathways affected in C9orf72-related neurodegenerative diseases
 tags:
   - 4Neuroscience
 date: "2022-06-01T00:00:00Z"
