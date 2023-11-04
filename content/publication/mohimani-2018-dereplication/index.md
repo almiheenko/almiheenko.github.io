@@ -4,7 +4,7 @@ authors:
 - Hosein Mohimani
 - Alexey Gurevich
 - Alexander Shlemov
-- Alla Mikheenko
+- admin
 - Anton Korobeynikov
 - Liu Cao
 - Egor Shcherbin

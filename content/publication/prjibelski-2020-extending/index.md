@@ -6,7 +6,7 @@ authors:
 - Dmitry Antipov
 - Elena Bushmanova
 - Daniela Giordano
-- Alla Mikheenko
+- admin
 - Domenico Vitale
 - Alla Lapidus
 date: '2020-01-01'

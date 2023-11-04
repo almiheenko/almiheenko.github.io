@@ -1,7 +1,7 @@
 ---
 title: 'WebQUAST: online evaluation of genome assemblies'
 authors:
-- Alla Mikheenko
+- admin
 - Vladislav Saveliev
 - Pascal Hirsch
 - Alexey Gurevich

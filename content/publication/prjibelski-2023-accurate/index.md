@@ -2,7 +2,7 @@
 title: Accurate isoform discovery with IsoQuant using long reads
 authors:
 - Andrey D Prjibelski
-- Alla Mikheenko
+- admin
 - Anoushka Joglekar
 - Alexander Smetanin
 - Julien Jarroux

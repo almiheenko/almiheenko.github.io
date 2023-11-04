@@ -1,7 +1,7 @@
 ---
 title: 'Icarus: visualizer for de novo assembly evaluation'
 authors:
-- Alla Mikheenko
+- admin
 - Gleb Valin
 - Andrey Prjibelski
 - Vladislav Saveliev

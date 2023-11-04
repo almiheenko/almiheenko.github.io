@@ -5,7 +5,7 @@ authors:
 - Dinara Dolgova
 - Igor Sannikov
 - Snezhanna Gening
-- Alla Mikheenko
+- admin
 - Antonina Tuzeeva
 date: '2015-01-01'
 publishDate: '2023-11-04T11:15:43.316721Z'

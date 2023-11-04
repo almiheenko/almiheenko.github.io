@@ -1,7 +1,7 @@
 ---
 title: 'MetaQUAST: evaluation of metagenome assemblies'
 authors:
-- Alla Mikheenko
+- admin
 - Vladislav Saveliev
 - Alexey Gurevich
 date: '2016-01-01'

@@ -3,7 +3,7 @@ title: Fast and accurate mapping of long reads to complete genome assemblies wit
   VerityMap
 authors:
 - Andrey V Bzikadze
-- Alla Mikheenko
+- admin
 - Pavel A Pevzner
 date: '2022-01-01'
 publishDate: '2023-11-04T11:15:43.460805Z'

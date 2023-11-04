@@ -3,7 +3,7 @@ title: Increased diversity of peptidic natural products revealed by modification
   database search of mass spectra
 authors:
 - Alexey Gurevich
-- Alla Mikheenko
+- admin
 - Alexander Shlemov
 - Anton Korobeynikov
 - Hosein Mohimani

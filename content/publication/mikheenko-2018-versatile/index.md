@@ -1,7 +1,7 @@
 ---
 title: Versatile genome assembly evaluation with QUAST-LG
 authors:
-- Alla Mikheenko
+- admin
 - Andrey Prjibelski
 - Vladislav Saveliev
 - Dmitry Antipov

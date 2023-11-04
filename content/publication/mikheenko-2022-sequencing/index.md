@@ -2,7 +2,7 @@
 title: Sequencing of individual barcoded cDNAs using Pacific Biosciences and Oxford
   Nanopore Technologies reveals platform-specific error patterns
 authors:
-- Alla Mikheenko
+- admin
 - Andrey D Prjibelski
 - Anoushka Joglekar
 - Hagen U Tilgner

@@ -2,7 +2,7 @@
 title: 'TandemTools: mapping long reads and assessing/improving assembly quality in
   extra-long tandem repeats'
 authors:
-- Alla Mikheenko
+- admin
 - Andrey V Bzikadze
 - Alexey Gurevich
 - Karen H Miga

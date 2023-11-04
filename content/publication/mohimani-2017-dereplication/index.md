@@ -4,7 +4,7 @@ title: Dereplication of peptidic natural products through database search of mas
 authors:
 - Hosein Mohimani
 - Alexey Gurevich
-- Alla Mikheenko
+- admin
 - Neha Garg
 - Louis-Felix Nothias
 - Akihiro Ninomiya
