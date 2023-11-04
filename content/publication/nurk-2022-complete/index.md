@@ -6,7 +6,7 @@ authors:
 - Arang Rhie
 - Mikko Rautiainen
 - Andrey V Bzikadze
-- Alla Mikheenko
+- admin
 - Mitchell R Vollger
 - Nicolas Altemose
 - Lev Uralsky
