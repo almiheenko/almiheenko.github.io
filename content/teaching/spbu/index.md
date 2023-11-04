@@ -5,25 +5,12 @@ authors:
 - admin
 date: "2021-06-01T00:00:00Z"
 
-  
-2021‐2022 Undergraduate Research Mentor, Mentoring research projects of Computer Science undergraduate
-students, St. Petersburg State University, Russia
 image:
   caption: 
   focal_point: Smart
 
 publication_types: ["0"]
 
-# Publication name and optional abbreviated publication name.
-publication: " "
-publication_short: " "
-
-abstract:  
-
-# Summary. An optional shortened abstract.
-summary:  
-
-slides: ""
 ---
 
  

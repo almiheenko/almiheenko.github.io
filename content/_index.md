@@ -73,6 +73,7 @@ sections:
       #flip_alt_rows: false
     sort_by: 'Date'
   - block: collection
+    id: publications
     content:
       title: Publications
       text: |-
