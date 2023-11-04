@@ -15,34 +15,34 @@ sections:
   - block: features
     content:
       title: Skills
-    items:
-      - name: Programming
-        description: 'Python (Pandas, NumPy, PyTorch, Scikit‐learn), R, Bash, cluster managers'
-        #percent: 80
-        icon: code
-        icon_pack: fas
-      - name: Machine learning
-        description: 'Supervised/unsupervised learning, ensemble methods, regularization and optimization, deep learning (CNNs, RNNs, GANs)'
-        icon: microchip
-        icon_pack: fas
-      - name: Genomics
-        description: 'Next‐generation and long‐read genome sequencing data, metagenomics, ChIP‐seq'
-        icon: dna
-        icon_pack: fas
-      - name: Transcriptomics
-        description: 'Single‐cell, spatial, bulk RNA‐Seq data'
-        icon: rna
-        icon_pack: custom
-      - name: Proteomics
-        description: 'Mass-spectrometry‐based quantitative proteomics data'
-        icon: protein
-        icon_pack: custom
-      - name: Algorithms
-        description: 'Implementation and development of bioinformatic algorithms'
-        icon: circle-nodes 
-        icon_pack: fas
-        #design:
-        #  columns: '1'
+      items:
+        - name: Programming
+          description: 'Python (Pandas, NumPy, PyTorch, Scikit‐learn), R, Bash, cluster managers'
+          #percent: 80
+          icon: code
+          icon_pack: fas
+        - name: Machine learning
+          description: 'Supervised/unsupervised learning, ensemble methods, regularization and optimization, deep learning (CNNs, RNNs, GANs)'
+          icon: microchip
+          icon_pack: fas
+        - name: Genomics
+          description: 'Next‐generation and long‐read genome sequencing data, metagenomics, ChIP‐seq'
+          icon: dna
+          icon_pack: fas
+        - name: Transcriptomics
+          description: 'Single‐cell, spatial, bulk RNA‐Seq data'
+          icon: rna
+          icon_pack: custom
+        - name: Proteomics
+          description: 'Mass-spectrometry‐based quantitative proteomics data'
+          icon: protein
+          icon_pack: custom
+        - name: Algorithms
+          description: 'Implementation and development of bioinformatic algorithms'
+          icon: circle-nodes 
+          icon_pack: fas
+          #design:
+          #  columns: '1'
 
   - block: portfolio
     id: projects
