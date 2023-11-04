@@ -22,6 +22,10 @@ sections:
           #percent: 80
           icon: code
           icon_pack: fas
+        - name: Algorithms
+          description: 'Implementation and development of bioinformatic algorithms'
+          icon: circle-nodes 
+          icon_pack: fas
         - name: Genomics
           description: 'Next‐generation and long‐read genome sequencing data, metagenomics, ChIP‐seq'
           icon: dna
@@ -30,12 +34,8 @@ sections:
           description: 'Single‐cell, spatial, bulk RNA‐Seq data. Mass-spectrometry‐based quantitative proteomics data'
           icon: database
           icon_pack: fas
-        - name: Algorithms
-          description: 'Implementation and development of bioinformatic algorithms'
-          icon: circle-nodes 
-          icon_pack: fas
-          #design:
-          #  columns: '1'
+      design:
+        columns: '2'
 
   - block: portfolio
     id: projects
