@@ -71,7 +71,7 @@ sections:
       view: Card
       # For Showcase view, flip alternate rows?
       #flip_alt_rows: false
-    sort_by: 'tags'
+    sort_by: 'Date'
   - block: collection
     id: publications
     content:
