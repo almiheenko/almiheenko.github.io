@@ -18,13 +18,9 @@ sections:
       title: Skills
       items:
         - name: Programming
-          description: 'Python (Pandas, NumPy, PyTorch, Scikit‐learn), R, Bash, cluster managers'
+          description: 'Python, R, Bash, cluster managers. Supervised/unsupervised machine learning, deep learning'
           #percent: 80
           icon: code
-          icon_pack: fas
-        - name: Machine learning
-          description: 'Supervised/unsupervised learning, ensemble methods, regularization and optimization, deep learning (CNNs, RNNs, GANs)'
-          icon: microchip
           icon_pack: fas
         - name: Genomics
           description: 'Next‐generation and long‐read genome sequencing data, metagenomics, ChIP‐seq'
