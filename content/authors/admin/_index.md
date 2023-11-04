@@ -60,11 +60,11 @@ skills:
         icon_pack: fas
       - name: Machine learning
         description: ''
-        icon: database
+        icon: 
         icon_pack: fas
       - name: Statistics
         description: ''
-        icon: chart-simple
+        icon: 
         icon_pack: fas
   - name: Computational biology
     color: '#eeac02'
@@ -76,15 +76,15 @@ skills:
         icon_pack: fas
       - name: Transcriptomics
         description: ''
-        icon: cat
+        icon: 
         icon_pack: fas
       - name: Proteomics
         description: ''
-        icon: cat
+        icon: 
         icon_pack: fas
       - name: Bioinformatic algorithms
         description: ''
-        icon: brain
+        icon: 
         icon_pack: fas
       
 # Social/Academic Networking
