@@ -1,6 +1,6 @@
 ---
 title: TDP-43 pathology
-summary: Role of TDP-43 pathology in neurodegenerative diseases
+summary: Investigating role of TDP-43 pathology in neurodegenerative diseases (papers in preparation)
 tags:
   - Neuroscience
 

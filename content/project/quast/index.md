@@ -1,6 +1,6 @@
 ---
-title: QUAST (key developer & maintainer)
-summary: Versatile evaluation of genome assemblies
+title: Genomics 
+summary: Key developer & maintainer of QUAST tool for versatile evaluation of genome assemblies
 tags:
   - QUAST
 

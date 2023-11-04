@@ -1,6 +1,6 @@
 ---
 title: Long-read RNA-seq
-summary: Novel tools and algorithms for long-read RNA-sequencing data
+summary: Development of novel tools and algorithms for long-read RNA-sequencing data
 tags:
   - RNA
 
