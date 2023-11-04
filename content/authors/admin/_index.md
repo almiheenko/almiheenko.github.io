@@ -46,46 +46,7 @@ education:
 
 # Skills
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
-skills:
-  - name: Programming
-    items:
-      - name: Python
-        description: ''
-        #percent: 80
-        icon: python
-        icon_pack: fab
-      - name: R
-        description: ''
-        icon: r
-        icon_pack: fas
-      - name: Machine learning
-        description: ''
-        icon: 
-        icon_pack: fas
-      - name: Statistics
-        description: ''
-        icon: 
-        icon_pack: fas
-  - name: Computational biology
-    color: '#eeac02'
-    color_border: '#f0bf23'
-    items:
-      - name: Genomics
-        description: ''
-        icon: dna
-        icon_pack: fas
-      - name: Transcriptomics
-        description: ''
-        icon: 
-        icon_pack: fas
-      - name: Proteomics
-        description: ''
-        icon: 
-        icon_pack: fas
-      - name: Bioinformatic algorithms
-        description: ''
-        icon: 
-        icon_pack: fas
+# skills
       
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
