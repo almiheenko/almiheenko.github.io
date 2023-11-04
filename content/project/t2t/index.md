@@ -3,6 +3,7 @@ title: Telomere-to-Telomere (T2T) consortium (participant)
 summary: High-precision read alignment algorithms developed for the first truly complete human genome assembly.
 tags:
   - DNA
+date: "2021-06-01T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
 #external_link: https://www.ccb.uni-saarland.de/quast/

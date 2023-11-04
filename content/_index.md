@@ -68,9 +68,10 @@ sections:
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '1'
-      #view: showcase
+      view: Card
       # For Showcase view, flip alternate rows?
       #flip_alt_rows: false
+    sort_by: 'Date'
   - block: collection
     content:
       title: Publications
@@ -85,4 +86,17 @@ sections:
     design:
       columns: '2'
       view: citation
+    sort_by: 'Date'
+  - block: collection
+    id: teaching
+    content:
+      title: Teaching Positions 
+      filters:
+        folders:
+          - teaching
+        featured_only: false
+    design:
+      columns: '2'
+      view: showcase
+    sort_by: 'Date'
 ---
