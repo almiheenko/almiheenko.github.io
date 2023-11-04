@@ -1,10 +1,13 @@
 ---
-title: "NGS Data Analysis (2022) - Sirius University of Science and Technology, Russia"
-summary: The course is designed for Master's students with biology background. The goals of this course are to learn the essential programming skills for bioinformatics, understand NGS technology and algorithms, and use bioinformatics tools for analysis of sequencing data. 
+title: "Introduction to Bioinformatics (2021) - St. Petersburg State University, Russia"
+summary: The course is designed for Master's students with biology background. In this course we discuss following topics: basic bioinformatic challenges; algorithms and tools for genome assembly; analysis of DNA-seq and RNA-seq data. Students learn to work in Linux environment, install and run various bioinformatics tools. 
 authors:
 - admin
-date: "2022-06-01T00:00:00Z"
+date: "2021-06-01T00:00:00Z"
 
+  
+2021‐2022 Undergraduate Research Mentor, Mentoring research projects of Computer Science undergraduate
+students, St. Petersburg State University, Russia
 image:
   caption: 
   focal_point: Smart
