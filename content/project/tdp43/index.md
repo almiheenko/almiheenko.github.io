@@ -1,5 +1,5 @@
 ---
-title: TDP-43 pathology
+title: Molecular mechanisms of neurodegeneration
 summary: Investigating role of TDP-43 pathology in neurodegenerative diseases (papers in preparation)
 tags:
   - 5Neuroscience

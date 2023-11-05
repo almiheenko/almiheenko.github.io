@@ -1,6 +1,6 @@
 ---
-title: C9orf72
-summary: Exploration of genes and pathways affected in C9orf72-related neurodegenerative diseases
+title: C9orf72-related neurodegenerative diseases
+summary: Exploration of genes and pathways affected in C9orf72-mediated ALS and FTD 
 tags:
   - 4Neuroscience
 date: "2022-06-01T00:00:00Z"
