@@ -1,7 +1,7 @@
 ---
 # Leave the homepage title empty to use the site title
 title: ''
-date: 2022-10-24
+date: 2023-10-24
 type: landing
 
 sections:
@@ -18,13 +18,18 @@ sections:
       title: Skills
       items:
         - name: Programming
-          description: 'Python, R, Bash, cluster managers. Supervised/unsupervised machine learning, deep learning'
+          description: 'Proficiency: Python (Pandas, Numpy, Scikit-learn, etc), R, Bash. HTML/CSS + Javascript.'
           #percent: 80
           icon: code
           icon_pack: fas
         - name: Algorithms
-          description: 'Implementation and development of bioinformatic algorithms'
+          description: 'Algorithms and data structures, bioinformatics algorithms, algorithms design and implementation for large-scale data analysis'
           icon: circle-nodes 
+          icon_pack: fas
+        - name: Machine learning
+          description: 'Supervised/unsupervised machine learning, ensemble methods, regularization and optimization, deep learning'
+          #percent: 80
+          icon: microchip
           icon_pack: fas
         - name: Genomics
           description: 'Next‐generation and long‐read genome sequencing data, metagenomics, ChIP‐seq'
@@ -33,6 +38,10 @@ sections:
         - name: Transcriptomics & Proteomics
           description: 'Single‐cell, spatial, bulk RNA‐Seq data. Mass-spectrometry‐based quantitative proteomics data'
           icon: database
+          icon_pack: fas
+        - name: Miscellaneous
+          description: 'Git, LaTeX, cluster management systems (slurm, qsub), various bioinformatics software.'
+          icon: globe
           icon_pack: fas
       design:
         columns: '2'
