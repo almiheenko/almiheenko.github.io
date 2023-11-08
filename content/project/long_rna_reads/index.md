@@ -11,7 +11,7 @@ date: "2020-06-01T00:00:00Z"
 links:
   - icon: 
     icon_pack: 
-    name: Nature Biotechnology paper
+    name: IsoQuant paper
     url: https://www.nature.com/articles/s41587-022-01565-y
   - icon: github
     icon_pack: fab
@@ -19,7 +19,7 @@ links:
     url: https://github.com/ablab/IsoQuant
   - icon: 
     icon_pack: 
-    name: Genome Research paper
+    name: Sequencing platform comparison
     url: https://genome.cshlp.org/content/early/2022/03/29/gr.276405.121
   - icon: github
     icon_pack: fab
