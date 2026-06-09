@@ -2,7 +2,7 @@
 title: IsoChecker
 summary: Multisample analysis and isoform-focused exploration of long-read transcriptomes
 tags:
-  - 2RNA
+  - Transcriptomics
 date: "2026-06-08T00:00:00Z"
 
 links:
