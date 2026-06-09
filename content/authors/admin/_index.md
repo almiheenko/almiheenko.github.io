@@ -17,12 +17,12 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: Postdoctoral Research Fellow
+role: Assistant Professor
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: University College of London
-    url: https://www.ucl.ac.uk
+  - name: MBZUAI
+    url: https://mbzuai.ac.ae
 
 # Short bio (displayed in user profile at end of posts)
 #bio: My research interests include .
@@ -82,5 +82,5 @@ social:
 highlight_name: true
 ---
 
-I am currently a postdoc at Pietro Fratta's lab at University College London, focusing on applying computational methods to exploring mechanisms of neurodegeneration. My research interests also include development of novel tools and algorithms for the analysis of genomic, transcriptomic, and proteomic data. 
+I am currently an Assistant Professor at MBZUAI, focusing on applying computational methods to exploring mechanisms of neurodegeneration. My research interests also include development of novel tools and algorithms for the analysis of genomic, transcriptomic, and proteomic data. 
 {style="text-align: justify;"}
