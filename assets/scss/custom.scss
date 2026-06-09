@@ -1,0 +1,15 @@
+/* Site-wide custom overrides — auto-included by Wowchemy. */
+
+/* Hide the Author Card widget (avatar + name + role + socials) at the
+   bottom of every project detail page. Project pages get the `article-project`
+   class on the <article> element. The author card still appears on other
+   single pages (blog posts, publications, etc.) where it makes sense. */
+.article-project .author-card {
+  display: none !important;
+}
+
+/* Also hide the empty `project-related-pages` container that Wowchemy
+   inserts when there are no related items — purely cosmetic. */
+.article-project .project-related-pages:empty {
+  display: none !important;
+}
